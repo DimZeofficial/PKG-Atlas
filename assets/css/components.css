@@ -92,7 +92,8 @@
 .btn--wishlist {
   position: relative;
   transition: all var(--transition-fast);
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+  opacity: 1;
 }
 
 .btn--wishlist svg {
@@ -103,11 +104,13 @@
 .btn--wishlist:hover {
   color: var(--color-accent-danger);
   transform: scale(1.08);
+  opacity: 1;
 }
 
 .btn--wishlist--active {
   color: var(--color-accent-danger) !important;
   border-color: var(--color-accent-danger) !important;
+  opacity: 1 !important;
 }
 
 .btn--wishlist--active svg {
@@ -194,7 +197,8 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-full);
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+  opacity: 1;
   cursor: pointer;
   transition: all 0.2s var(--ease-out);
   z-index: 2;
