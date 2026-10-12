@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       gameDetailContainer.innerHTML = `
         <div style="margin-bottom: var(--space-lg);">
           <a href="search.html" class="btn btn--secondary" data-nav="smooth">
-            ← Back to Store
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:4px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to Store
           </a>
         </div>
         ${UI.buildDetailHTML(game)}
@@ -391,12 +391,28 @@ document.addEventListener('DOMContentLoaded', async () => {
       state.results = db.applyFilters();
       state.currentPage = 1;
       renderMainGrid();
+      // Update URL with search query
+      const query = db.filters.searchQuery || '';
+      if (window.location.pathname.includes('search.html')) {
+        const basePath = window.location.pathname.split('/search.html')[0] + '/search.html';
+        const newPath = query ? `${basePath}/${encodeURIComponent(query)}/` : basePath + '/';
+        history.replaceState(null, '', newPath);
+      }
     }
 
     // Read URL query on search page
     if (searchInput) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const initialQuery = urlParams.get('q');
+      // Get initial query from URL path (e.g., /search.html/ea/)
+      const pathParts = window.location.pathname.split('/');
+      const searchIndex = pathParts.indexOf('search.html');
+      let initialQuery = '';
+      if (searchIndex >= 0 && searchIndex + 1 < pathParts.length) {
+        initialQuery = decodeURIComponent(pathParts[searchIndex + 1]);
+      } else {
+        // Fallback to query param for backward compatibility
+        const urlParams = new URLSearchParams(window.location.search);
+        initialQuery = urlParams.get('q') || '';
+      }
       if (initialQuery) {
         searchInput.value = initialQuery;
         db.updateFilter('searchQuery', initialQuery);
@@ -419,7 +435,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             db.updateFilter('searchQuery', q);
             applyFilterAndReset();
           } else {
-            navigateSmoothly(`search.html?q=${encodeURIComponent(q)}`);
+            navigateSmoothly(`search.html/${encodeURIComponent(q)}/`);
           }
         }
       });
@@ -429,7 +445,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (homeSearchBtn && searchInput) {
       homeSearchBtn.addEventListener('click', () => {
         const q = searchInput.value.trim();
-        navigateSmoothly(`search.html?q=${encodeURIComponent(q)}`);
+        navigateSmoothly(`search.html/${encodeURIComponent(q)}/`);
       });
     }
 

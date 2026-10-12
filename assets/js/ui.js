@@ -276,7 +276,6 @@ const UI = {
         <h3>Game Information</h3>
         <dl class="info-grid">
           ${game.developer ? `<dt>Developer</dt><dd>${game.developer}</dd>` : ''}
-          ${game.publisher ? `<dt>Publisher</dt><dd>${game.publisher}</dd>` : ''}
           ${game.releaseDate ? `<dt>Release Date</dt><dd>${game.releaseDate}</dd>` : ''}
           <dt>Password</dt><dd><code>${game.password || 'N/A'}</code></dd>
           ${Array.isArray(game.languages) && game.languages.length ? `<dt>Languages</dt><dd>${game.languages.join(', ')}</dd>` : ''}
