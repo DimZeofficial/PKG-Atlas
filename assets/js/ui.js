@@ -58,14 +58,17 @@ const UI = {
 
   /**
    * Create a single game card (firmware badge removed)
-   */
-  createGameCard(game) {
+   */  createGameCard(game) {
     const article = document.createElement('article');
     article.className = 'game-card reveal reveal--scale';
     article.dataset.gameId = game.id;
 
     const wishlist = JSON.parse(localStorage.getItem('ps4_wishlist') || '[]');
     const isWishlisted = wishlist.includes(game.id);
+
+    const collectionStatus = this.getCollectionStatus(game.id);
+    const collectionIcon = this.getCollectionIcon(collectionStatus);
+    const collectionLabel = this.getCollectionLabel(collectionStatus);
 
     const year = game.releaseDate ? new Date(game.releaseDate).getFullYear() : 'PS4';
     const genres = Array.isArray(game.genre) ? game.genre.slice(0, 2) : [];
@@ -75,10 +78,13 @@ const UI = {
       <div class="game-card__cover">
         <img src="${game.coverImage || ''}" alt="${game.title}" loading="lazy" onerror="this.src='https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%231a2332&textColor=%2394a3b8'">
         ${game.region ? `<span class="game-card__badge game-card__badge--region">${game.region}</span>` : ''}
+        <div class="game-card__collection" data-status="${collectionStatus}" title="${collectionLabel}">
+          ${collectionIcon}
+        </div>
       </div>
       <div class="game-card__info">
         <h3 class="game-card__title" title="${game.title}">${game.title}</h3>
-        <p class="game-card__meta">${game.id} • ${year}</p>
+        <p class="game-card__meta">${game.id} \u2022 ${year}</p>
         <div class="game-card__tags">
           ${genres.map(g => `<span class="tag">${g}</span>`).join('')}
           ${size ? `<span class="tag tag--size">${size}</span>` : ''}
@@ -100,8 +106,26 @@ const UI = {
       </div>
     `;
 
+    // Attach collection status click handler
+    const collectionEl = article.querySelector('.game-card__collection');
+    if (collectionEl) {
+      collectionEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const statuses = ['none', 'owned', 'playing', 'backlog'];
+        const current = this.getCollectionStatus(game.id);
+        const idx = statuses.indexOf(current);
+        const next = statuses[(idx + 1) % statuses.length];
+        this.setCollectionStatus(game.id, next);
+        collectionEl.dataset.status = next;
+        collectionEl.innerHTML = this.getCollectionIcon(next);
+        collectionEl.title = this.getCollectionLabel(next);
+        UI.showToast(`"${game.title}" \u2192 ${this.getCollectionLabel(next)}`);
+      });
+    }
+
     return article;
-  },
+  }
+
 
   /**
    * Display game detail modal with instant 100% visibility (no hidden reveal classes)
@@ -150,6 +174,23 @@ const UI = {
           if (wishlist.includes(gameId)) btn.classList.add('btn--wishlist--active');
           else btn.classList.remove('btn--wishlist--active');
         });
+      });
+    }
+
+    // Collection status selector in modal
+    const collectionSelect = modal.querySelector('#detailCollectionSelect');
+    if (collectionSelect) {
+      collectionSelect.addEventListener('change', (e) => {
+        e.stopPropagation();
+        const newStatus = e.target.value;
+        UI.setCollectionStatus(game.id, newStatus);
+        // Update game card badge
+        document.querySelectorAll(`.game-card__collection[data-game-id="${game.id}"]`).forEach(el => {
+          el.dataset.status = newStatus;
+          el.innerHTML = UI.getCollectionIcon(newStatus);
+          el.title = UI.getCollectionLabel(newStatus);
+        });
+        UI.showToast(`"${game.title}" → ${UI.getCollectionLabel(newStatus)}`);
       });
     }
 
@@ -274,6 +315,39 @@ const UI = {
       sidebarBadge.textContent = count;
       sidebarBadge.style.display = count > 0 ? 'inline-block' : 'none';
     }
+  },
+
+  /**
+   * Collection status helper
+   */
+  getCollectionStatus(gameId) {
+    const map = JSON.parse(localStorage.getItem('ps4_collection') || '{}');
+    return map[gameId] || 'none';
+  },
+
+  setCollectionStatus(gameId, status) {
+    const map = JSON.parse(localStorage.getItem('ps4_collection') || '{}');
+    if (status === 'none') {
+      delete map[gameId];
+    } else {
+      map[gameId] = status;
+    }
+    localStorage.setItem('ps4_collection', JSON.stringify(map));
+  },
+
+  getCollectionIcon(status) {
+    const icons = {
+      owned: '<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>',
+      playing: '<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',
+      backlog: '<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm0-4H7v-2h5v2zm0-4H7V7h5v2z"/></svg>',
+      none: '<svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h14M12 5v14M9 5v14"/></svg>'
+    };
+    return icons[status] || icons.none;
+  },
+
+  getCollectionLabel(status) {
+    const labels = { owned: 'Owned', playing: 'Playing', backlog: 'Backlog', none: 'Set status' };
+    return labels[status] || labels.none;
   },
 
   /**

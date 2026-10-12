@@ -11,7 +11,10 @@ class GameDatabase {
       genre: [],
       searchQuery: '',
       sortBy: 'title',
-      sortOrder: 'asc'
+      sortOrder: 'asc',
+      sizeRangeMin: null,
+      sizeRangeMax: null,
+      hidePlaceholderSizes: false
     };
   }
 
@@ -51,10 +54,25 @@ class GameDatabase {
   }
 
   /**
+   * Parse size strings like "28.40 GB", "725.35 MB", "15 GB" into GB numeric value.
+   * Returns NaN if parsing fails.
+   */
+  parseSizeToGB(s) {
+    if (!s) return NaN;
+    const m = s.match(/^([\d.]+)\s*(GB|MB|KB|TB)$/i);
+    if (!m) return NaN;
+    const num = parseFloat(m[1]);
+    const unit = m[2].toUpperCase();
+    const mult = {KB: 1/1024, MB: 1/1024, GB: 1, TB: 1024}[unit] ?? 1;
+    return num * mult;
+  }
+
+  /**
    * Apply current filters and sorting to the game list.
    */
   applyFilters() {
     const query = (this.filters.searchQuery || '').toLowerCase().trim();
+    const { sizeRangeMin, sizeRangeMax, hidePlaceholderSizes } = this.filters;
 
     this.filteredGames = this.games.filter(game => {
       // Region filter
@@ -64,6 +82,16 @@ class GameDatabase {
       // Genre filter
       if (this.filters.genre.length > 0 && 
           !(game.genre || []).some(g => this.filters.genre.includes(g))) return false;
+      
+      // Size range filter
+      const sizeStr = game.size?.game;
+      const sizeGB = this.parseSizeToGB(sizeStr);
+      if (!isNaN(sizeGB)) {
+        if (sizeRangeMin !== null && sizeGB < sizeRangeMin) return false;
+        if (sizeRangeMax !== null && sizeGB > sizeRangeMax) return false;
+      }
+      // Hide placeholder sizes (15 GB)
+      if (hidePlaceholderSizes && sizeStr === '15 GB') return false;
       
       // Search query — safely checks title, id, developer, and slug
       if (query) {
@@ -101,19 +129,8 @@ class GameDatabase {
         valueB = b[parent]?.[child] ?? '';
       }
       
-      // Helper: parse size strings like "28.40 GB", "725.35 MB", "15 GB" into GB numeric value
-      const parseSize = (s) => {
-        if (!s) return NaN;
-        const m = s.match(/^([\d.]+)\s*(GB|MB|KB|TB)$/i);
-        if (!m) return NaN;
-        const num = parseFloat(m[1]);
-        const unit = m[2].toUpperCase();
-        const mult = {KB: 1/1024, MB: 1/1024, GB: 1, TB: 1024}[unit] ?? 1;
-        return num * mult;
-      };
-      
-      const aNum = parseSize(valueA);
-      const bNum = parseSize(valueB);
+      const aNum = this.parseSizeToGB(valueA);
+      const bNum = this.parseSizeToGB(valueB);
       if (!isNaN(aNum) && !isNaN(bNum)) {
         // numeric comparison (ascending or descending)
         const diff = sortOrder === 'asc' ? aNum - bNum : bNum - aNum;

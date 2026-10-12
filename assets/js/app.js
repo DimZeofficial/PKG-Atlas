@@ -454,6 +454,56 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
+    // Size range filter inputs
+    const sizeMin = document.getElementById('sizeRangeMin');
+    const sizeMax = document.getElementById('sizeRangeMax');
+    const sizeHide = document.getElementById('sizeFilterHidePlaceholder');
+    const sizeClear = document.getElementById('sizeFilterClear');
+
+    function updateSizeFilterUI() {
+      const min = sizeMin ? sizeMin.value.trim() : '';
+      const max = sizeMax ? sizeMax.value.trim() : '';
+      const hasValues = min !== '' || max !== '';
+      if (sizeClear) sizeClear.style.display = hasValues ? 'inline-flex' : 'none';
+    }
+
+    function applySizeFilter() {
+      const min = sizeMin ? (sizeMin.value.trim() === '' ? null : parseFloat(sizeMin.value)) : null;
+      const max = sizeMax ? (sizeMax.value.trim() === '' ? null : parseFloat(sizeMax.value)) : null;
+      const hide = sizeHide ? sizeHide.checked : false;
+      db.updateFilter('sizeRangeMin', min);
+      db.updateFilter('sizeRangeMax', max);
+      db.updateFilter('hidePlaceholderSizes', hide);
+      applyFilterAndReset();
+      updateSizeFilterUI();
+    }
+
+    [sizeMin, sizeMax].forEach(input => {
+      if (input) {
+        input.addEventListener('input', () => {
+          updateSizeFilterUI();
+        });
+        input.addEventListener('change', applySizeFilter);
+      }
+    });
+
+    if (sizeHide) {
+      sizeHide.addEventListener('change', applySizeFilter);
+    }
+
+    if (sizeClear) {
+      sizeClear.addEventListener('click', () => {
+        if (sizeMin) sizeMin.value = '';
+        if (sizeMax) sizeMax.value = '';
+        if (sizeHide) sizeHide.checked = false;
+        db.updateFilter('sizeRangeMin', null);
+        db.updateFilter('sizeRangeMax', null);
+        db.updateFilter('hidePlaceholderSizes', false);
+        applyFilterAndReset();
+        updateSizeFilterUI();
+      });
+    }
+
     // Region checkboxes
     document.querySelectorAll('input[name="region"]').forEach(cb => {
       cb.addEventListener('change', () => {

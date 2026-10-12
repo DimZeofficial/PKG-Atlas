@@ -582,6 +582,48 @@ body.nav-open {
   min-height: 38px;
 }
 
+/* Size range filter row */
+.size-filter-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.size-filter-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.size-filter-separator {
+  color: var(--color-text-secondary);
+  margin: 0 2px;
+}
+
+.form-input--sm {
+  width: 80px;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+}
+
+.size-filter-hide-placeholder {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.size-filter-hide-placeholder input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-accent-primary);
+}
+
 /* Result count + page-size control */
 .result-toolbar {
   display: flex;

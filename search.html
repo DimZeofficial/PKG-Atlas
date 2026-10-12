@@ -131,6 +131,19 @@
             </select>
           </div>
 
+          <!-- Size Range Filter -->
+          <div class="reveal reveal--fade size-filter-row">
+            <label class="size-filter-label" for="sizeRangeMin">Size range:</label>
+            <input type="number" id="sizeRangeMin" class="form-input form-input--sm" placeholder="Min GB" min="0" step="0.1" aria-label="Minimum size in GB">
+            <span class="size-filter-separator">–</span>
+            <input type="number" id="sizeRangeMax" class="form-input form-input--sm" placeholder="Max GB" min="0" step="0.1" aria-label="Maximum size in GB">
+            <button type="button" id="sizeFilterClear" class="btn btn--secondary btn--sm" aria-label="Clear size filter" style="display:none;">Clear</button>
+            <label class="size-filter-hide-placeholder" style="margin-left:auto;">
+              <input type="checkbox" id="sizeFilterHidePlaceholder" />
+              <span>Hide "15 GB" placeholders</span>
+            </label>
+          </div>
+
           <!-- Result count + Page size (12, 24, 48) -->
           <div class="reveal reveal--fade result-toolbar">
             <span id="resultCount" style="color: var(--color-text-secondary); font-size: 0.9rem; font-weight: 500;"></span>
