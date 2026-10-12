@@ -391,23 +391,27 @@ document.addEventListener('DOMContentLoaded', async () => {
       state.results = db.applyFilters();
       state.currentPage = 1;
       renderMainGrid();
-      // Update URL with search query
+      // Update URL hash with search query
       const query = db.filters.searchQuery || '';
       if (window.location.pathname.includes('search.html')) {
-        const basePath = window.location.pathname.split('/search.html')[0] + '/search.html';
-        const newPath = query ? `${basePath}/${encodeURIComponent(query)}/` : basePath + '/';
-        history.replaceState(null, '', newPath);
+        const newHash = query ? `#/search/${encodeURIComponent(query)}/` : '';
+        if (window.location.hash !== newHash) {
+          history.replaceState(null, '', newHash);
+        }
       }
     }
 
     // Read URL query on search page
     if (searchInput) {
-      // Get initial query from URL path (e.g., /search.html/ea/)
-      const pathParts = window.location.pathname.split('/');
-      const searchIndex = pathParts.indexOf('search.html');
+      // Get initial query from hash (e.g., #/search/ea/ or #q=ea)
       let initialQuery = '';
-      if (searchIndex >= 0 && searchIndex + 1 < pathParts.length) {
-        initialQuery = decodeURIComponent(pathParts[searchIndex + 1]);
+      if (window.location.hash) {
+        const hash = window.location.hash.slice(1); // remove #
+        if (hash.startsWith('/search/')) {
+          initialQuery = decodeURIComponent(hash.slice(8).replace(/\/$/, ''));
+        } else if (hash.startsWith('q=')) {
+          initialQuery = decodeURIComponent(hash.slice(2));
+        }
       } else {
         // Fallback to query param for backward compatibility
         const urlParams = new URLSearchParams(window.location.search);
@@ -435,7 +439,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             db.updateFilter('searchQuery', q);
             applyFilterAndReset();
           } else {
-            navigateSmoothly(`search.html/${encodeURIComponent(q)}/`);
+            // Navigate to search page with hash
+            navigateSmoothly(`search.html#/search/${encodeURIComponent(q)}/`);
           }
         }
       });
@@ -445,7 +450,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (homeSearchBtn && searchInput) {
       homeSearchBtn.addEventListener('click', () => {
         const q = searchInput.value.trim();
-        navigateSmoothly(`search.html/${encodeURIComponent(q)}/`);
+        navigateSmoothly(`search.html#/search/${encodeURIComponent(q)}/`);
       });
     }
 
