@@ -351,6 +351,39 @@ const UI = {
   },
 
   /**
+   * Collection status helper
+   */
+  getCollectionStatus(gameId) {
+    const map = JSON.parse(localStorage.getItem('ps4_collection') || '{}');
+    return map[gameId] || 'none';
+  },
+
+  setCollectionStatus(gameId, status) {
+    const map = JSON.parse(localStorage.getItem('ps4_collection') || '{}');
+    if (status === 'none') {
+      delete map[gameId];
+    } else {
+      map[gameId] = status;
+    }
+    localStorage.setItem('ps4_collection', JSON.stringify(map));
+  },
+
+  getCollectionIcon(status) {
+    const icons = {
+      owned: '<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>',
+      playing: '<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',
+      backlog: '<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm0-4H7v-2h5v2zm0-4H7V7h5v2z"/></svg>',
+      none: '<svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h14M12 5v14M9 5v14"/></svg>'
+    };
+    return icons[status] || icons.none;
+  },
+
+  getCollectionLabel(status) {
+    const labels = { owned: 'Owned', playing: 'Playing', backlog: 'Backlog', none: 'Set status' };
+    return labels[status] || labels.none;
+  },
+
+  /**
    * Display a floating toast notification
    */
   showToast(message) {
