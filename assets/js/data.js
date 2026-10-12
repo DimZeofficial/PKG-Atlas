@@ -7,7 +7,6 @@ class GameDatabase {
     this.games = [];
     this.filteredGames = [];
     this.filters = {
-      region: [],
       genre: [],
       searchQuery: '',
       sortBy: 'title',
@@ -75,10 +74,6 @@ class GameDatabase {
     const { sizeRangeMin, sizeRangeMax, hidePlaceholderSizes } = this.filters;
 
     this.filteredGames = this.games.filter(game => {
-      // Region filter
-      if (this.filters.region.length > 0 && 
-          !this.filters.region.includes(game.region)) return false;
-      
       // Genre filter
       if (this.filters.genre.length > 0 && 
           !(game.genre || []).some(g => this.filters.genre.includes(g))) return false;

@@ -504,21 +504,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
-    // Region checkboxes
-    document.querySelectorAll('input[name="region"]').forEach(cb => {
-      cb.addEventListener('change', () => {
-        const selected = Array.from(document.querySelectorAll('input[name="region"]:checked')).map(el => el.value);
-        db.updateFilter('region', selected);
-        applyFilterAndReset();
-      });
-    });
+
 
     const resetBtn = document.getElementById('resetFilters');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
         if (searchInput) searchInput.value = '';
-        db.filters.region = [];
         db.filters.genre = [];
         db.filters.searchQuery = '';
         applyFilterAndReset();
