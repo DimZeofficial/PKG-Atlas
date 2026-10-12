@@ -102,14 +102,12 @@
 
 .btn--wishlist:hover {
   color: var(--color-accent-danger);
-  background: rgba(239, 68, 68, 0.1);
   transform: scale(1.08);
 }
 
 .btn--wishlist--active {
   color: var(--color-accent-danger) !important;
-  background: rgba(239, 68, 68, 0.15) !important;
-  border-color: rgba(239, 68, 68, 0.3) !important;
+  border-color: var(--color-accent-danger) !important;
 }
 
 .btn--wishlist--active svg {
@@ -195,18 +193,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
   border-radius: var(--radius-full);
   color: var(--color-text-secondary);
   cursor: pointer;
   transition: all 0.2s var(--ease-out);
   z-index: 2;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 .game-card__collection:hover {
-  background: rgba(0, 0, 0, 0.9);
   color: var(--color-accent-primary);
   transform: scale(1.1);
 }
