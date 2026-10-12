@@ -124,8 +124,7 @@ const UI = {
     }
 
     return article;
-  }
-
+  },
 
   /**
    * Display game detail modal with instant 100% visibility (no hidden reveal classes)
