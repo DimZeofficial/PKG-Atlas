@@ -18,7 +18,11 @@ const LS = {
     catch { /* ignore */ }
   },
   parse(key, fallback = null) {
-    try { return JSON.parse(localStorage.getItem(key) ?? 'null'); }
+    try {
+      const val = localStorage.getItem(key);
+      if (val === null) return fallback;
+      return JSON.parse(val);
+    }
     catch { return fallback; }
   }
 };

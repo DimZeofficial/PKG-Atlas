@@ -3,25 +3,29 @@
  * Coordinates database, animations, theme switching, settings, profile setup, and page interactions.
  */
 document.addEventListener('DOMContentLoaded', async () => {
-  // Safe localStorage wrapper — prevents crashes in private mode / blocked cookies
-  const LS = {
-    get(key, fallback = null) {
-      try { return localStorage.getItem(key) ?? fallback; }
-      catch { return fallback; }
-    },
-    set(key, value) {
-      try { localStorage.setItem(key, value); }
-      catch { /* ignore */ }
-    },
-    remove(key) {
-      try { localStorage.removeItem(key); }
-      catch { /* ignore */ }
-    },
-    parse(key, fallback = null) {
-      try { return JSON.parse(localStorage.getItem(key) ?? 'null'); }
-      catch { return fallback; }
+// Safe localStorage wrapper — prevents crashes in private mode / blocked cookies
+const LS = {
+  get(key, fallback = null) {
+    try { return localStorage.getItem(key) ?? fallback; }
+    catch { return fallback; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, value); }
+    catch { /* ignore */ }
+  },
+  remove(key) {
+    try { localStorage.removeItem(key); }
+    catch { /* ignore */ }
+  },
+  parse(key, fallback = null) {
+    try {
+      const val = localStorage.getItem(key);
+      if (val === null) return fallback;
+      return JSON.parse(val);
     }
-  };
+    catch { return fallback; }
+  }
+};
 
   // 1. Initialize Database
   const db = new GameDatabase();
