@@ -12,6 +12,51 @@ document.addEventListener('DOMContentLoaded', async () => {
   UI.syncProfileUI();
   UI.syncWishlistBadges();
 
+  // Process hash AFTER database is loaded and UI is initialized
+  if (window.location.pathname.includes('search.html')) {
+    let initialQuery = '';
+    if (window.location.hash) {
+      const hash = window.location.hash.slice(1);
+      if (hash.startsWith('/search/')) {
+        initialQuery = decodeURIComponent(hash.slice(8).replace(/\/$/, ''));
+      } else if (hash.startsWith('q=')) {
+        initialQuery = decodeURIComponent(hash.slice(2));
+      }
+    } else {
+      const urlParams = new URLSearchParams(window.location.search);
+      initialQuery = urlParams.get('q') || '';
+    }
+    if (initialQuery) {
+      // Use setTimeout to ensure DOM is ready and searchInput exists
+      setTimeout(() => {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+          searchInput.value = initialQuery;
+          db.updateFilter('searchQuery', initialQuery);
+          applyFilterAndReset();
+        }
+      }, 0);
+    }
+
+    // Listen for hash changes (back/forward, direct link, manual hash change)
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.slice(1);
+      let query = '';
+      if (hash.startsWith('/search/')) {
+        query = decodeURIComponent(hash.slice(8).replace(/\/$/, ''));
+      } else if (hash.startsWith('q=')) {
+        query = decodeURIComponent(hash.slice(2));
+      }
+      if (query && query !== (db.filters.searchQuery || '')) {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+          searchInput.value = query;
+          db.updateFilter('searchQuery', query);
+          applyFilterAndReset();
+        }
+      }
+    });
+
   // 3. First-time visit: Prompt to choose username & avatar at the start
   if (!localStorage.getItem('ps4_username')) {
     setTimeout(() => {
@@ -403,27 +448,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Read URL query on search page
     if (searchInput) {
-      // Get initial query from hash (e.g., #/search/ea/ or #q=ea)
-      let initialQuery = '';
-      if (window.location.hash) {
-        const hash = window.location.hash.slice(1); // remove #
-        if (hash.startsWith('/search/')) {
-          initialQuery = decodeURIComponent(hash.slice(8).replace(/\/$/, ''));
-        } else if (hash.startsWith('q=')) {
-          initialQuery = decodeURIComponent(hash.slice(2));
-        }
-      } else {
-        // Fallback to query param for backward compatibility
-        const urlParams = new URLSearchParams(window.location.search);
-        initialQuery = urlParams.get('q') || '';
-      }
-      if (initialQuery) {
-        searchInput.value = initialQuery;
-        db.updateFilter('searchQuery', initialQuery);
-        // Defer applyFilterAndReset to ensure DOM/db ready
-        setTimeout(() => applyFilterAndReset(), 0);
-      }
-
       let timeout;
       searchInput.addEventListener('input', (e) => {
         clearTimeout(timeout);
@@ -650,4 +674,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (game) UI.showGameDetail(game);
     }
   });
+
+}
 });
