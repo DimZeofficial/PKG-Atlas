@@ -355,6 +355,55 @@ const LS = {
     }
   }
 
+
+  // 11b. Collection pages (backlog, playing, owned, library)
+  const collectionGrid = document.getElementById('collectionGrid');
+  const libraryGrid = document.getElementById('libraryGrid');
+  if (collectionGrid || libraryGrid) {
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    const targetGrid = libraryGrid || collectionGrid;
+    const countText = document.getElementById('collectionCountText') || document.getElementById('libraryCountText');
+    
+    function renderCollectionPage() {
+      const collection = LS.parse('ps4_collection', {});
+      let games = [];
+      
+      if (page === 'backlog.html') {
+        games = db.games.filter(g => collection[g.id] === 'backlog');
+        if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} in backlog`;
+      } else if (page === 'playing.html') {
+        games = db.games.filter(g => collection[g.id] === 'playing');
+        if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} playing`;
+      } else if (page === 'owned.html') {
+        games = db.games.filter(g => collection[g.id] === 'owned');
+        if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} owned`;
+      } else if (page === 'library.html') {
+        games = db.games.filter(g => collection[g.id] && collection[g.id] !== 'none');
+        if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} in library`;
+      }
+      
+      if (games.length === 0) {
+        targetGrid.innerHTML = `
+          <div class="empty-state">
+            <svg class="empty-state__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+            <h3>No Games Found</h3>
+            <p>Mark games as owned/playing/backlog by clicking the status icon on any game card.</p>
+            <a href="search.html" class="btn btn--primary" style="margin-top: var(--space-md);" data-nav="smooth">Browse Games</a>
+          </div>
+        `;
+        return;
+      }
+      
+      UI.renderGameGrid(games, targetGrid);
+      attachScrollReveals(targetGrid);
+    }
+    
+    renderCollectionPage();
+  }
+
+
   // 12. Pagination & Filtering for Store & Home (index.html & search.html)
   const gridContainer = document.getElementById('gameGrid');
   const searchInput = document.getElementById('searchInput');
