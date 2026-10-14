@@ -299,6 +299,16 @@ const LS = {
           UI.syncWishlistBadges();
         });
       }
+
+      // Collection status selector on dedicated page
+      const detailCollectionSelect = gameDetailContainer.querySelector('#detailCollectionSelect');
+      if (detailCollectionSelect) {
+        detailCollectionSelect.addEventListener('change', (e) => {
+          const newStatus = e.target.value;
+          UI.setCollectionStatus(game.id, newStatus);
+          UI.showToast(`"${game.title}" \u2192 ${UI.getCollectionLabel(newStatus)}`);
+        });
+      }
     } else {
       gameDetailContainer.innerHTML = `
         <div class="empty-state">
@@ -360,7 +370,7 @@ const LS = {
   const collectionGrid = document.getElementById('collectionGrid');
   const libraryGrid = document.getElementById('libraryGrid');
   if (collectionGrid || libraryGrid) {
-    const page = window.location.pathname.split('/').pop() || 'index.html';
+    const page = (window.location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
     const targetGrid = libraryGrid || collectionGrid;
     const countText = document.getElementById('collectionCountText') || document.getElementById('libraryCountText');
     
@@ -368,16 +378,16 @@ const LS = {
       const collection = LS.parse('ps4_collection', {});
       let games = [];
       
-      if (page === 'backlog.html') {
+      if (page === 'backlog') {
         games = db.games.filter(g => collection[g.id] === 'backlog');
         if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} in backlog`;
-      } else if (page === 'playing.html') {
+      } else if (page === 'playing') {
         games = db.games.filter(g => collection[g.id] === 'playing');
         if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} playing`;
-      } else if (page === 'owned.html') {
+      } else if (page === 'owned') {
         games = db.games.filter(g => collection[g.id] === 'owned');
         if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} owned`;
-      } else if (page === 'library.html') {
+      } else if (page === 'library') {
         games = db.games.filter(g => collection[g.id] && collection[g.id] !== 'none');
         if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} in library`;
       }
