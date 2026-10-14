@@ -69,9 +69,16 @@
         <nav class="top-header__nav">
           <a href="./" class="top-header__nav-link" data-nav="smooth">HOME</a>
           <a href="search" class="top-header__nav-link" data-nav="smooth">STORE</a>
-          <a href="wishlist" class="top-header__nav-link" data-nav="smooth">
-            WISHLIST <span class="nav-badge" id="headerWishlistBadge" style="display:none;">0</span>
-          </a>
+          <a href="wishlist" class="top-header__nav-link" data-nav="smooth">WISHLIST <span class="nav-badge" id="headerWishlistBadge" style="display:none;">0</span></a>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown__toggle top-header__nav-link" type="button" aria-expanded="false">LIBRARY</button>
+            <div class="nav-dropdown__menu">
+              <a href="library" class="nav-dropdown__item">All Library</a>
+              <a href="backlog" class="nav-dropdown__item">Backlog</a>
+              <a href="playing" class="nav-dropdown__item">Playing</a>
+              <a href="owned" class="nav-dropdown__item">Owned</a>
+            </div>
+          </div>
         </nav>
         <div class="top-header__actions">
           <button id="profileOpenBtn" class="header-user-btn" title="Choose Profile & Avatar">
