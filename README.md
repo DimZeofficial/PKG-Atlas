@@ -76,3 +76,4 @@ All internal links, assets and JSON use relative paths (`./`) so it works both l
 - **Adding Games:** Edit `data/games.json` to add new games. Follow the existing JSON schema.
 - **Styling/Themes:** Modify CSS variables in `assets/css/base.css` or theme definitions in `assets/css/themes.css`.
 - **Download Links:** For `pkgps4.click`, the slug is auto-derived as lowercase + spaces → hyphens (e.g. `EA SPORTS FC 27` → `ea-sports-fc-27`).
+ 
