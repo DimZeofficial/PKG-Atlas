@@ -27,6 +27,9 @@ const LS = {
   }
 };
 
+  // Current page name, tolerant of clean URLs (no .html extension)
+  const pageName = (window.location.pathname.split('/').pop() || 'index').replace(/\.html$/, '') || 'index';
+
   // 1. Initialize Database
   const db = new GameDatabase();
   await db.load();
@@ -37,7 +40,7 @@ const LS = {
   UI.syncWishlistBadges();
 
   // Process hash AFTER database is loaded and UI is initialized
-  if (window.location.pathname.includes('search.html')) {
+  if (pageName === 'search') {
     let initialQuery = '';
     if (window.location.hash) {
       const hash = window.location.hash.slice(1);
@@ -370,7 +373,6 @@ const LS = {
   const collectionGrid = document.getElementById('collectionGrid');
   const libraryGrid = document.getElementById('libraryGrid');
   if (collectionGrid || libraryGrid) {
-    const page = (window.location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
     const targetGrid = libraryGrid || collectionGrid;
     const countText = document.getElementById('collectionCountText') || document.getElementById('libraryCountText');
     
@@ -378,16 +380,16 @@ const LS = {
       const collection = LS.parse('ps4_collection', {});
       let games = [];
       
-      if (page === 'backlog') {
+      if (pageName === 'backlog') {
         games = db.games.filter(g => collection[g.id] === 'backlog');
         if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} in backlog`;
-      } else if (page === 'playing') {
+      } else if (pageName === 'playing') {
         games = db.games.filter(g => collection[g.id] === 'playing');
         if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} playing`;
-      } else if (page === 'owned') {
+      } else if (pageName === 'owned') {
         games = db.games.filter(g => collection[g.id] === 'owned');
         if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} owned`;
-      } else if (page === 'library') {
+      } else if (pageName === 'library') {
         games = db.games.filter(g => collection[g.id] && collection[g.id] !== 'none');
         if (countText) countText.textContent = `${games.length} game${games.length !== 1 ? 's' : ''} in library`;
       }
@@ -522,7 +524,7 @@ const LS = {
       renderMainGrid();
       // Update URL hash with search query
       const query = db.filters.searchQuery || '';
-      if (window.location.pathname.includes('search.html')) {
+      if (pageName === 'search') {
         const newHash = query ? `#/search/${encodeURIComponent(query)}/` : '';
         if (window.location.hash !== newHash) {
           history.replaceState(null, '', newHash);
@@ -544,7 +546,7 @@ const LS = {
       searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
           const q = e.target.value.trim();
-          if (window.location.pathname.includes('search.html')) {
+          if (pageName === 'search') {
             db.updateFilter('searchQuery', q);
             applyFilterAndReset();
           } else {
@@ -565,7 +567,7 @@ const LS = {
 
     // Listen for hash changes (back/forward navigation, direct link)
     window.addEventListener('hashchange', () => {
-      if (searchInput && window.location.pathname.includes('search.html')) {
+      if (searchInput && pageName === 'search') {
         const hash = window.location.hash.slice(1);
         let query = '';
         if (hash.startsWith('/search/')) {
@@ -713,7 +715,7 @@ const LS = {
         if (heartSvg) heartSvg.setAttribute('fill', 'none');
         UI.showToast(`Removed from Wishlist`);
 
-        if (window.location.pathname.includes('wishlist.html') && gameCard) {
+        if (pageName === 'wishlist' && gameCard) {
           gameCard.classList.add('card-removing');
           setTimeout(() => {
             gameCard.remove();
