@@ -917,4 +917,8 @@ const UI = {
       }, 200);
     };
   }
+
 };
+
+// Make UI globally accessible
+window.UI = UI;
