@@ -420,7 +420,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (initialQuery) {
         searchInput.value = initialQuery;
         db.updateFilter('searchQuery', initialQuery);
-        applyFilterAndReset();
+        // Defer applyFilterAndReset to ensure DOM/db ready
+        setTimeout(() => applyFilterAndReset(), 0);
       }
 
       let timeout;
@@ -453,6 +454,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         navigateSmoothly(`search.html#/search/${encodeURIComponent(q)}/`);
       });
     }
+
+    // Listen for hash changes (back/forward navigation, direct link)
+    window.addEventListener('hashchange', () => {
+      if (searchInput && window.location.pathname.includes('search.html')) {
+        const hash = window.location.hash.slice(1);
+        let query = '';
+        if (hash.startsWith('/search/')) {
+          query = decodeURIComponent(hash.slice(8).replace(/\/$/, ''));
+        } else if (hash.startsWith('q=')) {
+          query = decodeURIComponent(hash.slice(2));
+        }
+        if (query !== (db.filters.searchQuery || '')) {
+          searchInput.value = query;
+          db.updateFilter('searchQuery', query);
+          applyFilterAndReset();
+        }
+      }
+    });
 
     if (pageSizeSelect) {
       pageSizeSelect.addEventListener('change', (e) => {
