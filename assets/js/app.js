@@ -81,6 +81,7 @@ const LS = {
       }
     });
 
+  }
   // 3. First-time visit: Prompt to choose username & avatar at the start
   if (!LS.get('ps4_username')) {
     setTimeout(() => {
@@ -699,5 +700,4 @@ const LS = {
     }
   });
 
-}
 });
