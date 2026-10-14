@@ -2,6 +2,27 @@
  * PlayStation Database UI Module
  * Handles game rendering, modals, settings, profile/avatar selection, and toast notifications.
  */
+
+// Safe localStorage wrapper — prevents crashes in private mode / blocked cookies
+const LS = {
+  get(key, fallback = null) {
+    try { return localStorage.getItem(key) ?? fallback; }
+    catch { return fallback; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, value); }
+    catch { /* ignore */ }
+  },
+  remove(key) {
+    try { localStorage.removeItem(key); }
+    catch { /* ignore */ }
+  },
+  parse(key, fallback = null) {
+    try { return JSON.parse(localStorage.getItem(key) ?? 'null'); }
+    catch { return fallback; }
+  }
+};
+
 const UI = {
   avatarsData: null,
   selectedAvatar: null,
@@ -11,7 +32,7 @@ const UI = {
    */
   applySettings() {
     // 1. Orbs toggle
-    const orbsEnabled = localStorage.getItem('ps4_orbsEnabled') !== 'false';
+    const orbsEnabled = LS.get('ps4_orbsEnabled') !== 'false';
     document.documentElement.setAttribute('data-orbs', orbsEnabled ? 'true' : 'false');
     const orbsContainer = document.querySelector('.orbs-bg');
     if (orbsContainer) {
@@ -19,11 +40,11 @@ const UI = {
     }
 
     // 2. Low-res / Performance mode
-    const lowResMode = localStorage.getItem('ps4_lowRes') === 'true';
+    const lowResMode = LS.get('ps4_lowRes') === 'true';
     document.documentElement.setAttribute('data-low-res', lowResMode ? 'true' : 'false');
 
     // 3. Page size sync
-    const pageSize = parseInt(localStorage.getItem('ps4_pageSize') || '24', 10);
+    const pageSize = parseInt(LS.get('ps4_pageSize') || '24', 10);
     const pageSizeSelect = document.getElementById('pageSize');
     if (pageSizeSelect) {
       pageSizeSelect.value = String(pageSize);
@@ -63,7 +84,7 @@ const UI = {
     article.className = 'game-card reveal reveal--scale';
     article.dataset.gameId = game.id;
 
-    const wishlist = JSON.parse(localStorage.getItem('ps4_wishlist') || '[]');
+    const wishlist = LS.parse('ps4_wishlist', []);
     const isWishlisted = wishlist.includes(game.id);
 
     const collectionStatus = this.getCollectionStatus(game.id);
@@ -145,7 +166,7 @@ const UI = {
       modalWishlistBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const gameId = game.id;
-        let wishlist = JSON.parse(localStorage.getItem('ps4_wishlist') || '[]');
+        let wishlist = LS.parse('ps4_wishlist', []);
         if (wishlist.includes(gameId)) {
           wishlist = wishlist.filter(id => id !== gameId);
           modalWishlistBtn.classList.remove('btn--wishlist--active');
@@ -165,7 +186,7 @@ const UI = {
           `;
           UI.showToast(`Added "${game.title}" to Wishlist!`);
         }
-        localStorage.setItem('ps4_wishlist', JSON.stringify(wishlist));
+        LS.set('ps4_wishlist', JSON.stringify(wishlist));
         UI.syncWishlistBadges();
 
         // Sync cards on page
@@ -205,7 +226,7 @@ const UI = {
   buildDetailHTML(game) {
     if (!game) return '<div class="empty-state"><h3>Game details not available.</h3></div>';
 
-    const wishlist = JSON.parse(localStorage.getItem('ps4_wishlist') || '[]');
+    const wishlist = LS.parse('ps4_wishlist', []);
     const isWishlisted = wishlist.includes(game.id);
 
     return `
@@ -299,7 +320,7 @@ const UI = {
    * Sync wishlist badges across header & sidebar
    */
   syncWishlistBadges() {
-    const wishlist = JSON.parse(localStorage.getItem('ps4_wishlist') || '[]');
+    const wishlist = LS.parse('ps4_wishlist', []);
     const count = wishlist.length;
 
     const headerBadge = document.getElementById('headerWishlistBadge');
@@ -319,18 +340,18 @@ const UI = {
    * Collection status helper
    */
   getCollectionStatus(gameId) {
-    const map = JSON.parse(localStorage.getItem('ps4_collection') || '{}');
+    const map = LS.parse('ps4_collection', {});
     return map[gameId] || 'none';
   },
 
   setCollectionStatus(gameId, status) {
-    const map = JSON.parse(localStorage.getItem('ps4_collection') || '{}');
+    const map = LS.parse('ps4_collection', {});
     if (status === 'none') {
       delete map[gameId];
     } else {
       map[gameId] = status;
     }
-    localStorage.setItem('ps4_collection', JSON.stringify(map));
+    LS.set('ps4_collection', JSON.stringify(map));
   },
 
   getCollectionIcon(status) {
@@ -348,24 +369,6 @@ const UI = {
     return labels[status] || labels.none;
   },
 
-  /**
-   * Collection status helper
-   */
-  getCollectionStatus(gameId) {
-    const map = JSON.parse(localStorage.getItem('ps4_collection') || '{}');
-    return map[gameId] || 'none';
-  },
-
-  setCollectionStatus(gameId, status) {
-    const map = JSON.parse(localStorage.getItem('ps4_collection') || '{}');
-    if (status === 'none') {
-      delete map[gameId];
-    } else {
-      map[gameId] = status;
-    }
-    localStorage.setItem('ps4_collection', JSON.stringify(map));
-  },
-
   getCollectionIcon(status) {
     const icons = {
       owned: '<svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>',
@@ -374,11 +377,6 @@ const UI = {
       none: '<svg width="14" height="14" stroke="currentColor" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l-6 6"/></svg>'
     };
     return icons[status] || icons.none;
-  },
-
-  getCollectionLabel(status) {
-    const labels = { owned: 'Owned', playing: 'Playing', backlog: 'Backlog', none: 'Set status' };
-    return labels[status] || labels.none;
   },
 
   /**
@@ -407,8 +405,8 @@ const UI = {
    * Sync username & avatar in sidebar and header
    */
   syncProfileUI() {
-    const username = localStorage.getItem('ps4_username') || 'dimze';
-    const avatar = localStorage.getItem('ps4_avatar') || '';
+    const username = LS.get('ps4_username', 'dimze');
+    const avatar = LS.get('ps4_avatar', '');
 
     // Sidebar username
     const sidebarUserEl = document.getElementById('sidebarUsername');
@@ -570,13 +568,13 @@ const UI = {
     const lowResToggle = modal.querySelector('#settingLowResToggle');
     const pageSizePills = modal.querySelectorAll('.page-size-pill');
 
-    const orbsEnabled = localStorage.getItem('ps4_orbsEnabled') !== 'false';
+    const orbsEnabled = LS.get('ps4_orbsEnabled') !== 'false';
     orbsToggle.checked = orbsEnabled;
 
-    const lowRes = localStorage.getItem('ps4_lowRes') === 'true';
+    const lowRes = LS.get('ps4_lowRes') === 'true';
     lowResToggle.checked = lowRes;
 
-    const currentPageSize = localStorage.getItem('ps4_pageSize') || '24';
+    const currentPageSize = LS.get('ps4_pageSize', '24');
     pageSizePills.forEach(pill => {
       if (pill.dataset.size === currentPageSize) {
         pill.classList.add('btn--primary');
@@ -595,7 +593,7 @@ const UI = {
         pill.classList.remove('btn--secondary');
 
         const newSize = pill.dataset.size;
-        localStorage.setItem('ps4_pageSize', newSize);
+        LS.set('ps4_pageSize', newSize);
         UI.applySettings();
 
         // Trigger page size update on active page
@@ -610,14 +608,14 @@ const UI = {
 
     orbsToggle.onchange = () => {
       const isEnabled = orbsToggle.checked;
-      localStorage.setItem('ps4_orbsEnabled', isEnabled ? 'true' : 'false');
+      LS.set('ps4_orbsEnabled', isEnabled ? 'true' : 'false');
       UI.applySettings();
       UI.showToast(isEnabled ? 'Ambient floating orbs enabled.' : 'Ambient orbs disabled.');
     };
 
     lowResToggle.onchange = () => {
       const isLow = lowResToggle.checked;
-      localStorage.setItem('ps4_lowRes', isLow ? 'true' : 'false');
+      LS.set('ps4_lowRes', isLow ? 'true' : 'false');
       UI.applySettings();
       UI.showToast(isLow ? 'Low Resource Mode enabled (Blur & effects off).' : 'High visual quality restored.');
     };
@@ -690,9 +688,9 @@ const UI = {
     modal.classList.add('modal--active');
 
     // Populate current username and avatar
-    const currentUsername = localStorage.getItem('ps4_username') || 'dimze';
-    const currentAvatar = localStorage.getItem('ps4_avatar') || '';
-    const currentAvatarName = localStorage.getItem('ps4_avatar_name') || '';
+    const currentUsername = LS.get('ps4_username', 'dimze');
+    const currentAvatar = LS.get('ps4_avatar', '');
+    const currentAvatarName = LS.get('ps4_avatar_name', '');
 
     const usernameInput = modal.querySelector('#profileUsernameInput');
     const previewEl = modal.querySelector('#profileBigPreview');
@@ -711,10 +709,10 @@ const UI = {
     const saveBtn = modal.querySelector('#saveProfileBtn');
     saveBtn.onclick = () => {
       const newUsername = usernameInput.value.trim() || 'Player';
-      localStorage.setItem('ps4_username', newUsername);
+      LS.set('ps4_username', newUsername);
       if (this.selectedAvatar) {
-        localStorage.setItem('ps4_avatar', this.selectedAvatar.url);
-        localStorage.setItem('ps4_avatar_name', this.selectedAvatar.name);
+        LS.set('ps4_avatar', this.selectedAvatar.url);
+        LS.set('ps4_avatar_name', this.selectedAvatar.name);
       }
       this.syncProfileUI();
       modal.classList.remove('modal--active');
@@ -778,7 +776,7 @@ const UI = {
       }
     };
 
-    const currentSavedAvatar = this.selectedAvatar?.url || localStorage.getItem('ps4_avatar') || '';
+    const currentSavedAvatar = this.selectedAvatar?.url || LS.get('ps4_avatar', '');
 
     // Render function with search filter
     const renderList = (filterQuery = '') => {

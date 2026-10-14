@@ -3,6 +3,26 @@
  * Coordinates database, animations, theme switching, settings, profile setup, and page interactions.
  */
 document.addEventListener('DOMContentLoaded', async () => {
+  // Safe localStorage wrapper — prevents crashes in private mode / blocked cookies
+  const LS = {
+    get(key, fallback = null) {
+      try { return localStorage.getItem(key) ?? fallback; }
+      catch { return fallback; }
+    },
+    set(key, value) {
+      try { localStorage.setItem(key, value); }
+      catch { /* ignore */ }
+    },
+    remove(key) {
+      try { localStorage.removeItem(key); }
+      catch { /* ignore */ }
+    },
+    parse(key, fallback = null) {
+      try { return JSON.parse(localStorage.getItem(key) ?? 'null'); }
+      catch { return fallback; }
+    }
+  };
+
   // 1. Initialize Database
   const db = new GameDatabase();
   await db.load();
@@ -58,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
   // 3. First-time visit: Prompt to choose username & avatar at the start
-  if (!localStorage.getItem('ps4_username')) {
+  if (!LS.get('ps4_username')) {
     setTimeout(() => {
       UI.openProfileModal();
     }, 400);
@@ -197,7 +217,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function applyTheme(themeName) {
     const themeObj = themes.find(t => t.value === themeName) || themes[0];
     document.documentElement.setAttribute('data-theme', themeObj.value);
-    localStorage.setItem('ps4_theme', themeObj.value);
+    LS.set('ps4_theme', themeObj.value);
 
     if (themeToggle) themeToggle.innerHTML = themeIconSVG(themeObj);
 
@@ -215,7 +235,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  const initialTheme = localStorage.getItem('ps4_theme') || 'dark';
+  const initialTheme = LS.get('ps4_theme', 'dark');
   applyTheme(initialTheme);
 
   if (themeToggle) {
@@ -250,7 +270,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const wishlistBtn = gameDetailContainer.querySelector('.modal-wishlist-toggle');
       if (wishlistBtn) {
         wishlistBtn.addEventListener('click', () => {
-          let wishlist = JSON.parse(localStorage.getItem('ps4_wishlist') || '[]');
+          let wishlist = LS.parse('ps4_wishlist', []);
           if (wishlist.includes(game.id)) {
             wishlist = wishlist.filter(id => id !== game.id);
             wishlistBtn.classList.remove('btn--wishlist--active');
@@ -270,7 +290,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
             UI.showToast(`Added "${game.title}" to Wishlist!`);
           }
-          localStorage.setItem('ps4_wishlist', JSON.stringify(wishlist));
+          LS.set('ps4_wishlist', JSON.stringify(wishlist));
           UI.syncWishlistBadges();
         });
       }
@@ -289,7 +309,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const wishlistGrid = document.getElementById('wishlistGrid');
   if (wishlistGrid) {
     function renderWishlistPage() {
-      const wishlist = JSON.parse(localStorage.getItem('ps4_wishlist') || '[]');
+      const wishlist = LS.parse('ps4_wishlist', []);
       const savedGames = db.games.filter(g => wishlist.includes(g.id));
 
       const countEl = document.getElementById('wishlistCountText');
@@ -321,7 +341,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (clearWishlistBtn) {
       clearWishlistBtn.addEventListener('click', () => {
         if (confirm('Are you sure you want to clear your entire wishlist?')) {
-          localStorage.setItem('ps4_wishlist', JSON.stringify([]));
+          LS.set('ps4_wishlist', JSON.stringify([]));
           UI.syncWishlistBadges();
           renderWishlistPage();
           UI.showToast('Wishlist cleared.');
@@ -339,7 +359,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (gridContainer) {
     // Read saved page size or default to 24 (options: 12, 24, 48)
-    const savedPageSize = parseInt(localStorage.getItem('ps4_pageSize') || pageSizeSelect?.value || '24', 10);
+    const savedPageSize = parseInt(LS.get('ps4_pageSize') || pageSizeSelect?.value || '24', 10);
     const validSizes = [12, 24, 48];
     const initialPageSize = validSizes.includes(savedPageSize) ? savedPageSize : 24;
 
@@ -502,7 +522,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const newSize = parseInt(e.target.value, 10);
         state.pageSize = newSize;
         state.currentPage = 1;
-        localStorage.setItem('ps4_pageSize', String(newSize));
+        LS.set('ps4_pageSize', String(newSize));
         renderMainGrid();
       });
     }
@@ -620,7 +640,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.stopPropagation();
       const gameId = wishlistBtn.dataset.gameId;
       const game = db.getGameById(gameId);
-      let wishlist = JSON.parse(localStorage.getItem('ps4_wishlist') || '[]');
+      let wishlist = LS.parse('ps4_wishlist', []);
 
       if (wishlist.includes(gameId)) {
         wishlist = wishlist.filter(id => id !== gameId);
@@ -664,7 +684,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         UI.showToast(`Saved "${game ? game.title : 'Game'}" to Wishlist!`);
       }
 
-      localStorage.setItem('ps4_wishlist', JSON.stringify(wishlist));
+      LS.set('ps4_wishlist', JSON.stringify(wishlist));
       UI.syncWishlistBadges();
       return;
     }
