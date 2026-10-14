@@ -88,10 +88,16 @@
           <a href="wishlist" class="top-header__nav-link" data-nav="smooth">
             WISHLIST <span class="nav-badge" id="headerWishlistBadge" style="display:none;">0</span>
           </a>
-          <a href="backlog" class="top-header__nav-link" data-nav="smooth">BACKLOG</a>
-          <a href="library" class="top-header__nav-link" data-nav="smooth">LIBRARY</a>
-          <a href="playing" class="top-header__nav-link" data-nav="smooth">PLAYING</a>
-          <a href="owned" class="top-header__nav-link" data-nav="smooth">OWNED</a>
+
+          <div class="nav-dropdown">
+            <button class="nav-dropdown__toggle top-header__nav-link" type="button" aria-expanded="false">LIBRARY ▾</button>
+            <div class="nav-dropdown__menu">
+              <a href="library" class="nav-dropdown__item">All Library</a>
+              <a href="backlog" class="nav-dropdown__item">Backlog</a>
+              <a href="playing" class="nav-dropdown__item">Playing</a>
+              <a href="owned" class="nav-dropdown__item">Owned</a>
+            </div>
+          </div>
         </nav>
         <div class="top-header__actions">
           <button id="profileOpenBtn" class="header-user-btn" title="Choose Profile & Avatar">
@@ -182,6 +188,7 @@
 
   <script src="assets/js/data.js"></script>
   <script src="assets/js/ui.js"></script>
+  <script src="assets/js/nav-dropdown.js"></script>
   <script src="assets/js/mobile-nav.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
