@@ -245,6 +245,15 @@ const UI = {
           </div>
           ${game.description ? `<p class="detail__description">${game.description}</p>` : ''}
           <div class="detail__actions-row">
+            <div class="detail__collection-selector">
+              <label for="detailCollectionSelect">Status:</label>
+              <select id="detailCollectionSelect" class="form-select">
+                <option value="none" ${this.getCollectionStatus(game.id) === 'none' ? 'selected' : ''}>None</option>
+                <option value="owned" ${this.getCollectionStatus(game.id) === 'owned' ? 'selected' : ''}>Owned</option>
+                <option value="playing" ${this.getCollectionStatus(game.id) === 'playing' ? 'selected' : ''}>Playing</option>
+                <option value="backlog" ${this.getCollectionStatus(game.id) === 'backlog' ? 'selected' : ''}>Backlog</option>
+              </select>
+            </div>
             <button class="btn btn--secondary modal-wishlist-toggle ${isWishlisted ? 'btn--wishlist--active' : ''}">
               <svg width="17" height="17" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
