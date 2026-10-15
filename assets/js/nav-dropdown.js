@@ -14,4 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nav-dropdown__menu').forEach(m => m.classList.remove('show'));
     document.querySelectorAll('.nav-dropdown__toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
   });
+
+  const sidebarToggles = document.querySelectorAll('.sidebar__group-toggle');
+  sidebarToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const submenu = toggle.parentElement.querySelector('.sidebar__submenu');
+      if (submenu) {
+        const open = submenu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      }
+    });
+  });
 });
