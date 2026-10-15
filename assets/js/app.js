@@ -667,6 +667,44 @@ const LS = {
       });
     }
 
+    // Genre Filters Sidebar Setup
+    const genreListContainer = document.getElementById('genreFiltersList');
+    if (genreListContainer) {
+      const allGenres = new Set();
+      db.games.forEach(g => (g.genre || []).forEach(x => allGenres.add(x)));
+      const sortedGenres = Array.from(allGenres).sort();
+
+      sortedGenres.forEach(genre => {
+        const label = document.createElement('label');
+        label.className = 'filter-option';
+        label.innerHTML = `
+          <input type="checkbox" name="genreFilter" value="${genre}">
+          <span>${genre}</span>
+        `;
+        const cb = label.querySelector('input');
+        cb.addEventListener('change', () => {
+          const selected = Array.from(document.querySelectorAll('input[name="genreFilter"]:checked')).map(el => el.value);
+          db.updateFilter('genre', selected);
+          applyFilterAndReset();
+        });
+        genreListContainer.appendChild(label);
+      });
+    }
+
+    // Random Game Surprise Me Button
+    const randomBtn = document.getElementById('randomGameBtn');
+    if (randomBtn) {
+      randomBtn.addEventListener('click', () => {
+        const pool = state.results && state.results.length > 0 ? state.results : db.games;
+        if (pool && pool.length > 0) {
+          const randomIndex = Math.floor(Math.random() * pool.length);
+          const chosen = pool[randomIndex];
+          UI.showToast(`Rolling random game: ${chosen.title}`);
+          UI.showGameDetail(chosen);
+        }
+      });
+    }
+
     // Initial render
     state.results = db.games;
     renderMainGrid();

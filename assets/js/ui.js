@@ -276,6 +276,7 @@ const UI = {
           <div class="download-item" style="border-left: 3px solid var(--color-accent-primary);">
             <div class="download-item__info">
               <span class="download-item__type">PKGPS4 Database</span>
+              ${game.firmware ? `<span class="download-item__notes" style="color: var(--color-accent-primary); font-weight: 600;">Firmware requirements: ${game.firmware}</span>` : ''}
             </div>
             <div class="download-item__actions">
               <a href="${game.links.pkgps4}" class="btn btn--primary" target="_blank" rel="noopener">Open PKGPS4 Link ↗</a>
@@ -311,6 +312,7 @@ const UI = {
         <dl class="info-grid">
           ${game.developer ? `<dt>Developer</dt><dd>${game.developer}</dd>` : ''}
           ${game.releaseDate ? `<dt>Release Date</dt><dd>${game.releaseDate}</dd>` : ''}
+          ${game.firmware ? `<dt>Firmware</dt><dd><span class="badge">${game.firmware}</span></dd>` : ''}
           <dt>Password</dt><dd><code>${game.password || 'N/A'}</code></dd>
           ${Array.isArray(game.languages) && game.languages.length ? `<dt>Languages</dt><dd>${game.languages.join(', ')}</dd>` : ''}
           ${game.size?.game ? `<dt>Game Size</dt><dd>${game.size.game}</dd>` : ''}
@@ -554,6 +556,21 @@ const UI = {
                   Edit Profile
                 </button>
               </div>
+
+              <!-- Setting 5: Backup & Restore Data -->
+              <div class="setting-row">
+                <div class="setting-info">
+                  <span class="setting-title" style="display:inline-flex;align-items:center;gap:7px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Backup &amp; Restore Library</span>
+                  <span class="setting-desc">Export or import your saved collection, wishlist, profile, and settings as JSON</span>
+                </div>
+                <div style="display:inline-flex; gap:8px;">
+                  <button class="btn btn--secondary" id="exportDataBtn" type="button">Export</button>
+                  <label class="btn btn--secondary" style="margin:0; cursor:pointer;">
+                    Import
+                    <input type="file" id="importDataInput" accept=".json" style="display:none;" />
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -632,6 +649,64 @@ const UI = {
       UI.applySettings();
       UI.showToast(isLow ? 'Low Resource Mode enabled (Blur & effects off).' : 'High visual quality restored.');
     };
+
+    const exportBtn = modal.querySelector('#exportDataBtn');
+    if (exportBtn) {
+      exportBtn.onclick = () => {
+        const payload = {
+          version: '1.0',
+          exportedAt: new Date().toISOString(),
+          collection: LS.parse('ps4_collection', {}),
+          wishlist: LS.parse('ps4_wishlist', []),
+          username: LS.get('ps4_username', 'dimze'),
+          avatar: LS.get('ps4_avatar', ''),
+          avatar_name: LS.get('ps4_avatar_name', ''),
+          theme: LS.get('ps4_theme', 'dark'),
+          pageSize: LS.get('ps4_pageSize', '24'),
+          orbsEnabled: LS.get('ps4_orbsEnabled', 'true'),
+          lowRes: LS.get('ps4_lowRes', 'false')
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `ps4_content_backup_${new Date().toISOString().slice(0, 10)}.json`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+        UI.showToast('Library data exported successfully.');
+      };
+    }
+
+    const importInput = modal.querySelector('#importDataInput');
+    if (importInput) {
+      importInput.onchange = (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          try {
+            const data = JSON.parse(evt.target.result);
+            if (data.collection) LS.set('ps4_collection', JSON.stringify(data.collection));
+            if (data.wishlist) LS.set('ps4_wishlist', JSON.stringify(data.wishlist));
+            if (data.username) LS.set('ps4_username', data.username);
+            if (data.avatar !== undefined) LS.set('ps4_avatar', data.avatar);
+            if (data.avatar_name !== undefined) LS.set('ps4_avatar_name', data.avatar_name);
+            if (data.theme) LS.set('ps4_theme', data.theme);
+            if (data.pageSize) LS.set('ps4_pageSize', data.pageSize);
+            if (data.orbsEnabled !== undefined) LS.set('ps4_orbsEnabled', data.orbsEnabled);
+            if (data.lowRes !== undefined) LS.set('ps4_lowRes', data.lowRes);
+
+            UI.applySettings();
+            UI.syncProfileUI();
+            UI.syncWishlistBadges();
+            UI.showToast('Data imported successfully! Reloading...');
+            setTimeout(() => window.location.reload(), 800);
+          } catch (err) {
+            UI.showToast('Failed to import: Invalid JSON file.');
+          }
+        };
+        reader.readAsText(file);
+      };
+    }
   },
 
   /**

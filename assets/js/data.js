@@ -95,10 +95,12 @@ class GameDatabase {
         const developer = (game.developer || '').toLowerCase();
         const slug = (game.slug || '').toLowerCase();
 
+        const fw = (game.firmware || '').toLowerCase();
         return title.includes(query) ||
                id.includes(query) ||
                developer.includes(query) ||
-               slug.includes(query);
+               slug.includes(query) ||
+               fw.includes(query);
       }
       
       return true;

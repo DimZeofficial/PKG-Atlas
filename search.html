@@ -104,9 +104,14 @@
       </header>
 
       <div class="content-area content-area--split">
-        <!-- Filter Sidebar (Firmware removed) -->
+        <!-- Filter Sidebar -->
         <aside class="filter-sidebar reveal reveal--slide-left">
-
+          <div class="filter-group">
+            <h4 class="filter-group__title">Genres</h4>
+            <div id="genreFiltersList" style="display:flex; flex-direction:column; gap:2px; max-height:280px; overflow-y:auto; padding-right:4px;">
+              <!-- Populated by JS -->
+            </div>
+          </div>
 
           <button class="btn btn--secondary btn--full" id="resetFilters">
             Reset Filters
@@ -116,7 +121,10 @@
         <!-- Results Area -->
         <div class="results-area">
           <div class="reveal reveal--fade search-bar-row search-bar-row--wrap">
-            <input type="text" id="searchInput" placeholder="Search games by title, ID, developer..." class="form-input">
+            <input type="text" id="searchInput" placeholder="Search games by title, ID, developer, firmware (e.g. 5.05)..." class="form-input">
+            <button type="button" id="randomGameBtn" class="btn btn--secondary" title="Surprise Me (Random Game)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 8h.01M8 8h.01M8 16h.01M16 16h.01M12 12h.01"/></svg> Random
+            </button>
             <select id="sortSelect" class="form-select" aria-label="Sort games">
               <optgroup label="Title">
                 <option value="title:asc">Title (A → Z)</option>
