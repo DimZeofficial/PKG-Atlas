@@ -8,6 +8,7 @@ class GameDatabase {
     this.filteredGames = [];
     this.filters = {
       genre: [],
+      firmware: [],
       searchQuery: '',
       sortBy: 'title',
       sortOrder: 'asc',
@@ -77,6 +78,20 @@ class GameDatabase {
       // Genre filter
       if (this.filters.genre.length > 0 && 
           !(game.genre || []).some(g => this.filters.genre.includes(g))) return false;
+      
+      // Firmware filter (matches clean version numbers e.g. 5.05, 9.00, 9.50)
+      if (this.filters.firmware.length > 0) {
+        const gameFw = (game.firmware || '').toLowerCase();
+        const matchesFw = this.filters.firmware.some(selected => {
+          const major = selected.split('.')[0];
+          return gameFw.includes(selected) ||
+                 gameFw.includes(`${major}.xx`) ||
+                 gameFw.includes(`${major} or higher`) ||
+                 gameFw.includes(`${major}.0`) ||
+                 gameFw.includes(`${major}+`);
+        });
+        if (!matchesFw) return false;
+      }
       
       // Size range filter
       const sizeStr = game.size?.game;

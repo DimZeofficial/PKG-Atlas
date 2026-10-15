@@ -662,6 +662,7 @@ const LS = {
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
         if (searchInput) searchInput.value = '';
         db.filters.genre = [];
+        db.filters.firmware = [];
         db.filters.searchQuery = '';
         applyFilterAndReset();
       });
@@ -688,6 +689,27 @@ const LS = {
           applyFilterAndReset();
         });
         genreListContainer.appendChild(label);
+      });
+    }
+
+    // Firmware Filters Sidebar Setup (Clean version numbers: 5.05, 6.72, 7.02, 7.55, 9.00, 9.50, 10.00, 11.00)
+    const fwListContainer = document.getElementById('fwFiltersList');
+    if (fwListContainer) {
+      const targetFws = ['5.05', '6.72', '7.02', '7.55', '9.00', '9.50', '10.00', '11.00'];
+      targetFws.forEach(fw => {
+        const label = document.createElement('label');
+        label.className = 'filter-option';
+        label.innerHTML = `
+          <input type="checkbox" name="fwFilter" value="${fw}">
+          <span>${fw}</span>
+        `;
+        const cb = label.querySelector('input');
+        cb.addEventListener('change', () => {
+          const selected = Array.from(document.querySelectorAll('input[name="fwFilter"]:checked')).map(el => el.value);
+          db.updateFilter('firmware', selected);
+          applyFilterAndReset();
+        });
+        fwListContainer.appendChild(label);
       });
     }
 
