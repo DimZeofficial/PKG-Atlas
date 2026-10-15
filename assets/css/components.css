@@ -414,16 +414,24 @@
 }
 
 .modal__close {
-  font-size: 1.6rem;
-  color: var(--color-text-secondary);
   width: 36px;
   height: 36px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  border: none;
+  cursor: pointer;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
-  transition: all var(--transition-fast);
+  color: var(--color-text-secondary);
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  transform-origin: center center;
+}
+
+.modal__close svg {
+  display: block;
+  pointer-events: none;
 }
 
 .modal__close:hover {
