@@ -1463,8 +1463,16 @@
 .nav-dropdown__toggle {
   background: none;
   border: none;
+  border-bottom: 2px solid transparent;
   cursor: pointer;
   font-family: inherit;
+  line-height: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.nav-dropdown__toggle.active {
+  border-bottom-color: var(--color-accent-primary);
 }
 
 .nav-dropdown__menu {
