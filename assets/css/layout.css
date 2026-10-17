@@ -214,6 +214,29 @@ button.sidebar__nav-item {
   z-index: 50;
 }
 
+/* Brand lockup — theme logo over the site name, flush left of the header */
+.top-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.top-header__logo {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+
+.top-header__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
 .breadcrumb {
   display: flex;
   align-items: center;

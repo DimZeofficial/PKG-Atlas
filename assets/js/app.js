@@ -220,6 +220,10 @@ const LS = {
     // Tab favicon follows the active theme
     const faviconLink = document.querySelector('link[rel="icon"]');
     if (faviconLink) faviconLink.href = `favicon_${themeObj.logo}.png`;
+
+    // Header logo follows the active theme
+    const headerLogo = document.getElementById('headerLogo');
+    if (headerLogo) headerLogo.src = `favicon_${themeObj.logo}.png`;
   }
 
   const initialTheme = LS.get('ps4_theme', 'dark');
