@@ -211,7 +211,7 @@
 
 .sidebar__user-edit-hint {
   font-size: 0.7rem;
-  color: var(--color-accent-primary);
+  color: var(--color-accent-text);
   display: flex;
   align-items: center;
   gap: 3px;

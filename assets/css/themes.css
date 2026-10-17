@@ -3,6 +3,11 @@
    10 Fully-Supported High-Fidelity Color Themes
    ========================================================================== */
 
+/* 0. Dark (default): overrides the :root tokens in base.css */
+[data-theme="dark"] {
+  --color-accent-text: #4da3ff; /* #0070f3 fails on cards (3.5:1) */
+}
+
 /* 1. Light Theme (PS5 Clean Slate) */
 [data-theme="light"] {
   --color-bg-primary: #f1f5f9;
@@ -246,6 +251,7 @@
   --color-bg-secondary: #1d212b;
   --color-bg-card: #272d3b;
   --color-accent-primary: #00439c;
+  --color-accent-text: #6fa8ff; /* #00439c is unreadable on cards (1.5:1) */
   --color-accent-secondary: #da291c;
   --color-accent-danger: #da291c;
   --color-text-primary: #f1f5f9;

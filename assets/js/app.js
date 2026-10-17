@@ -891,6 +891,7 @@ const LS = {
       UI.closeModal();
       document.getElementById('profileModal')?.classList.remove('modal--active');
       document.getElementById('settingsModal')?.classList.remove('modal--active');
+      UI.dismissFirstVisitNotice?.();
     }
   });
 

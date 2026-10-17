@@ -286,7 +286,7 @@ const UI = {
           <div class="download-item" style="border-left: 3px solid var(--color-accent-primary);">
             <div class="download-item__info">
               <span class="download-item__type">PKGPS4 Database</span>
-              ${game.firmware ? `<span class="download-item__notes" style="color: var(--color-accent-primary); font-weight: 600;">Firmware requirements: ${game.firmware}</span>` : ''}
+              ${game.firmware ? `<span class="download-item__notes" style="color: var(--color-accent-text); font-weight: 600;">Firmware requirements: ${game.firmware}</span>` : ''}
             </div>
             <div class="download-item__actions">
               <a href="${game.links.pkgps4}" class="btn btn--primary" target="_blank" rel="noopener">Open PKGPS4 Link ↗</a>
@@ -769,6 +769,8 @@ const UI = {
 
     modal.classList.add('modal--active');
     modal.querySelector('#noticeOkBtn').focus();
+    // Escape key handler in app.js closes it through this
+    UI.dismissFirstVisitNotice = dismiss;
   },
 
   /**

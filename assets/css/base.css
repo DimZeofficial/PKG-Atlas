@@ -11,6 +11,7 @@
   --color-bg-secondary: #131a2a;  /* Slightly lighter navy */
   --color-bg-card: #1a2332;       /* Card background */
   --color-accent-primary: #0070f3; /* PS4 blue */
+  --color-accent-text: var(--color-accent-primary); /* Brand accent for text; themes lighten it where it fails on cards */
   --color-accent-secondary: #8b5cf6; /* Purple for active states */
   --color-accent-danger: #ef4444;  /* Red for delete / remove */
   --color-text-primary: #e2e8f0;
@@ -91,7 +92,7 @@ body.page-fade-out {
 }
 
 a {
-  color: var(--color-accent-primary);
+  color: var(--color-accent-text);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
