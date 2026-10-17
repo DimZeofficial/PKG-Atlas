@@ -151,11 +151,21 @@ const UI = {
     return article;
   },
 
+  // Newest first, capped, so the home strip stays short
+  recordRecent(gameId) {
+    if (!gameId) return;
+    const stored = LS.parse('ps4_recent', []);
+    const list = (Array.isArray(stored) ? stored : []).filter(id => id !== gameId);
+    list.unshift(gameId);
+    LS.set('ps4_recent', JSON.stringify(list.slice(0, 12)));
+  },
+
   /**
    * Display game detail modal with instant 100% visibility (no hidden reveal classes)
    */
   showGameDetail(game) {
     if (!game) return;
+    this.recordRecent(game.id);
     const modal = document.getElementById('gameModal');
     if (!modal) return;
 

@@ -1488,10 +1488,10 @@
   top: 100%;
   left: 0;
   margin-top: var(--space-xs);
-  background: var(--color-surface-2);
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-card);
   min-width: 160px;
   display: none;
   z-index: 100;
@@ -1517,10 +1517,109 @@
 }
 
 .nav-dropdown__item:hover {
-  background: var(--color-surface-3);
+  background: var(--color-bg-secondary);
 }
 
 .nav-dropdown__item.active {
   background: var(--color-accent-primary);
   color: #fff;
+}
+
+/* Recently viewed strip (home page) */
+.recent-strip {
+  margin-bottom: var(--space-xl);
+}
+
+.recent-strip__title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.recent-strip__row {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  padding-bottom: var(--space-xs);
+}
+
+.recent-strip__item {
+  flex: 0 0 104px;
+  color: var(--color-text-primary);
+  font-size: 0.78rem;
+  line-height: 1.3;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+.recent-strip__item img {
+  display: block;
+  width: 104px;
+  height: 139px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  margin-bottom: 6px;
+}
+
+.recent-strip__item span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recent-strip__item:hover span,
+.recent-strip__item:focus-visible span {
+  text-decoration: underline;
+}
+
+.recent-strip__item:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Library totals */
+.library-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.library-stats[hidden] {
+  display: none;
+}
+
+.library-stat {
+  flex: 1 1 130px;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.library-stat__value {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.library-stat__label {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.library-stats__note {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--color-text-primary);
 }

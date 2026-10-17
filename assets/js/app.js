@@ -264,6 +264,7 @@ const LS = {
     const game = gameId ? db.getGameById(gameId) : null;
 
     if (game) {
+      UI.recordRecent(game.id);
       document.title = `PS4 Database - ${game.title}`;
       gameDetailContainer.innerHTML = `
         <div style="margin-bottom: var(--space-lg);">
@@ -411,8 +412,56 @@ const LS = {
       UI.renderGameGrid(games, targetGrid);
       attachScrollReveals(targetGrid);
     }
+
+    // Totals for the library page: per-status counts plus the size of everything collected
+    function renderLibraryStats() {
+      const statsEl = document.getElementById('libraryStats');
+      if (!statsEl) return;
+
+      const collection = LS.parse('ps4_collection', {});
+      const counts = { owned: 0, playing: 0, backlog: 0 };
+      let totalGB = 0;
+      let unknownSize = 0;
+
+      db.games.forEach(g => {
+        const status = collection[g.id];
+        // only the three real statuses count, so the buckets always add up to the total
+        if (counts[status] === undefined) return;
+        counts[status]++;
+        const sizeStr = g.size && g.size.game;
+        const gb = db.parseSizeToGB(sizeStr);
+        // "15 GB" is the placeholder written when the real size is not known
+        if (!isNaN(gb) && sizeStr !== '15 GB') totalGB += gb;
+        else unknownSize++;
+      });
+
+      const total = counts.owned + counts.playing + counts.backlog;
+      if (total === 0) {
+        statsEl.hidden = true;
+        return;
+      }
+
+      const cells = [
+        ['Owned', String(counts.owned)],
+        ['Playing', String(counts.playing)],
+        ['Backlog', String(counts.backlog)],
+        ['Total size', `${totalGB.toFixed(1)} GB`]
+      ];
+
+      statsEl.innerHTML = cells.map(([label, value]) => `
+          <div class="library-stat">
+            <span class="library-stat__value">${value}</span>
+            <span class="library-stat__label">${label}</span>
+          </div>
+        `).join('') + (unknownSize > 0
+        ? `<p class="library-stats__note">Size is not listed for ${unknownSize} of ${total} games, so the total covers the rest.</p>`
+        : '');
+
+      statsEl.hidden = false;
+    }
     
     renderCollectionPage();
+    renderLibraryStats();
   }
 
 
@@ -518,18 +567,84 @@ const LS = {
       paginationEl.appendChild(createBtn('Next ›', state.currentPage + 1, { disabled: state.currentPage === totalPages }));
     }
 
+    // Keep the address bar shareable: filters live in the query string, the search term in the hash
+    function writeUrl() {
+      if (pageName !== 'search') return;
+
+      const params = new URLSearchParams();
+      db.filters.genre.forEach(g => params.append('genre', g));
+      db.filters.firmware.forEach(f => params.append('fw', f));
+      if (db.filters.sizeRangeMin !== null) params.set('min', String(db.filters.sizeRangeMin));
+      if (db.filters.sizeRangeMax !== null) params.set('max', String(db.filters.sizeRangeMax));
+      if (db.filters.hidePlaceholderSizes) params.set('hide', '1');
+      if (db.filters.sortBy !== 'title' || db.filters.sortOrder !== 'asc') {
+        params.set('sort', `${db.filters.sortBy}:${db.filters.sortOrder}`);
+      }
+
+      // ":" is legal in a query string, and %3A in a shared link is just noise
+      const qs = params.toString().replace(/%3A/g, ':');
+      const query = db.filters.searchQuery || '';
+      const hash = query ? `#/search/${encodeURIComponent(query)}/` : '';
+      const url = `${window.location.pathname}${qs ? '?' + qs : ''}${hash}`;
+      if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+        history.replaceState(null, '', url);
+      }
+    }
+
+    // Read filters back out of the query string so a filtered list can be linked
+    function readUrlFilters() {
+      if (pageName !== 'search') return;
+      const params = new URLSearchParams(window.location.search);
+
+      const genres = params.getAll('genre');
+      if (genres.length) {
+        db.filters.genre = genres;
+        document.querySelectorAll('input[name="genreFilter"]').forEach(cb => {
+          if (genres.includes(cb.value)) cb.checked = true;
+        });
+      }
+
+      const firmware = params.getAll('fw');
+      if (firmware.length) {
+        db.filters.firmware = firmware;
+        document.querySelectorAll('input[name="fwFilter"]').forEach(cb => {
+          if (firmware.includes(cb.value)) cb.checked = true;
+        });
+      }
+
+      const min = parseFloat(params.get('min'));
+      if (!isNaN(min)) {
+        db.filters.sizeRangeMin = min;
+        if (sizeMin) sizeMin.value = String(min);
+      }
+
+      const max = parseFloat(params.get('max'));
+      if (!isNaN(max)) {
+        db.filters.sizeRangeMax = max;
+        if (sizeMax) sizeMax.value = String(max);
+      }
+
+      if (params.get('hide') === '1') {
+        db.filters.hidePlaceholderSizes = true;
+        if (sizeHide) sizeHide.checked = true;
+      }
+
+      const sort = params.get('sort') || '';
+      if (/^[\w.]+:(asc|desc)$/.test(sort)) {
+        const [sortBy, sortOrder] = sort.split(':');
+        db.filters.sortBy = sortBy;
+        db.filters.sortOrder = sortOrder;
+        if (sortSelect) sortSelect.value = sort;
+      }
+
+      updateSizeFilterUI();
+    }
+
     function applyFilterAndReset() {
       state.results = db.applyFilters();
       state.currentPage = 1;
       renderMainGrid();
-      // Update URL hash with search query
-      const query = db.filters.searchQuery || '';
-      if (pageName === 'search') {
-        const newHash = query ? `#/search/${encodeURIComponent(query)}/` : '';
-        if (window.location.hash !== newHash) {
-          history.replaceState(null, '', newHash);
-        }
-      }
+      writeUrl();
     }
 
     // Read URL query on search page
@@ -727,9 +842,35 @@ const LS = {
       });
     }
 
-    // Initial render
-    state.results = db.games;
+    // Initial render: the search page starts from the URL so filtered lists stay shareable
+    if (pageName === 'search') {
+      readUrlFilters();
+      state.results = db.applyFilters();
+    } else {
+      state.results = db.games;
+    }
     renderMainGrid();
+
+    // Recently viewed strip (home page only)
+    const recentStrip = document.getElementById('recentStrip');
+    const recentRow = document.getElementById('recentStripRow');
+    if (recentStrip && recentRow) {
+      const stored = LS.parse('ps4_recent', []);
+      const recents = [...new Set(Array.isArray(stored) ? stored : [])]
+        .filter(id => typeof id === 'string')
+        .map(id => db.getGameById(id))
+        .filter(Boolean)
+        .slice(0, 8);
+      if (recents.length > 0) {
+        recentRow.innerHTML = recents.map(g => `
+          <a class="recent-strip__item" href="game-detail.html?id=${encodeURIComponent(g.id)}">
+            <img src="${g.coverImage || ''}" alt="" loading="lazy" onerror="this.src='https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%231a2332&textColor=%2394a3b8'">
+            <span>${g.title}</span>
+          </a>
+        `).join('');
+        recentStrip.hidden = false;
+      }
+    }
   }
 
   // 13. Modal Close Listeners
