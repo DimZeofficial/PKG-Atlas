@@ -265,7 +265,7 @@ const LS = {
 
     if (game) {
       UI.recordRecent(game.id);
-      document.title = `PS4 Database - ${game.title}`;
+      document.title = `PKG Atlas - ${game.title}`;
       gameDetailContainer.innerHTML = `
         <div style="margin-bottom: var(--space-lg);">
           <a href="search.html" class="btn btn--secondary" data-nav="smooth">

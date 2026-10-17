@@ -1,4 +1,4 @@
-# PS4 PKG Database
+# PKG Atlas
 
 Browse PS4 PKG packages: 2,539 entries with cover art, developer, release date, firmware note, download size, and a link to the source page that publishes the file.
 

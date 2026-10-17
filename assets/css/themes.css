@@ -26,6 +26,8 @@
 
 [data-theme="light"] .sidebar__logo {
   color: #0066cc;
+  /* the wordmark is painted by its background gradient, so the light theme needs its own; must be background-image, the shorthand would drop -webkit-background-clip: text */
+  background-image: linear-gradient(135deg, #0066cc 0%, #0f172a 100%);
 }
 
 [data-theme="light"] .game-card__badge--region {
