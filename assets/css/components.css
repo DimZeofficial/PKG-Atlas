@@ -1623,3 +1623,57 @@
   font-size: 0.78rem;
   color: var(--color-text-primary);
 }
+
+/* ==========================================================================
+   First-Visit Notice & Page Footer
+   ========================================================================== */
+.notice-modal {
+  max-width: 560px;
+}
+
+.notice-modal p {
+  margin-bottom: var(--space-sm);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.notice-modal__lead {
+  font-weight: 700;
+}
+
+.notice-modal__heading {
+  font-size: 1rem;
+  margin: var(--space-lg) 0 var(--space-sm);
+}
+
+.notice-modal__fine {
+  font-size: 0.82rem !important;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-md);
+}
+
+.notice-modal__ok {
+  width: 100%;
+  margin-top: var(--space-sm);
+}
+
+/* Accent link color sits too close to the card in two themes (dark 3.82:1, classic 1.75:1),
+   so credit links keep the body color and show an underline instead. */
+.notice-modal a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-footer {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl) var(--space-xl);
+}
+
+.site-footer p {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+}

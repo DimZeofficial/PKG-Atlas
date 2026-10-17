@@ -85,11 +85,15 @@ const LS = {
     });
 
   }
-  // 3. First-time visit: Prompt to choose username & avatar at the start
-  if (!LS.get('ps4_username')) {
-    setTimeout(() => {
-      UI.openProfileModal();
-    }, 400);
+  // 3. First visit: notice first, then the username & avatar prompt once it is dismissed
+  const needsProfile = !LS.get('ps4_username');
+  const promptProfile = () => {
+    if (needsProfile) setTimeout(() => UI.openProfileModal(), 400);
+  };
+  if (!LS.get('ps4_notice')) {
+    setTimeout(() => UI.showFirstVisitNotice(promptProfile), 400);
+  } else {
+    promptProfile();
   }
 
   // 4. Wire Profile modal triggers

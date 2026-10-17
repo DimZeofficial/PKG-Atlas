@@ -720,6 +720,58 @@ const UI = {
   },
 
   /**
+   * Show the first-visit notice: no cookies, where your settings live, who publishes the files.
+   * Shown once per browser (ps4_notice); onNext runs when it is dismissed.
+   */
+  showFirstVisitNotice(onNext) {
+    let modal = document.getElementById('noticeModal');
+    let done = false;
+
+    const dismiss = () => {
+      if (done) return;
+      done = true;
+      modal.classList.remove('modal--active');
+      LS.set('ps4_notice', 'v1');
+      if (typeof onNext === 'function') onNext();
+    };
+
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.id = 'noticeModal';
+      modal.innerHTML = `
+        <div class="modal__content notice-modal">
+          <div class="modal__header">
+            <h2 class="modal__title">Cookies and credits</h2>
+            <button class="modal__close" id="closeNoticeModal" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+          </div>
+          <div class="modal__body">
+            <p class="notice-modal__lead">PKG Atlas sets no cookies and runs no analytics or tracking.</p>
+            <p>Your username, avatar, theme, lists, and recently viewed games are stored in this browser's local storage on this device. None of it is uploaded, and clearing your browser data removes all of it. Cover images load from IGDB and the font from Google Fonts, so those two services see your IP address; nothing else leaves your browser.</p>
+
+            <h3 class="notice-modal__heading">Credits</h3>
+            <p><a href="https://www.igdb.com/" target="_blank" rel="noopener">IGDB</a> provides the cover art and game metadata.</p>
+            <p><a href="https://dlpsgame.com/" target="_blank" rel="noopener">DLPSGAME</a> and <a href="https://www.pkgps4.click/" target="_blank" rel="noopener">PKGPS4</a> publish the pages this site links to. Those files are theirs, not ours.</p>
+            <p class="notice-modal__fine">Game titles and artwork belong to their respective owners. PKG Atlas is not connected to Sony.</p>
+
+            <button class="btn btn--primary notice-modal__ok" id="noticeOkBtn">Got it</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      modal.querySelector('#noticeOkBtn').addEventListener('click', dismiss);
+      modal.querySelector('#closeNoticeModal').addEventListener('click', dismiss);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) dismiss();
+      });
+    }
+
+    modal.classList.add('modal--active');
+    modal.querySelector('#noticeOkBtn').focus();
+  },
+
+  /**
    * Show Profile & Avatar Setup Modal
    */
   async openProfileModal() {

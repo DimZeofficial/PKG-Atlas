@@ -2,10 +2,13 @@ const fs = require('fs');
 const path = require('path');
 
 // ==========================================
-// 1. CONFIGURATION - ADD YOUR CREDENTIALS HERE
+// 1. CONFIGURATION - credentials come from the environment, never from this file
+//    (this repository is public, so anything typed here is published)
+//
+//    IGDB_CLIENT_ID=xxx IGDB_ACCESS_TOKEN=yyy node fetch-igdb.js
 // ==========================================
-const IGDB_CLIENT_ID = 'f4xukpt58sm9wyfjzz1uhwjtqszi18';         // Paste your Client ID
-const IGDB_ACCESS_TOKEN = '08n03i2r8bshiih7zfi6n3j6o8e5yn';   // Paste your Access Token
+const IGDB_CLIENT_ID = process.env.IGDB_CLIENT_ID;
+const IGDB_ACCESS_TOKEN = process.env.IGDB_ACCESS_TOKEN;
 const JSON_FILE = 'data/games.json';
 // ==========================================
 
@@ -71,8 +74,8 @@ async function fetchIGDBCover(gameTitle) {
 }
 
 async function main() {
-  if (IGDB_CLIENT_ID === 'YOUR_CLIENT_ID_HERE' || IGDB_ACCESS_TOKEN === 'YOUR_ACCESS_TOKEN_HERE') {
-    console.log("⚠️ Please edit this file and add your IGDB_CLIENT_ID and IGDB_ACCESS_TOKEN at the top.");
+  if (!IGDB_CLIENT_ID || !IGDB_ACCESS_TOKEN) {
+    console.log("⚠️ Missing credentials. Run: IGDB_CLIENT_ID=xxx IGDB_ACCESS_TOKEN=yyy node fetch-igdb.js");
     return;
   }
 
