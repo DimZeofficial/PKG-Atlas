@@ -34,6 +34,26 @@ const LS = {
   const db = new GameDatabase();
   await db.load();
 
+  // Old saves were keyed with generated ids (PPSA00003); move them onto the real title IDs
+  const legacyIds = {};
+  db.games.forEach(g => { if (g.legacyId) legacyIds[g.legacyId] = g.id; });
+  if (Object.keys(legacyIds).length) {
+    const collection = LS.parse('ps4_collection', {});
+    const movedCollection = {};
+    let changed = false;
+    for (const key of Object.keys(collection)) {
+      const id = legacyIds[key] || key;
+      if (id !== key) changed = true;
+      movedCollection[id] = collection[key];
+    }
+    if (changed) LS.set('ps4_collection', JSON.stringify(movedCollection));
+    for (const key of ['ps4_wishlist', 'ps4_recent']) {
+      const list = LS.parse(key, []);
+      const moved = list.map(id => legacyIds[id] || id);
+      if (moved.some((id, i) => id !== list[i])) LS.set(key, JSON.stringify(moved));
+    }
+  }
+
   // 2. Initial UI Sync (Profile, Wishlist Badges, Themes, Settings)
   UI.applySettings();
   UI.syncProfileUI();

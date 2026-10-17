@@ -44,7 +44,8 @@ Everything on the site comes from `data/games.json`, one object per game:
 
 | Field | Contents |
 | --- | --- |
-| `id` | Package ID, such as `PPSA00003` |
+| `id` | Package ID, the game's real title code, such as `CUSA00900` |
+| `legacyId` | Previous generated id, kept so older links and saved lists still resolve |
 | `title` | Game title |
 | `slug` | Title in URL form, matching the source pages |
 | `description` | Short description |

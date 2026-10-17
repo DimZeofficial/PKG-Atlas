@@ -173,6 +173,9 @@ class GameDatabase {
    */
   getGameById(id) {
     if (!id) return null;
-    return this.games.find(game => game.id.toLowerCase() === id.toLowerCase()) || null;
+    const key = id.toLowerCase();
+    return this.games.find(game => game.id.toLowerCase() === key)
+      || this.games.find(game => (game.legacyId || '').toLowerCase() === key)
+      || null;
   }
 }
