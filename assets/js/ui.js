@@ -430,7 +430,7 @@ const UI = {
    * Sync username & avatar in sidebar and header
    */
   syncProfileUI() {
-    const username = LS.get('ps4_username', 'dimze');
+    const username = LS.get('ps4_username', '');
     const avatar = LS.get('ps4_avatar', '');
 
     // Sidebar username
@@ -668,7 +668,7 @@ const UI = {
           exportedAt: new Date().toISOString(),
           collection: LS.parse('ps4_collection', {}),
           wishlist: LS.parse('ps4_wishlist', []),
-          username: LS.get('ps4_username', 'dimze'),
+          username: LS.get('ps4_username', ''),
           avatar: LS.get('ps4_avatar', ''),
           avatar_name: LS.get('ps4_avatar_name', ''),
           theme: LS.get('ps4_theme', 'dark'),
@@ -840,7 +840,7 @@ const UI = {
     modal.classList.add('modal--active');
 
     // Populate current username and avatar
-    const currentUsername = LS.get('ps4_username', 'dimze');
+    const currentUsername = LS.get('ps4_username', '');
     const currentAvatar = LS.get('ps4_avatar', '');
     const currentAvatarName = LS.get('ps4_avatar_name', '');
 
@@ -881,9 +881,9 @@ const UI = {
   updateBigAvatarPreview(container, avatarUrl, username) {
     if (!container) return;
     if (avatarUrl) {
-      container.innerHTML = `<img src="${avatarUrl}" alt="Avatar" onerror="this.parentElement.textContent='${(username || 'D').charAt(0).toUpperCase()}'">`;
+      container.innerHTML = `<img src="${avatarUrl}" alt="Avatar" onerror="this.parentElement.textContent='${(username || '').charAt(0).toUpperCase()}'">`;
     } else {
-      const initial = (username || 'D').charAt(0).toUpperCase();
+      const initial = (username || '').charAt(0).toUpperCase();
       container.textContent = initial;
     }
   },
