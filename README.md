@@ -1,79 +1,73 @@
-# PS4 Database - NoPayStation Style
+# PS4 PKG Database
 
-A sleek, dark-themed web interface to browse and download PS4 PKG games, heavily inspired by the NoPayStation Database UI.
+Browse PS4 PKG packages: 2,539 entries with cover art, developer, release date, firmware note, download size, and a link to the source page that publishes the file.
 
-## Live Demo
+[Open the live site](https://dimzeofficial.github.io/PS4-Content/)
 
-[View on GitHub Pages](https://DimZeofficial.github.io/PS4-Content/)
+## Finding a game
 
-## Features
-- **Game Grid:** Displays games with cover art, region, firmware, and size.
-- **Advanced Search:** Filter by region, firmware, and search by title or ID.
-- **Sorting:** Sort by title, release date, or size.
-- **Pagination:** Smooth paginated results with scroll-to-top.
-- **Game Details:** Modal and dedicated page showing download links, mirrors, passwords, and metadata.
-- **Wishlist:** Save games locally with persistent storage.
-- **Smooth Animations:** Page transitions, scroll reveals, and subtle micro-interactions.
-- **Ambient Background:** Slow-falling animated orbs for a modern feel.
-- **Multiple Themes:** Dark, Light, Ocean, Cyberpunk, Forest, Amber, Violet (cycle or dropdown).
-- **Responsive Design:** Works on desktop and mobile.
+The search page carries the whole catalog and the controls to cut it down:
 
-## Project Structure
-```
-ps4-database/
-├── index.html              # Main homepage with game listings
-├── game-detail.html        # Game detail page
-├── search.html             # Advanced search results page
-├── wishlist.html           # Wishlist page
-├── .nojekyll               # Prevents Jekyll processing on GitHub Pages
-├── assets/
-│   ├── css/
-│   │   ├── base.css        # Reset, variables, animations, orbs
-│   │   ├── layout.css      # Grid, flex, container styles
-│   │   ├── components.css  # Cards, buttons, modals, pagination
-│   │   └── themes.css      # Multi-theme color schemes
-│   └── js/
-│       ├── app.js          # Main application logic + animations
-│       ├── data.js         # Data fetching/loading layer
-│       ├── ui.js           # DOM manipulation, rendering
-│       └── search.js       # Search, filter, sort logic
-├── data/
-│   └── games.json          # Main game database (from sources)
-└── README.md
-```
+- Search by title, package ID (CUSA or PPSA), developer, or slug.
+- Filter by genre, using the list built from the catalog itself.
+- Filter by firmware, using the eight versions listed in the sidebar.
+- Set a minimum and maximum download size in GB.
+- Sort by title, release date, or size, in either direction.
+- Show 12, 24, or 48 games per page.
+- Take one at random when you have nothing particular in mind.
 
-## Local Development
-Since the app uses `fetch()` to load `data/games.json`, run it through a local web server (opening `index.html` directly with `file://` will be blocked by CORS).
+Firmware notes are not normalized, so "5.xx and higher" sits next to "Works on 10.xx and higher". The sidebar filter matches on the version number inside the note, so read a hit as a rough match and open the game page before downloading.
 
-### Option 1: VS Code Live Server (Recommended)
-1. Open the `PS4-Content` folder in VS Code
-2. Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension
-3. Right-click `index.html` → `Open with Live Server`
+A size of 15 GB is a placeholder rather than a measurement. It marks the entries whose real size is not known yet, and the size filter has a switch to hide them.
 
-### Option 2: Node.js
-```bash
-npx serve .
-```
+Every filter you set ends up in the address bar, so a filtered list can be bookmarked or sent to someone and it opens for them with the same results.
 
-### Option 3: Python
-```bash
-python -m http.server 8000
-```
+## Your lists
 
-Open `http://localhost:8000` in your browser.
+Wishlist and collection are stored in your browser and stay there. There is no account and no sync.
 
-## Deploy to GitHub Pages
+Each game has a status you set on its page: None, Owned, Playing, or Backlog. The wishlist is a separate list with its own count in the header. The library page counts what you have collected and adds up the download size, and the home page shows the eight games you opened most recently.
 
-1. Push this repo to GitHub
-2. Go to `Settings → Pages` on your repository
-3. Under `Build and deployment`, set `Source` to `Deploy from a branch`
-4. Select `Branch: main` and `Folder: /(root)`
-5. Save — your site will be live at `https://DimZeofficial.github.io/PS4-Content/`
+Your theme, profile name and avatar, page size, and the other settings save in the same place, so the site comes back the way you left it.
 
-All internal links, assets and JSON use relative paths (`./`) so it works both locally and on GitHub Pages with no extra config.
+Because all of it lives in browser storage, it does not follow you to another device, and clearing this site's data deletes it. Settings has Export and Import for a JSON file of your collection, wishlist, profile, and settings, which is how you move a library to another browser or keep a copy of it.
 
-## Customization
-- **Adding Games:** Edit `data/games.json` to add new games. Follow the existing JSON schema.
-- **Styling/Themes:** Modify CSS variables in `assets/css/base.css` or theme definitions in `assets/css/themes.css`.
-- **Download Links:** For `pkgps4.click`, the slug is auto-derived as lowercase + spaces → hyphens (e.g. `EA SPORTS FC 27` → `ea-sports-fc-27`).
- 
+## Look and feel
+
+Ten themes are in the header, from PS5 Clean white to Cyberpunk, and each one swaps the sidebar mark and the tab icon to match. Two switches in Settings turn the background orbs off and put the page into a low resource mode that drops the heavy blur and animation.
+
+Profile avatars come from 450+ PS3 and PS4 games, kept in `assets/avatars`.
+
+## The catalog
+
+Everything on the site comes from `data/games.json`, one object per game:
+
+| Field | Contents |
+| --- | --- |
+| `id` | Package ID, such as `PPSA00003` |
+| `title` | Game title |
+| `slug` | Title in URL form, matching the source pages |
+| `description` | Short description |
+| `developer`, `publisher` | Studio and publisher |
+| `releaseDate` | ISO date |
+| `genre` | Array of genres |
+| `region` | Package region |
+| `firmware` | Firmware note for the package |
+| `coverImage` | Cover art URL |
+| `size` | `game`, `update`, and `dlc` sizes as strings |
+| `downloads` | Sources with a type, name, and URL |
+| `links` | Source name mapped to its page URL |
+| `password` | Archive password for the package |
+| `languages` | Array of languages |
+
+Cover art loads from images.igdb.com. Every entry links to a page on pkgps4.click, and most also have one on dlpsgame.com. Where a source has no page for a game, the game page says so instead of offering a dead link.
+
+## How it is built
+
+Static files with no build step and no dependencies: eight HTML pages, four stylesheets in `assets/css`, five scripts in `assets/js`, and the catalog as JSON. GitHub Pages serves the repository as it is, and no page loads an analytics or tracking script.
+
+The scripts that build `data/games.json` and keep the sizes current sit in the repository root.
+
+## Credit and scope
+
+The package links, archive passwords, and firmware notes belong to the sites that publish them. This repository indexes those pages and hosts no game packages. Cover art comes from IGDB, and game titles and artwork belong to their respective owners. Nothing here is connected to Sony.
