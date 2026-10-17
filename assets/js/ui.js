@@ -27,6 +27,21 @@ const LS = {
   }
 };
 
+// The Content-Security-Policy forbids inline onerror attributes, so image fallbacks
+// run through one delegated listener instead: data-fallback-src swaps in a placeholder
+// image, and data-fallback-initial replaces the avatar with the first letter of its alt.
+document.addEventListener('error', (e) => {
+  const img = e.target;
+  if (!(img instanceof HTMLImageElement) || img.dataset.fallbackDone) return;
+  if (img.dataset.fallbackSrc) {
+    img.dataset.fallbackDone = '1';
+    img.src = img.dataset.fallbackSrc;
+  } else if (img.hasAttribute('data-fallback-initial') && img.parentElement) {
+    img.dataset.fallbackDone = '1';
+    img.parentElement.textContent = (img.alt || '').charAt(0).toUpperCase();
+  }
+}, true);
+
 const UI = {
   avatarsData: null,
   selectedAvatar: null,
@@ -95,7 +110,7 @@ const UI = {
 
     article.innerHTML = `
       <div class="game-card__cover">
-        <img src="${game.coverImage || ''}" alt="" loading="lazy" onerror="this.src='https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%2318181b&textColor=%23a1a1aa'">
+        <img src="${game.coverImage || ''}" alt="" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=300&amp;height=400&amp;text=PS4+PKG&amp;bgColor=%2318181b&amp;textColor=%23a1a1aa">
         <button class="game-card__collection" data-game-id="${game.id}" data-status="${collectionStatus}" title="${collectionLabel}" aria-label="Collection status: ${collectionLabel}">
           ${collectionIcon}
         </button>
@@ -240,7 +255,7 @@ const UI = {
 
     return `
       <div class="detail__header" style="opacity:1 !important; transform:none !important;">
-        <img src="${game.coverImage || ''}" alt="${game.title}" class="detail__cover" onerror="this.src='https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%231a2332&textColor=%2394a3b8'">
+        <img src="${game.coverImage || ''}" alt="${game.title}" class="detail__cover" data-fallback-src="https://images.placeholders.dev/?width=300&amp;height=400&amp;text=PS4+PKG&amp;bgColor=%231a2332&amp;textColor=%2394a3b8">
         <div class="detail__meta">
           <h2>${game.title}</h2>
           <p class="detail__id">${game.id}</p>
@@ -268,7 +283,7 @@ const UI = {
             <a href="game-detail.html?id=${game.id}" class="btn btn--primary" data-nav="smooth">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> Open Game Page
             </a>
-            <button class="btn btn--ghost" onclick="navigator.clipboard.writeText(window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'game-detail.html?id=${game.id}').then(() => UI.showToast('Game link copied to clipboard!'))">
+            <button class="btn btn--ghost" data-share-id="${game.id}">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M9 9h10v10H9zM5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy Link
             </button>
           </div>
@@ -456,7 +471,7 @@ const UI = {
     const headerAvatarPreview = document.getElementById('headerAvatarPreview');
     if (headerAvatarPreview) {
       if (avatar) {
-        headerAvatarPreview.innerHTML = `<img src="${avatar}" alt="${username}" onerror="this.parentElement.textContent='${username.charAt(0).toUpperCase()}'">`;
+        headerAvatarPreview.innerHTML = `<img src="${avatar}" alt="${username}" data-fallback-initial>`;
       } else {
         headerAvatarPreview.textContent = username.charAt(0).toUpperCase();
       }
@@ -851,7 +866,7 @@ const UI = {
   updateBigAvatarPreview(container, avatarUrl, username) {
     if (!container) return;
     if (avatarUrl) {
-      container.innerHTML = `<img src="${avatarUrl}" alt="Avatar" onerror="this.parentElement.textContent='${(username || '').charAt(0).toUpperCase()}'">`;
+      container.innerHTML = `<img src="${avatarUrl}" alt="${username || ''}" data-fallback-initial>`;
     } else {
       const initial = (username || '').charAt(0).toUpperCase();
       container.textContent = initial;
@@ -956,7 +971,7 @@ const UI = {
 
           card.innerHTML = `
             <div class="avatar-card__img-wrap">
-              <img src="${avatarUrl}" alt="${item.name}" loading="lazy" onerror="this.src='https://images.placeholders.dev/?width=60&height=60&text=PSN&bgColor=%230a0e17&textColor=%230070f3'">
+              <img src="${avatarUrl}" alt="${item.name}" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=60&amp;height=60&amp;text=PSN&amp;bgColor=%230a0e17&amp;textColor=%230070f3">
             </div>
             <span class="avatar-card__name">${item.name}</span>
           `;
@@ -1006,7 +1021,7 @@ const UI = {
               card.title = `${item.name} (${game})`;
               card.innerHTML = `
                 <div class="avatar-card__img-wrap">
-                  <img src="${avatarUrl}" alt="${item.name}" loading="lazy" onerror="this.src='https://images.placeholders.dev/?width=60&height=60&text=PSN&bgColor=%230a0e17&textColor=%230070f3'">
+                  <img src="${avatarUrl}" alt="${item.name}" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=60&amp;height=60&amp;text=PSN&amp;bgColor=%230a0e17&amp;textColor=%230070f3">
                 </div>
                 <span class="avatar-card__name">${item.name}</span>
               `;

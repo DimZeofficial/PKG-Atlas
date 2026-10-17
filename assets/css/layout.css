@@ -83,7 +83,8 @@
   font-weight: 700;
 }
 
-.sidebar__group-toggle {
+/* Rail buttons (group toggle, Profile, Settings) must look like the rail links */
+button.sidebar__nav-item {
   background: none;
   border: none;
   font-family: inherit;

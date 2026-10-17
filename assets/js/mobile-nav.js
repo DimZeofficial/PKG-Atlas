@@ -151,15 +151,14 @@
   });
 
   // Any activation inside the drawer should close it first. The Profile and
-  // Settings links are `javascript:void(0)` placeholders that open a modal, so
-  // they need closing too or the drawer would sit on top of the modal.
+  // Settings buttons open a modal, so they need closing too or the drawer would
+  // sit behind it.
   sidebar.addEventListener('click', (e) => {
     const item = e.target.closest('.sidebar__nav-item');
     if (!item) return;
-    const href = item.getAttribute('href');
-    // A bare '#' target scrolls the page and keeps the drawer open on desktop,
-    // which is not a navigation away from the current view.
-    if (href === '#' || !href) return;
+    // The group toggle expands its submenu in place and a bare '#' target only
+    // scrolls, so neither closes the drawer — everything else does.
+    if (item.classList.contains('sidebar__group-toggle') || item.getAttribute('href') === '#') return;
     close({ restoreFocus: false });
   });
 

@@ -838,7 +838,7 @@ const LS = {
       if (recents.length > 0) {
         recentRow.innerHTML = recents.map(g => `
           <a class="recent-strip__item" href="game-detail.html?id=${encodeURIComponent(g.id)}">
-            <img src="${g.coverImage || ''}" alt="" loading="lazy" onerror="this.src='https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%231a2332&textColor=%2394a3b8'">
+            <img src="${g.coverImage || ''}" alt="" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=300&amp;height=400&amp;text=PS4+PKG&amp;bgColor=%231a2332&amp;textColor=%2394a3b8">
             <span>${g.title}</span>
           </a>
         `).join('');
@@ -886,12 +886,20 @@ const LS = {
   document.addEventListener('click', (e) => {
     const downloadBtn = e.target.closest('.btn--download');
     const wishlistBtn = e.target.closest('.btn--wishlist');
+    const shareBtn = e.target.closest('[data-share-id]');
     const gameCard = e.target.closest('.game-card');
 
     if (downloadBtn) {
       e.stopPropagation();
       const game = db.getGameById(downloadBtn.dataset.gameId);
       if (game) UI.showGameDetail(game);
+      return;
+    }
+
+    if (shareBtn) {
+      const base = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+      navigator.clipboard.writeText(`${base}game-detail.html?id=${shareBtn.dataset.shareId}`)
+        .then(() => UI.showToast('Game link copied to clipboard!'));
       return;
     }
 
