@@ -141,43 +141,7 @@ const LS = {
     });
   });
 
-  // 6. Ambient Falling Orbs Background
-  function setupOrbs() {
-    let container = document.querySelector('.orbs-bg');
-    if (!container) {
-      container = document.createElement('div');
-      container.className = 'orbs-bg';
-      document.body.prepend(container);
-    }
-    if (container.dataset.initialized) return;
-    container.dataset.initialized = 'true';
-
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const orbCount = isMobile ? 6 : 10;
-    const palette = ['#0070f3', '#00b4d8', '#8b5cf6', '#a855f7', '#ff007f', '#10b981', '#f97316'];
-
-    for (let i = 0; i < orbCount; i++) {
-      const orb = document.createElement('div');
-      orb.className = 'orb';
-      const size = Math.floor(140 + Math.random() * 180);
-      const x = Math.floor(Math.random() * 95);
-      const dx = Math.floor((Math.random() * 60) - 30);
-      const duration = (22 + Math.random() * 14).toFixed(1);
-      const delay = (Math.random() * 18).toFixed(1);
-
-      orb.style.setProperty('--size', `${size}px`);
-      orb.style.setProperty('--x', `${x}%`);
-      orb.style.setProperty('--dx', `${dx}px`);
-      orb.style.setProperty('--duration', `${duration}s`);
-      orb.style.setProperty('--delay', `-${delay}s`);
-      orb.style.setProperty('--orb-color', palette[i % palette.length]);
-
-      container.appendChild(orb);
-    }
-  }
-  setupOrbs();
-
-  // 7. Smooth Scroll & Staggered Reveal Observer for Grid Cards
+  // 6. Smooth Scroll & Staggered Reveal Observer for Grid Cards
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -203,7 +167,7 @@ const LS = {
   // Trigger initial elements on page
   attachScrollReveals();
 
-  // 8. Page Entrance and Smooth In-Between Navigation
+  // 7. Page Entrance and Smooth In-Between Navigation
   requestAnimationFrame(() => {
     document.body.classList.add('page-loaded');
   });
@@ -215,7 +179,7 @@ const LS = {
     }, 180);
   }
 
-  document.querySelectorAll('a[data-nav="smooth"], .sidebar__nav-item[href$=".html"], .top-header__nav-link[href$=".html"]').forEach(link => {
+  document.querySelectorAll('a[data-nav="smooth"], .sidebar__nav-item[href$=".html"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       if (!href || href === '#' || href.startsWith('javascript:')) return;
@@ -225,11 +189,11 @@ const LS = {
     });
   });
 
-  // 9. Themes Switching (10 Fully-Working PlayStation Themes)
+  // 8. Themes Switching (10 Fully-Working PlayStation Themes)
   const themeToggle = document.getElementById('themeToggle');
 
   const themes = [
-    { value: 'dark', label: 'Dark Navy', icon: 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z', logo: 'dark_navy' },
+    { value: 'dark', label: 'Obsidian', icon: 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z', logo: 'dark_navy' },
     { value: 'light', label: 'PS5 Clean', icon: 'M12 4V2M12 22v-2M4 12H2M22 12h-2M5.6 5.6L4.2 4.2M19.8 19.8l-1.4-1.4M5.6 18.4l-1.4 1.4M19.8 4.2l-1.4 1.4M16 12a4 4 0 11-8 0 4 4 0 018 0z', logo: 'ps5clean' },
     { value: 'ocean', label: 'Ocean Trench', icon: 'M2 7c2 2.5 4.5 3.5 7 3.5S14 9.5 17 7s4.5-3.5 5-3.5M2 13c2 2.5 4.5 3.5 7 3.5s5-1 8-3.5 4.5-3.5 5-3.5M2 19c2 2.5 4.5 3.5 7 3.5s5-1 8-3.5 4.5-3.5 5-3.5', logo: 'ocean' },
     { value: 'cyberpunk', label: 'Cyberpunk', icon: 'M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z', logo: 'cyberpunk' },
@@ -253,18 +217,9 @@ const LS = {
 
     if (themeToggle) themeToggle.innerHTML = themeIconSVG(themeObj);
 
-    // Tab favicon and sidebar mark follow the active theme
+    // Tab favicon follows the active theme
     const faviconLink = document.querySelector('link[rel="icon"]');
     if (faviconLink) faviconLink.href = `favicon_${themeObj.logo}.png`;
-    document.querySelectorAll('.sidebar__logo-img').forEach(img => {
-      const src = `logo_${themeObj.logo}.png`;
-      if (img.getAttribute('src') !== src) img.src = src;
-    });
-
-    const orbs = document.querySelectorAll('.orb');
-    orbs.forEach(orb => {
-      orb.style.removeProperty('--orb-color');
-    });
   }
 
   const initialTheme = LS.get('ps4_theme', 'dark');
@@ -280,7 +235,7 @@ const LS = {
     });
   }
 
-  // 10. Dedicated Game Detail Page (game-detail.html)
+  // 9. Dedicated Game Detail Page (game-detail.html)
   const gameDetailContainer = document.getElementById('gameDetailContainer');
   if (gameDetailContainer) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -348,7 +303,7 @@ const LS = {
     }
   }
 
-  // 11. Dedicated Wishlist Page (wishlist.html)
+  // 10. Dedicated Wishlist Page (wishlist.html)
   const wishlistGrid = document.getElementById('wishlistGrid');
   if (wishlistGrid) {
     function renderWishlistPage() {
@@ -489,7 +444,7 @@ const LS = {
   }
 
 
-  // 12. Pagination & Filtering for Store & Home (index.html & search.html)
+  // 11. Pagination & Filtering for Store & Home (index.html & search.html)
   const gridContainer = document.getElementById('gameGrid');
   const searchInput = document.getElementById('searchInput');
   const pageSizeSelect = document.getElementById('pageSize');
@@ -682,8 +637,11 @@ const LS = {
         }, 220);
       });
 
-      searchInput.addEventListener('keypress', (e) => {
+      // keydown, not keypress: cancelling the implicit form submission must happen
+      // before the browser acts on Enter (the command bar form still serves no-JS pages)
+      searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
+          e.preventDefault();
           const q = e.target.value.trim();
           if (pageName === 'search') {
             db.updateFilter('searchQuery', q);
@@ -693,14 +651,6 @@ const LS = {
             navigateSmoothly(`search.html#/search/${encodeURIComponent(q)}/`);
           }
         }
-      });
-    }
-
-    const homeSearchBtn = document.getElementById('homeSearchBtn');
-    if (homeSearchBtn && searchInput) {
-      homeSearchBtn.addEventListener('click', () => {
-        const q = searchInput.value.trim();
-        navigateSmoothly(`search.html#/search/${encodeURIComponent(q)}/`);
       });
     }
 
@@ -897,7 +847,7 @@ const LS = {
     }
   }
 
-  // 13. Modal Close Listeners
+  // 12. Modal Close Listeners
   const gameModal = document.getElementById('gameModal');
   if (gameModal) {
     gameModal.querySelector('.modal__close')?.addEventListener('click', () => UI.closeModal());
@@ -915,7 +865,24 @@ const LS = {
     }
   });
 
-  // 14. Global Card Click & Wishlist Delegations
+  // Command bar shortcuts: Ctrl/Cmd+K or "/" focuses search, unless a field or a modal owns the keys
+  const commandBarInput = document.getElementById('searchInput');
+  if (commandBarInput) {
+    document.addEventListener('keydown', (e) => {
+      const isCommandK = e.key.toLowerCase() === 'k' && (e.ctrlKey || e.metaKey);
+      if (!isCommandK && !(e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey)) return;
+
+      const tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) return;
+      if (document.querySelector('.modal--active')) return;
+
+      e.preventDefault();
+      commandBarInput.focus();
+      commandBarInput.select();
+    });
+  }
+
+  // 13. Global Card Click & Wishlist Delegations
   document.addEventListener('click', (e) => {
     const downloadBtn = e.target.closest('.btn--download');
     const wishlistBtn = e.target.closest('.btn--wishlist');

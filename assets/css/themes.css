@@ -1,12 +1,8 @@
 /* ==========================================================================
    PlayStation Database Themes
-   10 Fully-Supported High-Fidelity Color Themes
+   The default palette (Obsidian) lives in :root in base.css. Each theme below
+   only swaps colour tokens; layout, radius, and elevation stay shared.
    ========================================================================== */
-
-/* 0. Dark (default): overrides the :root tokens in base.css */
-[data-theme="dark"] {
-  --color-accent-text: #4da3ff; /* #0070f3 fails on cards (3.5:1) */
-}
 
 /* 1. Light Theme (PS5 Clean Slate) */
 [data-theme="light"] {
@@ -14,30 +10,19 @@
   --color-bg-secondary: #ffffff;
   --color-bg-card: #ffffff;
   --color-accent-primary: #0066cc;
-  --color-accent-secondary: #6366f1;
-  --color-accent-danger: #ef4444;
+  --color-accent-text: #0a58ca; /* #0066cc on white is 5.5:1 but thin at 0.7rem */
+  --color-accent-secondary: #0066cc;
+  --color-accent-danger: #dc2626;
   --color-text-primary: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-border: #cbd5e1;
-  --shadow-card: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 14px 28px -4px rgba(0, 0, 0, 0.14);
-  --orb-color: #0066cc;
+  --color-text-secondary: #526077;
+  --color-border: #d4dae3;
+  --surface-hover: rgba(0, 0, 0, 0.045);
+  --surface-active: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="light"] .sidebar {
   background-color: #f8fafc;
   border-right-color: #e2e8f0;
-}
-
-[data-theme="light"] .sidebar__logo {
-  color: #0066cc;
-  /* the wordmark is painted by its background gradient, so the light theme needs its own; must be background-image, the shorthand would drop -webkit-background-clip: text */
-  background-image: linear-gradient(135deg, #0066cc 0%, #0f172a 100%);
-}
-
-[data-theme="light"] .game-card__badge--region {
-  background-color: rgba(255, 255, 255, 0.92);
-  color: #0f172a;
 }
 
 [data-theme="light"] .download-item {
@@ -48,33 +33,15 @@
   background: rgba(0, 0, 0, 0.06);
 }
 
-[data-theme="light"] .sidebar__nav-item:hover,
-[data-theme="light"] .sidebar__nav-item.active {
-  background-color: rgba(0, 102, 204, 0.08);
-  color: #0066cc;
+[data-theme="light"] .game-card__collection {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #475569;
 }
 
-[data-theme="light"] .sidebar__user {
-  background-color: #f1f5f9;
-}
-
-[data-theme="light"] .btn--secondary {
+[data-theme="light"] .game-card__collection:hover {
   background-color: #ffffff;
-  border-color: #cbd5e1;
-}
-
-[data-theme="light"] .tag {
-  background-color: #e2e8f0;
-  color: #334155;
-  border-color: #cbd5e1;
-}
-
-[data-theme="light"] .btn--icon {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="light"] .btn--icon:hover {
-  background: rgba(0, 0, 0, 0.08);
+  color: #0f172a;
 }
 
 /* 2. Ocean Theme (Deep Oceanic Trench) */
@@ -82,27 +49,13 @@
   --color-bg-primary: #04121f;
   --color-bg-secondary: #081d30;
   --color-bg-card: #0d2842;
-  --color-accent-primary: #00b4d8;
-  --color-accent-secondary: #0077b6;
+  --color-accent-primary: #0077b6;
+  --color-accent-text: #38bdf8;
+  --color-accent-secondary: #00b4d8;
   --color-accent-danger: #f43f5e;
   --color-text-primary: #e0f2fe;
-  --color-text-secondary: #7dd3fc;
+  --color-text-secondary: #96c9e8;
   --color-border: #153e63;
-  --shadow-card: 0 4px 20px -2px rgba(0, 180, 216, 0.15);
-  --shadow-hover: 0 12px 32px -4px rgba(0, 180, 216, 0.35);
-  --orb-color: #00b4d8;
-}
-
-[data-theme="ocean"] .tag--size {
-  background-color: rgba(0, 180, 216, 0.15);
-  color: #38bdf8;
-  border-color: rgba(0, 180, 216, 0.3);
-}
-
-[data-theme="ocean"] .sidebar__nav-item.active {
-  background-color: rgba(0, 180, 216, 0.15);
-  border-left-color: #00b4d8;
-  color: #e0f2fe;
 }
 
 /* 3. Cyberpunk Theme (Neon Night City) */
@@ -110,27 +63,13 @@
   --color-bg-primary: #0d0221;
   --color-bg-secondary: #19053b;
   --color-bg-card: #250954;
-  --color-accent-primary: #ff007f;
+  --color-accent-primary: #b3005a;
+  --color-accent-text: #f472b6;
   --color-accent-secondary: #00f0ff;
   --color-accent-danger: #ff3366;
   --color-text-primary: #fdf4ff;
-  --color-text-secondary: #f0abfc;
+  --color-text-secondary: #d8b4fe;
   --color-border: #4a1584;
-  --shadow-card: 0 4px 20px -2px rgba(255, 0, 127, 0.25);
-  --shadow-hover: 0 12px 35px -2px rgba(0, 240, 255, 0.4);
-  --orb-color: #ff007f;
-}
-
-[data-theme="cyberpunk"] .tag--size {
-  background-color: rgba(0, 240, 255, 0.15);
-  color: #00f0ff;
-  border-color: rgba(0, 240, 255, 0.3);
-}
-
-[data-theme="cyberpunk"] .sidebar__nav-item.active {
-  background-color: rgba(255, 0, 127, 0.18);
-  border-left-color: #ff007f;
-  color: #ffffff;
 }
 
 /* 4. Forest Theme (Emerald Matrix) */
@@ -138,27 +77,13 @@
   --color-bg-primary: #04140e;
   --color-bg-secondary: #08241a;
   --color-bg-card: #0d3627;
-  --color-accent-primary: #10b981;
-  --color-accent-secondary: #059669;
+  --color-accent-primary: #0b7a58;
+  --color-accent-text: #34d399;
+  --color-accent-secondary: #10b981;
   --color-accent-danger: #ef4444;
   --color-text-primary: #ecfdf5;
-  --color-text-secondary: #6ee7b7;
+  --color-text-secondary: #86dcb8;
   --color-border: #14533d;
-  --shadow-card: 0 4px 20px -2px rgba(16, 185, 129, 0.15);
-  --shadow-hover: 0 12px 32px -4px rgba(16, 185, 129, 0.35);
-  --orb-color: #10b981;
-}
-
-[data-theme="forest"] .tag--size {
-  background-color: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border-color: rgba(16, 185, 129, 0.3);
-}
-
-[data-theme="forest"] .sidebar__nav-item.active {
-  background-color: rgba(16, 185, 129, 0.15);
-  border-left-color: #10b981;
-  color: #ecfdf5;
 }
 
 /* 5. Amber Theme (Molten Ember) */
@@ -166,27 +91,13 @@
   --color-bg-primary: #170b04;
   --color-bg-secondary: #271207;
   --color-bg-card: #381a0b;
-  --color-accent-primary: #f97316;
+  --color-accent-primary: #b2460b;
+  --color-accent-text: #fb923c;
   --color-accent-secondary: #eab308;
   --color-accent-danger: #dc2626;
   --color-text-primary: #fff7ed;
-  --color-text-secondary: #fdba74;
+  --color-text-secondary: #e8bb92;
   --color-border: #5a2810;
-  --shadow-card: 0 4px 20px -2px rgba(249, 115, 22, 0.2);
-  --shadow-hover: 0 12px 32px -4px rgba(249, 115, 22, 0.4);
-  --orb-color: #f97316;
-}
-
-[data-theme="amber"] .tag--size {
-  background-color: rgba(249, 115, 22, 0.15);
-  color: #fb923c;
-  border-color: rgba(249, 115, 22, 0.3);
-}
-
-[data-theme="amber"] .sidebar__nav-item.active {
-  background-color: rgba(249, 115, 22, 0.18);
-  border-left-color: #f97316;
-  color: #fff7ed;
 }
 
 /* 6. Violet Theme (Royal Cosmic) */
@@ -194,27 +105,13 @@
   --color-bg-primary: #0f0a1f;
   --color-bg-secondary: #16102e;
   --color-bg-card: #1f163f;
-  --color-accent-primary: #a78bfa;
-  --color-accent-secondary: #7c3aed;
+  --color-accent-primary: #6d28d9;
+  --color-accent-text: #c4b5fd;
+  --color-accent-secondary: #a78bfa;
   --color-accent-danger: #f87171;
   --color-text-primary: #f3edff;
-  --color-text-secondary: #d7c9ff;
+  --color-text-secondary: #cbb9f5;
   --color-border: #33235f;
-  --shadow-card: 0 10px 40px -15px rgba(124, 58, 237, 0.45);
-  --shadow-hover: 0 16px 60px -15px rgba(167, 139, 250, 0.5);
-  --orb-color: #a78bfa;
-}
-
-[data-theme="violet"] .tag--size {
-  background-color: rgba(167, 139, 250, 0.15);
-  color: #c4b5fd;
-  border-color: rgba(167, 139, 250, 0.3);
-}
-
-[data-theme="violet"] .sidebar__nav-item.active {
-  background-color: rgba(124, 58, 237, 0.2);
-  border-left-color: #a78bfa;
-  color: #f3edff;
 }
 
 /* 7. Sunset Theme (Synthwave Magenta & Sunset Gold) */
@@ -222,27 +119,13 @@
   --color-bg-primary: #160821;
   --color-bg-secondary: #240c33;
   --color-bg-card: #341249;
-  --color-accent-primary: #f43f5e;
-  --color-accent-secondary: #fb923c;
+  --color-accent-primary: #be123c;
+  --color-accent-text: #fb923c;
+  --color-accent-secondary: #f43f5e;
   --color-accent-danger: #e11d48;
   --color-text-primary: #fff1f2;
-  --color-text-secondary: #fda4af;
+  --color-text-secondary: #e9b6c6;
   --color-border: #521c72;
-  --shadow-card: 0 4px 20px -2px rgba(244, 63, 94, 0.25);
-  --shadow-hover: 0 12px 35px -2px rgba(251, 146, 60, 0.45);
-  --orb-color: #f43f5e;
-}
-
-[data-theme="sunset"] .tag--size {
-  background-color: rgba(251, 146, 60, 0.15);
-  color: #fb923c;
-  border-color: rgba(251, 146, 60, 0.3);
-}
-
-[data-theme="sunset"] .sidebar__nav-item.active {
-  background-color: rgba(244, 63, 94, 0.18);
-  border-left-color: #f43f5e;
-  color: #fff1f2;
 }
 
 /* 8. Retro Classic Theme (PlayStation Legacy Grey & Sapphire) */
@@ -255,43 +138,20 @@
   --color-accent-secondary: #da291c;
   --color-accent-danger: #da291c;
   --color-text-primary: #f1f5f9;
-  --color-text-secondary: #94a3b8;
+  --color-text-secondary: #98a4b8;
   --color-border: #3b4356;
-  --shadow-card: 0 4px 18px -2px rgba(0, 67, 156, 0.25);
-  --shadow-hover: 0 12px 30px -4px rgba(0, 67, 156, 0.45);
-  --orb-color: #00439c;
 }
 
-[data-theme="classic"] .sidebar__nav-item.active {
-  background-color: rgba(0, 67, 156, 0.25);
-  border-left-color: #00439c;
-  color: #f1f5f9;
-}
-
-/* 9. Catppuccin Theme (Mocha: creamy latte-compatible, signature mauve glow) */
+/* 9. Catppuccin Theme (Mocha: creamy latte-compatible, signature mauve) */
 [data-theme="catppuccin"] {
   --color-bg-primary: #11111b;      /* Crust */
   --color-bg-secondary: #1e1e2e;    /* Base */
   --color-bg-card: #313244;         /* Surface 0 */
-  --color-accent-primary: #cba6f7;  /* Mauve */
+  --color-accent-primary: #6c4bb6;
+  --color-accent-text: #cba6f7;     /* Mauve */
   --color-accent-secondary: #89b4fa;/* Blue */
   --color-accent-danger: #f38ba8;   /* Red */
   --color-text-primary: #cdd6f4;    /* Text */
   --color-text-secondary: #a6adc8;  /* Subtext 0 */
   --color-border: #45475a;          /* Surface 1 */
-  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
-  --shadow-hover: 0 12px 36px -4px rgba(203, 166, 247, 0.35);
-  --orb-color: #cba6f7;             /* Mauve ambient glow */
-}
-
-[data-theme="catppuccin"] .tag--size {
-  background-color: rgba(203, 166, 247, 0.15);
-  color: #b4befe;                   /* Lavender reads well on Surface 0 */
-  border-color: rgba(203, 166, 247, 0.3);
-}
-
-[data-theme="catppuccin"] .sidebar__nav-item.active {
-  background-color: rgba(203, 166, 247, 0.15);
-  border-left-color: #cba6f7;
-  color: #cdd6f4;
 }

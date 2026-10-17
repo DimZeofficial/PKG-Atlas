@@ -32,22 +32,14 @@ const UI = {
   selectedAvatar: null,
 
   /**
-   * Apply saved global settings (Orbs, Low-res mode, Page size)
+   * Apply saved global settings (Low-res mode, Page size)
    */
   applySettings() {
-    // 1. Orbs toggle
-    const orbsEnabled = LS.get('ps4_orbsEnabled') !== 'false';
-    document.documentElement.setAttribute('data-orbs', orbsEnabled ? 'true' : 'false');
-    const orbsContainer = document.querySelector('.orbs-bg');
-    if (orbsContainer) {
-      orbsContainer.style.display = orbsEnabled ? 'block' : 'none';
-    }
-
-    // 2. Low-res / Performance mode
+    // 1. Low-res / Performance mode
     const lowResMode = LS.get('ps4_lowRes') === 'true';
     document.documentElement.setAttribute('data-low-res', lowResMode ? 'true' : 'false');
 
-    // 3. Page size sync
+    // 2. Page size sync
     const pageSize = parseInt(LS.get('ps4_pageSize') || '24', 10);
     const pageSizeSelect = document.getElementById('pageSize');
     if (pageSizeSelect) {
@@ -99,35 +91,36 @@ const UI = {
     const genres = Array.isArray(game.genre) ? game.genre.slice(0, 2) : [];
     const size = game.size?.game || '';
 
+    const meta = [game.id, game.region, year].filter(Boolean).join(' \u2022 ');
+
     article.innerHTML = `
       <div class="game-card__cover">
-        <img src="${game.coverImage || ''}" alt="${game.title}" loading="lazy" onerror="this.src='https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%231a2332&textColor=%2394a3b8'">
-        ${game.region ? `<span class="game-card__badge game-card__badge--region">${game.region}</span>` : ''}
-        <div class="game-card__collection" data-status="${collectionStatus}" title="${collectionLabel}">
+        <img src="${game.coverImage || ''}" alt="" loading="lazy" onerror="this.src='https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%2318181b&textColor=%23a1a1aa'">
+        <button class="game-card__collection" data-game-id="${game.id}" data-status="${collectionStatus}" title="${collectionLabel}" aria-label="Collection status: ${collectionLabel}">
           ${collectionIcon}
+        </button>
+        <div class="game-card__quick">
+          <button class="btn btn--primary btn--download" data-game-id="${game.id}">
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+            Details
+          </button>
+          <button class="btn btn--icon btn--wishlist ${isWishlisted ? 'btn--wishlist--active' : ''}" data-game-id="${game.id}" title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}" aria-label="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+            <svg width="17" height="17" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </button>
         </div>
       </div>
       <div class="game-card__info">
-        <h3 class="game-card__title" title="${game.title}">${game.title}</h3>
-        <p class="game-card__meta">${game.id} \u2022 ${year}</p>
-        <div class="game-card__tags">
-          ${genres.map(g => `<span class="tag">${g}</span>`).join('')}
-          ${size ? `<span class="tag tag--size">${size}</span>` : ''}
+        <div class="game-card__titlerow">
+          <h3 class="game-card__title" title="${game.title}">${game.title}</h3>
+          ${size ? `<span class="game-card__size">${size}</span>` : ''}
         </div>
-      </div>
-      <div class="game-card__actions">
-        <button class="btn btn--primary btn--download" data-game-id="${game.id}">
-          <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-          </svg>
-          Details
-        </button>
-        <button class="btn btn--icon btn--wishlist ${isWishlisted ? 'btn--wishlist--active' : ''}" data-game-id="${game.id}" title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
-          <svg width="17" height="17" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-          </svg>
-        </button>
+        <p class="game-card__meta">${meta}</p>
+        ${genres.length ? `<p class="game-card__genres">${genres.join(' \u2022 ')}</p>` : ''}
       </div>
     `;
 
@@ -144,6 +137,7 @@ const UI = {
         collectionEl.dataset.status = next;
         collectionEl.innerHTML = this.getCollectionIcon(next);
         collectionEl.title = this.getCollectionLabel(next);
+        collectionEl.setAttribute('aria-label', `Collection status: ${this.getCollectionLabel(next)}`);
         UI.showToast(`"${game.title}" \u2192 ${this.getCollectionLabel(next)}`);
       });
     }
@@ -223,6 +217,7 @@ const UI = {
           el.dataset.status = newStatus;
           el.innerHTML = UI.getCollectionIcon(newStatus);
           el.title = UI.getCollectionLabel(newStatus);
+          el.setAttribute('aria-label', `Collection status: ${UI.getCollectionLabel(newStatus)}`);
         });
         UI.showToast(`"${game.title}" → ${UI.getCollectionLabel(newStatus)}`);
       });
@@ -495,7 +490,7 @@ const UI = {
 
   /**
    * Open Settings Modal
-   * Controls: Background Orbs (on/off), Lower Resource Mode (on/off), Games Per Page (12, 24, 48), Theme
+   * Controls: Lower Resource Mode (on/off), Games Per Page (12, 24, 48), Backup & Restore
    */
   openSettingsModal() {
     let modal = document.getElementById('settingsModal');
@@ -512,26 +507,14 @@ const UI = {
                 Website Settings
               </h2>
               <p style="font-size:0.85rem; color:var(--color-text-secondary); margin-top:2px;">
-                Customize performance, background visuals, and display options
+                Customize performance, display, and backup options
               </p>
             </div>
             <button class="modal__close" id="closeSettingsModal" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
           </div>
           <div class="modal__body">
             <div class="settings-list">
-              <!-- Setting 1: Orbs in background -->
-              <div class="setting-row">
-                <div class="setting-info">
-                  <span class="setting-title" style="display:inline-flex;align-items:center;gap:7px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M12 3a9 9 0 109 9c0-2-4.5-3.5-9-3.5S3 10 3 12a9 9 0 009-9z"/></svg> Background Floating Orbs</span>
-                  <span class="setting-desc">Ambient glowing orbs slowly drifting downwards across the screen</span>
-                </div>
-                <label class="switch">
-                  <input type="checkbox" id="settingOrbsToggle" />
-                  <span class="slider"></span>
-                </label>
-              </div>
-
-              <!-- Setting 2: Low-res / Lower resource mode -->
+              <!-- Setting 1: Low-res / Lower resource mode -->
               <div class="setting-row">
                 <div class="setting-info">
                   <span class="setting-title" style="display:inline-flex;align-items:center;gap:7px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg> Low Resource Mode</span>
@@ -543,7 +526,7 @@ const UI = {
                 </label>
               </div>
 
-              <!-- Setting 3: Number of games on page (12, 24, 48) -->
+              <!-- Setting 2: Number of games on page (12, 24, 48) -->
               <div class="setting-row">
                 <div class="setting-info">
                   <span class="setting-title" style="display:inline-flex;align-items:center;gap:7px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01M17.5 6H6.5A4.5 4.5 0 002 10.5v3A4.5 4.5 0 006.5 18h11a4.5 4.5 0 004.5-4.5v-3A4.5 4.5 0 0017.5 6z"/></svg> Games Per Page</span>
@@ -556,7 +539,7 @@ const UI = {
                 </div>
               </div>
 
-              <!-- Setting 4: Profile & Avatars shortcut -->
+              <!-- Setting 3: Profile & Avatars shortcut -->
               <div class="setting-row">
                 <div class="setting-info">
                   <span class="setting-title" style="display:inline-flex;align-items:center;gap:7px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>PlayStation Profile &amp; Avatar</span>
@@ -567,7 +550,7 @@ const UI = {
                 </button>
               </div>
 
-              <!-- Setting 5: Backup & Restore Data -->
+              <!-- Setting 4: Backup & Restore Data -->
               <div class="setting-row">
                 <div class="setting-info">
                   <span class="setting-title" style="display:inline-flex;align-items:center;gap:7px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Backup &amp; Restore Library</span>
@@ -604,12 +587,8 @@ const UI = {
     modal.classList.add('modal--active');
 
     // Populate current settings
-    const orbsToggle = modal.querySelector('#settingOrbsToggle');
     const lowResToggle = modal.querySelector('#settingLowResToggle');
     const pageSizePills = modal.querySelectorAll('.page-size-pill');
-
-    const orbsEnabled = LS.get('ps4_orbsEnabled') !== 'false';
-    orbsToggle.checked = orbsEnabled;
 
     const lowRes = LS.get('ps4_lowRes') === 'true';
     lowResToggle.checked = lowRes;
@@ -646,13 +625,6 @@ const UI = {
       };
     });
 
-    orbsToggle.onchange = () => {
-      const isEnabled = orbsToggle.checked;
-      LS.set('ps4_orbsEnabled', isEnabled ? 'true' : 'false');
-      UI.applySettings();
-      UI.showToast(isEnabled ? 'Ambient floating orbs enabled.' : 'Ambient orbs disabled.');
-    };
-
     lowResToggle.onchange = () => {
       const isLow = lowResToggle.checked;
       LS.set('ps4_lowRes', isLow ? 'true' : 'false');
@@ -673,7 +645,6 @@ const UI = {
           avatar_name: LS.get('ps4_avatar_name', ''),
           theme: LS.get('ps4_theme', 'dark'),
           pageSize: LS.get('ps4_pageSize', '24'),
-          orbsEnabled: LS.get('ps4_orbsEnabled', 'true'),
           lowRes: LS.get('ps4_lowRes', 'false')
         };
         const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -702,7 +673,6 @@ const UI = {
             if (data.avatar_name !== undefined) LS.set('ps4_avatar_name', data.avatar_name);
             if (data.theme) LS.set('ps4_theme', data.theme);
             if (data.pageSize) LS.set('ps4_pageSize', data.pageSize);
-            if (data.orbsEnabled !== undefined) LS.set('ps4_orbsEnabled', data.orbsEnabled);
             if (data.lowRes !== undefined) LS.set('ps4_lowRes', data.lowRes);
 
             UI.applySettings();
