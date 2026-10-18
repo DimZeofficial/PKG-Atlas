@@ -214,25 +214,27 @@ button.sidebar__nav-item {
   z-index: 50;
 }
 
-/* Brand lockup — theme logo over the site name, flush left of the header */
+/* Brand lockup — theme logo with the site name underneath, flush left of the header */
 .top-header__brand {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
   flex-shrink: 0;
+  padding: 2px 0;
 }
 
 .top-header__logo {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 6px;
 }
 
 .top-header__title {
-  font-size: 0.95rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   color: var(--color-text-primary);
   white-space: nowrap;
 }
