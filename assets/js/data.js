@@ -73,6 +73,7 @@ class GameDatabase {
   applyFilters() {
     const query = (this.filters.searchQuery || '').toLowerCase().trim();
     const { sizeRangeMin, sizeRangeMax, hidePlaceholderSizes } = this.filters;
+    const matchScores = new Map();
 
     this.filteredGames = this.games.filter(game => {
       // Genre filter
@@ -103,28 +104,54 @@ class GameDatabase {
       // Hide placeholder sizes (15 GB)
       if (hidePlaceholderSizes && sizeStr === '15 GB') return false;
       
-      // Search query — safely checks title, id, developer, slug, and aliases
+      // Search query — scored so the closest title match sorts first
       if (query) {
-        const title = (game.title || '').toLowerCase();
-        const id = (game.id || '').toLowerCase();
-        const developer = (game.developer || '').toLowerCase();
-        const slug = (game.slug || '').toLowerCase();
-        const aliases = (game.aliases || []).map(a => String(a).toLowerCase());
-
-        const fw = (game.firmware || '').toLowerCase();
-        return title.includes(query) ||
-               id.includes(query) ||
-               developer.includes(query) ||
-               slug.includes(query) ||
-               aliases.some(alias => alias.includes(query)) ||
-               fw.includes(query);
+        const score = this.searchScore(game, query);
+        if (score === null) return false;
+        matchScores.set(game, score);
       }
-      
+
       return true;
     });
-    
+
     this.sortGames();
+    // Relevance first while a query is active; the sort is stable, so the
+    // chosen sort order still breaks ties inside each tier.
+    if (query) {
+      this.filteredGames.sort((a, b) => matchScores.get(a) - matchScores.get(b));
+    }
     return this.filteredGames;
+  }
+
+  /**
+   * Rank a game against a search query. Lower is better; null means no match.
+   * Developer needs a word-start hit for short queries: plain substring
+   * matching made "gta" match "Eggtart" and outrank the actual GTA titles.
+   */
+  searchScore(game, query) {
+    const title = (game.title || '').toLowerCase();
+    const id = (game.id || '').toLowerCase();
+    const slug = (game.slug || '').toLowerCase();
+    const developer = (game.developer || '').toLowerCase();
+    const publisher = (game.publisher || '').toLowerCase();
+    const firmware = (game.firmware || '').toLowerCase();
+    const aliases = (game.aliases || []).map(a => String(a).toLowerCase());
+
+    const startsWord = text => text.split(/[^a-z0-9]+/).some(word => word.startsWith(query));
+    const matchesCredit = text => startsWord(text) || (query.length >= 4 && text.includes(query));
+
+    if (title === query) return 0;
+    if (title.startsWith(query)) return 1;
+    if (startsWord(title)) return 2;
+    if (aliases.some(alias => alias === query)) return 3;
+    if (aliases.some(alias => alias.startsWith(query))) return 4;
+    if (title.includes(query)) return 5;
+    if (aliases.some(alias => alias.includes(query))) return 6;
+    if (id === query) return 7;
+    if (id.includes(query) || slug.includes(query)) return 8;
+    if (matchesCredit(developer) || matchesCredit(publisher)) return 9;
+    if (firmware.includes(query)) return 10;
+    return null;
   }
 
   /**

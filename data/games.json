@@ -2620,7 +2620,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/yakuza-kiwami-3-dark-ties/"
-      }
+      },
+      "aliases": [
+        "YAKUZA"
+      ]
     },
     {
       "id": "CUSA47953",
@@ -6388,7 +6391,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/hollow-knight-silksong/"
-      }
+      },
+      "aliases": [
+        "HK",
+        "SILKSONG"
+      ]
     },
     {
       "id": "CUSA03235",
@@ -12431,7 +12438,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/tomb-raider-iv-vi-remastered/",
         "dlpsgame": "https://dlpsgame.com/tomb-raider-iv-vi-remastered-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "TOMBRAIDER"
+      ]
     },
     {
       "id": "PPSA00770",
@@ -12692,7 +12702,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sly-2-band-of-thieves/",
         "dlpsgame": "https://dlpsgame.com/sly-2-band-of-thieves-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SLY"
+      ]
     },
     {
       "id": "CUSA47431",
@@ -12729,7 +12742,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sly-cooper-and-the-thievius-raccoonus/",
         "dlpsgame": "https://dlpsgame.com/sly-cooper-and-the-thievius-raccoonus-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SLY"
+      ]
     },
     {
       "id": "CUSA49865",
@@ -13903,7 +13919,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/elden-ring-nightreign/",
         "dlpsgame": "https://dlpsgame.com/elden-ring-nightreign-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NIGHTREIGN"
+      ]
     },
     {
       "id": "CUSA46342",
@@ -17608,7 +17627,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/like-a-dragon-pirate-yakuza-in-hawaii-deluxe-edition/"
-      }
+      },
+      "aliases": [
+        "YAKUZAPIRATE",
+        "YAKUZA"
+      ]
     },
     {
       "id": "CUSA49813",
@@ -20180,7 +20203,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-legend-of-heroes-trails-from-zero/",
         "dlpsgame": "https://dlpsgame.com/the-legend-of-heroes-trails-from-zero-deluxe-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "TRAILS"
+      ]
     },
     {
       "id": "CUSA13800",
@@ -21221,7 +21247,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/final-fantasy-vii/",
         "dlpsgame": "https://dlpsgame.com/final-fantasy-vii-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "FF7"
+      ]
     },
     {
       "id": "CUSA41302",
@@ -21258,7 +21287,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/metal-gear-solid-2-sons-of-liberty-master-collection/"
-      }
+      },
+      "aliases": [
+        "MGS2"
+      ]
     },
     {
       "id": "CUSA41304",
@@ -21295,7 +21327,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/metal-gear-solid-3-snake-eater-master-collection/"
-      }
+      },
+      "aliases": [
+        "MGS3"
+      ]
     },
     {
       "id": "CUSA31825",
@@ -22929,7 +22964,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/stardew-valley/",
         "dlpsgame": "https://dlpsgame.com/stardew-valley-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "STARDEW",
+        "SDV"
+      ]
     },
     {
       "id": "CUSA08793",
@@ -23042,7 +23081,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/minecraft-dungeons-ultimate-edition/",
         "dlpsgame": "https://dlpsgame.com/minecraft-dungeons-ultimate-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MCD"
+      ]
     },
     {
       "id": "CUSA44770",
@@ -27872,7 +27914,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/cuphead-the-delicious-last-course/"
-      }
+      },
+      "aliases": [
+        "CUPHEAD"
+      ]
     },
     {
       "id": "CUSA00378",
@@ -28925,7 +28970,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-legend-of-heroes-trails-of-cold-steel-iii/",
         "dlpsgame": "https://dlpsgame.com/the-legend-of-heroes-trails-of-cold-steel-3-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "TOCS3",
+        "TRAILS"
+      ]
     },
     {
       "id": "CUSA19637",
@@ -28961,7 +29010,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-legend-of-heroes-trails-of-cold-steel-iv/",
         "dlpsgame": "https://dlpsgame.com/the-legend-of-heroes-trails-of-cold-steel-4-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "TOCS4",
+        "TRAILS"
+      ]
     },
     {
       "id": "CUSA27890",
@@ -31316,7 +31369,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/monster-hunter-rise-sunbreak/",
         "dlpsgame": "https://dlpsgame.com/monster-hunter-rise-sunbreak-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MHR",
+        "MONSTERHUNTER"
+      ]
     },
     {
       "id": "CUSA37290",
@@ -32625,7 +32682,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/danganronpa-s-ultimate-summer-camp/",
         "dlpsgame": "https://dlpsgame.com/danganronpa-s-ultimate-summer-camp-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DANGANRONPA"
+      ]
     },
     {
       "id": "CUSA11980",
@@ -33443,7 +33503,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-witcher-3-wild-hunt-game-of-the-year-edition/",
         "dlpsgame": "https://dlpsgame.com/the-witcher-3-wild-hunt-game-of-the-year-edition-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "WITCHER3",
+        "TW3"
+      ]
     },
     {
       "id": "CUSA43361",
@@ -40812,7 +40876,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/monster-hunter-world-iceborne-master-edition/",
         "dlpsgame": "https://dlpsgame.com/monster-hunter-world-iceborne-master-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MHW"
+      ]
     },
     {
       "id": "CUSA41118",
@@ -42089,7 +42156,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/control-ultimate-edition/",
         "dlpsgame": "https://dlpsgame.com/control-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "CONTROL"
+      ]
     },
     {
       "id": "CUSA25432",
@@ -43371,7 +43441,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/metal-gear-solid-master-collection-vol-1/"
-      }
+      },
+      "aliases": [
+        "MGS",
+        "MGSMC"
+      ]
     },
     {
       "id": "CUSA20676",
@@ -45535,7 +45609,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/like-a-dragon-infinite-wealth-ultimate-edition/",
         "dlpsgame": "https://dlpsgame.com/like-a-dragon-infinite-wealth-ultimate-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "YAKUZA8",
+        "YAKUZA"
+      ]
     },
     {
       "id": "PPSA01839",
@@ -47832,7 +47910,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/persona-5-tactica-digital-deluxe/",
         "dlpsgame": "https://dlpsgame.com/persona-5-tactica-digital-deluxe-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "P5T"
+      ]
     },
     {
       "id": "CUSA44137",
@@ -48022,7 +48103,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/like-a-dragon-gaiden-the-man-who-erased-his-name/",
         "dlpsgame": "https://dlpsgame.com/like-a-dragon-gaiden-the-man-who-erased-his-name-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "YAKUZAGAIDEN",
+        "YAKUZA"
+      ]
     },
     {
       "id": "CUSA35471",
@@ -49678,7 +49763,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/red-dead-redemption/",
         "dlpsgame": "https://dlpsgame.com/red-dead-redemption-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "RDR"
+      ]
     },
     {
       "id": "CUSA32739",
@@ -50577,7 +50665,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/uncharted-the-nathan-drake-collection/"
-      }
+      },
+      "aliases": [
+        "UCC",
+        "UNCHARTED"
+      ]
     },
     {
       "id": "CUSA05870",
@@ -52053,7 +52145,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-legend-of-heroes-trails-into-reverie/",
         "dlpsgame": "https://dlpsgame.com/the-legend-of-heroes-trails-into-reverie-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "TRAILS"
+      ]
     },
     {
       "id": "CUSA27176",
@@ -53490,7 +53585,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/minecraft-legends/",
         "dlpsgame": "https://dlpsgame.com/minecraft-legends-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MCL"
+      ]
     },
     {
       "id": "CUSA36095",
@@ -56768,7 +56866,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/borderlands-2-vr/",
         "dlpsgame": "https://dlpsgame.com/borderlands-2-vr-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "BL2"
+      ]
     },
     {
       "id": "CUSA10455",
@@ -56805,7 +56906,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/borderlands-game-of-the-year-edition/",
         "dlpsgame": "https://dlpsgame.com/borderlands-game-of-the-year-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "BL"
+      ]
     },
     {
       "id": "CUSA14578",
@@ -57610,7 +57714,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/bioshock-the-collection/",
         "dlpsgame": "https://dlpsgame.com/bioshock-the-collection-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "BIOSHOCK"
+      ]
     },
     {
       "id": "PPSA02248",
@@ -58876,7 +58983,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/bioshock-infinite-the-complete-edition/"
-      }
+      },
+      "aliases": [
+        "BIOSHOCK"
+      ]
     },
     {
       "id": "CUSA06155",
@@ -67581,7 +67691,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/mass-effect-andromeda/",
         "dlpsgame": "https://dlpsgame.com/mass-effect-andromeda-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "MEA",
+        "ME"
+      ]
     },
     {
       "id": "CUSA19500",
@@ -67620,7 +67734,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/mass-effect-legendary-edition/",
         "dlpsgame": "https://dlpsgame.com/mass-effect-legendary-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MELE",
+        "ME"
+      ]
     },
     {
       "id": "CUSA10996",
@@ -68178,7 +68296,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/doom-eternal/",
         "dlpsgame": "https://dlpsgame.com/doom-eternal-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DOOM"
+      ]
     },
     {
       "id": "CUSA09125",
@@ -68326,7 +68447,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/final-fantasy-ix/",
         "dlpsgame": "https://dlpsgame.com/final-fantasy-ix-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "FF9"
+      ]
     },
     {
       "id": "CUSA08749",
@@ -68362,7 +68486,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/final-fantasy-viii-remastered/"
-      }
+      },
+      "aliases": [
+        "FF8"
+      ]
     },
     {
       "id": "CUSA05532",
@@ -68399,7 +68526,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/final-fantasy-xii-the-zodiac-age/",
         "dlpsgame": "https://dlpsgame.com/final-fantasy-xii-the-zodiac-age-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "FF12"
+      ]
     },
     {
       "id": "CUSA29030",
@@ -70039,7 +70169,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/yakuza-5-remastered/",
         "dlpsgame": "https://dlpsgame.com/yakuza-5-remastered-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "YAKUZA5"
+      ]
     },
     {
       "id": "CUSA15326",
@@ -70079,7 +70212,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/yakuza-4-remastered/",
         "dlpsgame": "https://dlpsgame.com/yakuza-4-remastered-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "YAKUZA4"
+      ]
     },
     {
       "id": "CUSA35005",
@@ -70382,7 +70518,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/until-dawn/",
         "dlpsgame": "https://dlpsgame.com/until-dawn-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "UD"
+      ]
     },
     {
       "id": "CUSA08344",
@@ -70418,7 +70557,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/detroit-become-human/",
         "dlpsgame": "https://dlpsgame.com/detroit-become-human-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DBH"
+      ]
     },
     {
       "id": "CUSA11100",
@@ -70681,7 +70823,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/shadow-of-the-tomb-raider-definitive-edition/",
         "dlpsgame": "https://dlpsgame.com/shadow-of-the-tomb-raider-definitive-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SOTTR",
+        "TOMBRAIDER"
+      ]
     },
     {
       "id": "CUSA15886",
@@ -71197,7 +71343,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/like-a-dragon-ishin-digital-deluxe-edition/"
-      }
+      },
+      "aliases": [
+        "YAKUZAISHIN",
+        "YAKUZA"
+      ]
     },
     {
       "id": "CUSA19638",
@@ -75080,7 +75230,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/gran-turismo-7/"
-      }
+      },
+      "aliases": [
+        "GT7"
+      ]
     },
     {
       "id": "CUSA28561",
@@ -75117,7 +75270,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/horizon-forbidden-west/",
         "dlpsgame": "https://dlpsgame.com/horizon-forbidden-west-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "HFW",
+        "HORIZON"
+      ]
     },
     {
       "id": "CUSA30890",
@@ -75414,7 +75571,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/elden-ring/"
-      }
+      },
+      "aliases": [
+        "ER"
+      ]
     },
     {
       "id": "CUSA07953",
@@ -75490,7 +75650,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ratchet-clank/",
         "dlpsgame": "https://dlpsgame.com/ratchet-and-clank-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "RAC"
+      ]
     },
     {
       "id": "CUSA25613",
@@ -76056,7 +76219,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/uncharted-the-lost-legacy/",
         "dlpsgame": "https://dlpsgame.com/uncharted-the-lost-legacy-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "ULL",
+        "UNCHARTED"
+      ]
     },
     {
       "id": "CUSA15145",
@@ -76542,7 +76709,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/final-fantasy-vii-remake/",
         "dlpsgame": "https://dlpsgame.com/final-fantasy-vii-remake-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "FF7R",
+        "FF7"
+      ]
     },
     {
       "id": "CUSA04236",
@@ -76770,7 +76941,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/alan-wake-remastered/",
         "dlpsgame": "https://dlpsgame.com/alan-wake-remastered-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "ALANWAKE"
+      ]
     },
     {
       "id": "CUSA25494",
@@ -77034,7 +77208,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/hitman-3/",
         "dlpsgame": "https://dlpsgame.com/hitman-3-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "HITMAN3"
+      ]
     },
     {
       "id": "CUSA27305",
@@ -77107,7 +77284,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/tales-of-arise/",
         "dlpsgame": "https://dlpsgame.com/tales-of-arise-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "TOA"
+      ]
     },
     {
       "id": "CUSA15010",
@@ -77836,7 +78016,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/lost-judgment/",
         "dlpsgame": "https://dlpsgame.com/lost-judgment-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "JUDGMENT"
+      ]
     },
     {
       "id": "CUSA10518",
@@ -78404,7 +78587,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/persona-5-royal/"
-      }
+      },
+      "aliases": [
+        "P5R"
+      ]
     },
     {
       "id": "CUSA08016",
@@ -79165,7 +79351,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/spyro-reignited-trilogy/",
         "dlpsgame": "https://dlpsgame.com/spyro-reignited-trilogy-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SPYRO"
+      ]
     },
     {
       "id": "PPSA02867",
@@ -79831,7 +80020,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/battlefield-hardline/",
         "dlpsgame": "https://dlpsgame.com/battlefield-hardline-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "BFH"
+      ]
     },
     {
       "id": "CUSA13760",
@@ -80396,7 +80588,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/battlefield-v/",
         "dlpsgame": "https://dlpsgame.com/battlefield-v-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "BF5",
+        "BFV"
+      ]
     },
     {
       "id": "CUSA20552",
@@ -80546,7 +80742,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/dragon-quest-xi-s-echoes-of-an-elusive-age-definitive-edition/",
         "dlpsgame": "https://dlpsgame.com/dragon-quest-xi-s-echoes-of-an-elusive-age-definitive-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DQ11",
+        "DQXI"
+      ]
     },
     {
       "id": "CUSA18659",
@@ -80619,7 +80819,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/persona-5-dancing-in-starlight/",
         "dlpsgame": "https://dlpsgame.com/persona-5-dancing-in-starlight-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "P5D"
+      ]
     },
     {
       "id": "CUSA12056",
@@ -80954,7 +81157,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/hitman-2-gold-edition/"
-      }
+      },
+      "aliases": [
+        "HITMAN2"
+      ]
     },
     {
       "id": "CUSA18676",
@@ -81136,7 +81342,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/ghost-of-tsushima/"
-      }
+      },
+      "aliases": [
+        "GOT"
+      ]
     },
     {
       "id": "CUSA18522",
@@ -81281,7 +81490,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/cyberpunk-2077/",
         "dlpsgame": "https://dlpsgame.com/cyberpunk-2077-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "CP2077"
+      ]
     },
     {
       "id": "CUSA17374",
@@ -81391,7 +81603,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/crash-bandicoot-4-its-about-time/",
         "dlpsgame": "https://dlpsgame.com/crash-bandicoot-4-its-about-time-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "CRASH4"
+      ]
     },
     {
       "id": "CUSA13584",
@@ -81657,7 +81872,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-last-of-us-part-ii/",
         "dlpsgame": "https://dlpsgame.com/the-last-of-us-part-2-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "TLOU2"
+      ]
     },
     {
       "id": "CUSA13229",
@@ -82402,7 +82620,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nioh-2/",
         "dlpsgame": "https://dlpsgame.com/nioh-2-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NIOH2"
+      ]
     },
     {
       "id": "PPSA02966",
@@ -82731,7 +82952,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/yakuza-like-a-dragon/",
         "dlpsgame": "https://dlpsgame.com/yakuza-like-a-dragon-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "YLAD",
+        "YAKUZA"
+      ]
     },
     {
       "id": "CUSA04273",
@@ -83599,7 +83824,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/dark-souls-iii-the-fire-fades-edition/"
-      }
+      },
+      "aliases": [
+        "DS3"
+      ]
     },
     {
       "id": "CUSA03388",
@@ -83636,7 +83864,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/dark-souls-iii/",
         "dlpsgame": "https://dlpsgame.com/dark-souls-3-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "DS3"
+      ]
     },
     {
       "id": "CUSA06963",
@@ -83895,7 +84126,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/danganronpa-v3-killing-harmony/",
         "dlpsgame": "https://dlpsgame.com/danganronpa-v3-killing-harmony-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DRV3",
+        "DANGANRONPA"
+      ]
     },
     {
       "id": "PPSA03010",
@@ -83933,7 +84168,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/danganronpa-another-episode-ultra-despair-girls/",
         "dlpsgame": "https://dlpsgame.com/danganronpa-another-episode-ultra-despair-girls-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "DANGANRONPA"
+      ]
     },
     {
       "id": "CUSA05385",
@@ -84047,7 +84285,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/cyber-danganronpa-vr-the-class-trial/",
         "dlpsgame": "https://dlpsgame.com/cyber-danganronpa-vr-the-class-trial-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "DANGANRONPA"
+      ]
     },
     {
       "id": "PPSA03015",
@@ -84271,7 +84512,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/crash-team-racing-nitro-fueled/",
         "dlpsgame": "https://dlpsgame.com/crash-team-racing-nitro-fueled-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "CTR",
+        "CRASH"
+      ]
     },
     {
       "id": "CUSA01202",
@@ -84937,7 +85182,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/kingdom-hearts-iii/",
         "dlpsgame": "https://dlpsgame.com/kingdom-hearts-3-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "KH3",
+        "KH"
+      ]
     },
     {
       "id": "CUSA06548",
@@ -85087,7 +85336,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/days-gone/",
         "dlpsgame": "https://dlpsgame.com/days-gone-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DG"
+      ]
     },
     {
       "id": "PPSA03048",
@@ -85154,7 +85406,10 @@
       "languages": [
         "English"
       ],
-      "links": {}
+      "links": {},
+      "aliases": [
+        "BL3"
+      ]
     },
     {
       "id": "CUSA14219",
@@ -85265,7 +85520,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/red-dead-redemption-2/",
         "dlpsgame": "https://dlpsgame.com/red-dead-redemption-2-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "RDR2",
+        "RDR"
+      ]
     },
     {
       "id": "PPSA03053",
@@ -85564,7 +85823,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/celeste/",
         "dlpsgame": "https://dlpsgame.com/celeste-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "CELESTE"
+      ]
     },
     {
       "id": "CUSA07177",
@@ -85900,7 +86162,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/dark-souls-remastered/",
         "dlpsgame": "https://dlpsgame.com/dark-souls-remastered-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DS1",
+        "DSR"
+      ]
     },
     {
       "id": "CUSA03729",
@@ -85975,7 +86241,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/catherine-full-body/",
         "dlpsgame": "https://dlpsgame.com/catherine-full-body-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "CATHERINE"
+      ]
     },
     {
       "id": "CUSA03819",
@@ -86302,7 +86571,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sekiro-shadows-die-twice/",
         "dlpsgame": "https://dlpsgame.com/sekiro-shadows-die-twice-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SEKIRO"
+      ]
     },
     {
       "id": "CUSA02297",
@@ -86783,7 +87055,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/death-stranding/",
         "dlpsgame": "https://dlpsgame.com/death-stranding-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DS"
+      ]
     },
     {
       "id": "CUSA10483",
@@ -86897,7 +87172,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/marvels-spider-man/",
         "dlpsgame": "https://dlpsgame.com/marvels-spider-man-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SPIDERMAN",
+        "SM"
+      ]
     },
     {
       "id": "CUSA00459",
@@ -86971,7 +87250,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/borderlands-the-handsome-collection/",
         "dlpsgame": "https://dlpsgame.com/borderlands-the-handsome-collection-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "BL2",
+        "BL"
+      ]
     },
     {
       "id": "PPSA03104",
@@ -87408,7 +87691,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/bioshock-infinite/"
-      }
+      },
+      "aliases": [
+        "BIOSHOCK"
+      ]
     },
     {
       "id": "CUSA07036",
@@ -89683,7 +89969,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/doom/",
         "dlpsgame": "https://dlpsgame.com/doom-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "DOOM"
+      ]
     },
     {
       "id": "CUSA04501",
@@ -91472,7 +91761,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/terraria/",
         "dlpsgame": "https://dlpsgame.com/terraria-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "TERRARIA"
+      ]
     },
     {
       "id": "CUSA07511",
@@ -91548,7 +91840,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/dark-souls-ii-scholar-of-the-first-sin/",
         "dlpsgame": "https://dlpsgame.com/dark-souls-2-scholar-of-the-first-sin-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "DS2"
+      ]
     },
     {
       "id": "CUSA03305",
@@ -91620,7 +91915,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/destiny-2/"
-      }
+      },
+      "aliases": [
+        "DESTINY2"
+      ]
     },
     {
       "id": "CUSA00219",
@@ -91695,7 +91993,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/dragon-age-inquisition/",
         "dlpsgame": "https://dlpsgame.com/dragon-age-inquisition-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "DAI",
+        "DA"
+      ]
     },
     {
       "id": "CUSA01140",
@@ -91733,7 +92035,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/metal-gear-solid-v-the-phantom-pain/",
         "dlpsgame": "https://dlpsgame.com/metal-gear-solid-v-the-phantom-pain-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "MGSV"
+      ]
     },
     {
       "id": "CUSA05751",
@@ -91807,7 +92112,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/fallout-4/"
-      }
+      },
+      "aliases": [
+        "FO4"
+      ]
     },
     {
       "id": "CUSA03642",
@@ -92071,7 +92379,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/nioh-the-complete-edition/"
-      }
+      },
+      "aliases": [
+        "NIOH"
+      ]
     },
     {
       "id": "CUSA03858",
@@ -92145,7 +92456,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-last-of-us-remastered/",
         "dlpsgame": "https://dlpsgame.com/the-last-of-us-remastered-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "TLOU"
+      ]
     },
     {
       "id": "CUSA02582",
@@ -92259,7 +92573,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/battlefield-1/",
         "dlpsgame": "https://dlpsgame.com/battlefield-1-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "BF1"
+      ]
     },
     {
       "id": "CUSA05969",
@@ -92367,7 +92684,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/killzone-shadow-fall/",
         "dlpsgame": "https://dlpsgame.com/killzone-shadow-fall-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "KZ",
+        "KZSF"
+      ]
     },
     {
       "id": "CUSA08006",
@@ -92518,7 +92839,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/final-fantasy-xv/",
         "dlpsgame": "https://dlpsgame.com/final-fantasy-xv-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "FF15"
+      ]
     },
     {
       "id": "CUSA07402",
@@ -92555,7 +92879,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/crash-bandicoot-n-sane-trilogy/",
         "dlpsgame": "https://dlpsgame.com/crash-bandicoot-n-sane-trilogy-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "CRASH"
+      ]
     },
     {
       "id": "CUSA03220",
@@ -92592,7 +92919,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/gran-turismo-sport/",
         "dlpsgame": "https://dlpsgame.com/gran-turismo-sport-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "GTS"
+      ]
     },
     {
       "id": "CUSA00575",
@@ -92630,7 +92960,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/infamous-first-light/",
         "dlpsgame": "https://dlpsgame.com/infamous-first-light-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "INFAMOUS",
+        "IFL"
+      ]
     },
     {
       "id": "CUSA00223",
@@ -92668,7 +93002,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/infamous-second-son/",
         "dlpsgame": "https://dlpsgame.com/infamous-second-son-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "INFAMOUS",
+        "ISS"
+      ]
     },
     {
       "id": "CUSA03245",
@@ -92896,7 +93234,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nier-automata/",
         "dlpsgame": "https://dlpsgame.com/nier-automata-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "NIER"
+      ]
     },
     {
       "id": "CUSA00093",
@@ -93292,7 +93633,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/uncharted-4-a-thiefs-end/",
         "dlpsgame": "https://dlpsgame.com/uncharted-4-a-thiefs-end-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "UC4",
+        "UNCHARTED"
+      ]
     },
     {
       "id": "CUSA10299",
@@ -93368,7 +93713,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/battlefield-4/",
         "dlpsgame": "https://dlpsgame.com/battlefield-4-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "BF4"
+      ]
     },
     {
       "id": "CUSA09778",
@@ -93516,7 +93864,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/monster-hunter-world/"
-      }
+      },
+      "aliases": [
+        "MHW"
+      ]
     },
     {
       "id": "CUSA05904",
@@ -93587,7 +93938,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-elder-scrolls-v-skyrim-special-edition/",
         "dlpsgame": "https://dlpsgame.com/the-elder-scrolls-v-skyrim-special-edition-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "SKYRIM",
+        "TES5"
+      ]
     },
     {
       "id": "CUSA57490",
@@ -93699,7 +94054,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/yakuza-0/",
         "dlpsgame": "https://dlpsgame.com/yakuza-0-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "YAKUZA0"
+      ]
     },
     {
       "id": "CUSA08325",
@@ -94040,7 +94398,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/horizon-zero-dawn-complete-edition/",
         "dlpsgame": "https://dlpsgame.com/horizon-zero-dawn-complete-edition-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "HZD",
+        "HORIZON"
+      ]
     },
     {
       "id": "CUSA05469",
@@ -94115,7 +94477,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/persona-5/",
         "dlpsgame": "https://dlpsgame.com/persona-5-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "P5"
+      ]
     },
     {
       "id": "PPSA03313",
@@ -94369,7 +94734,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/the-witcher-3-wild-hunt-complete-edition/",
         "dlpsgame": "https://dlpsgame.com/the-witcher-3-wild-hunt-complete-edition-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "WITCHER3",
+        "TW3"
+      ]
     },
     {
       "id": "PPSA03321",
@@ -94707,7 +95076,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/tales-of-berseria/",
         "dlpsgame": "https://dlpsgame.com/tales-of-berseria-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "TOB"
+      ]
     },
     {
       "id": "CUSA04917",
@@ -95410,7 +95782,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/minecraft/"
-      }
+      },
+      "aliases": [
+        "MC"
+      ]
     },
     {
       "id": "CUSA07993",
@@ -95522,7 +95897,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/yakuza-6-the-song-of-life/",
         "dlpsgame": "https://dlpsgame.com/yakuza-6-the-song-of-life-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "YAKUZA6"
+      ]
     },
     {
       "id": "CUSA09072",
