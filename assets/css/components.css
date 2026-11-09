@@ -272,6 +272,31 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Alias short-name chips (display + search-only, e.g. "BB" for Bloodborne) */
+.game-card__aliases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 2px 0;
+}
+
+.alias-chip {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--surface-hover);
+  color: var(--color-text-secondary);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge--alias {
+  border-style: dashed;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Card removal animation */
 .card-removing {
   animation: cardRemove 0.35s var(--ease-out) forwards !important;

@@ -134,6 +134,7 @@ const UI = {
           <h3 class="game-card__title" title="${game.title}">${game.title}</h3>
           ${size ? `<span class="game-card__size">${size}</span>` : ''}
         </div>
+        ${(game.aliases || []).length ? `<p class="game-card__aliases">${game.aliases.map(a => `<span class="alias-chip">${a}</span>`).join('')}</p>` : ''}
         <p class="game-card__meta">${meta}</p>
         ${genres.length ? `<p class="game-card__genres">${genres.join(' \u2022 ')}</p>` : ''}
       </div>
@@ -261,6 +262,7 @@ const UI = {
           <p class="detail__id">${game.id}</p>
           <div class="detail__badges">
             ${game.region ? `<span class="badge">${game.region}</span>` : ''}
+            ${(game.aliases || []).map(a => `<span class="badge badge--alias" title="Short name — usable in search">${a}</span>`).join('')}
             ${Array.isArray(game.genre) ? game.genre.map(g => `<span class="badge">${g}</span>`).join('') : ''}
           </div>
           ${game.description ? `<p class="detail__description">${game.description}</p>` : ''}

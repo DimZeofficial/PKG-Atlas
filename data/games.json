@@ -112,7 +112,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-fc-27/",
         "dlpsgame": "https://dlpsgame.com/ea-sports-fc-27-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "FC27"
+      ]
     },
     {
       "id": "CUSA47229",
@@ -5884,7 +5887,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-racing-crossworlds/",
         "dlpsgame": "https://dlpsgame.com/sonic-racing-crossworlds-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SRCW",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA52342",
@@ -5921,7 +5928,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-fc-26/",
         "dlpsgame": "https://dlpsgame.com/ea-sports-fc-26-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "FC26"
+      ]
     },
     {
       "id": "CUSA23943",
@@ -6339,7 +6349,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k26/",
         "dlpsgame": "https://dlpsgame.com/nba-2k26-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NBA26"
+      ]
     },
     {
       "id": "CUSA39420",
@@ -10451,19 +10464,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/aerialknights-never-yield/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/aerialknights-never-yield/",
         "dlpsgame": "https://dlpsgame.com/aerial-knights-never-yield-ps4-pkg/"
       }
     },
@@ -13302,20 +13308,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/amamane-2-2/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/amamane-2-2/"
-      }
+      "links": {}
     },
     {
       "id": "PPSA00797",
@@ -14736,7 +14734,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/madden-nfl-20/",
         "dlpsgame": "https://dlpsgame.com/madden-nfl-20-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MADDEN20"
+      ]
     },
     {
       "id": "CUSA11539",
@@ -14913,20 +14914,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/esp-rade-psi/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/esp-rade-psi/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA23750",
@@ -18869,19 +18862,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/la-noire/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/la-noire/",
         "dlpsgame": "https://dlpsgame.com/la-noire-ps4-download-free/"
       }
     },
@@ -20896,20 +20882,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/wer-wei-denn-sowas-das-3-spiel/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/wer-wei-denn-sowas-das-3-spiel/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA19597",
@@ -21010,19 +20988,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/fist-forged-in-shadow-torch/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/fist-forged-in-shadow-torch/",
         "dlpsgame": "https://dlpsgame.com/fist-forged-in-shadow-torch-ps4-pkg/"
       }
     },
@@ -23527,7 +23498,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-x-shadow-generations/",
         "dlpsgame": "https://dlpsgame.com/sonic-x-shadow-generations-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SXSG",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA32734",
@@ -24576,7 +24551,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-fc-25/",
         "dlpsgame": "https://dlpsgame.com/ea-sports-fc-25-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "FC25"
+      ]
     },
     {
       "id": "CUSA12289",
@@ -25218,7 +25196,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k25/",
         "dlpsgame": "https://dlpsgame.com/nba-2k25-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NBA25"
+      ]
     },
     {
       "id": "CUSA00081",
@@ -25391,19 +25372,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/stalker-legends-of-the-zone-trilogy/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/stalker-legends-of-the-zone-trilogy/",
         "dlpsgame": "https://dlpsgame.com/stalker-legends-of-the-zone-trilogy-ps4-pkg/"
       }
     },
@@ -26073,20 +26047,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/tsukihime-a-piece-of-blue-glass-moon-/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/tsukihime-a-piece-of-blue-glass-moon-/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA05297",
@@ -26346,7 +26312,10 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-madden-nfl-25/"
-      }
+      },
+      "aliases": [
+        "MADDEN25"
+      ]
     },
     {
       "id": "CUSA40635",
@@ -26564,7 +26533,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-black-ops-6/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-black-ops-6-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "BO6",
+        "COD"
+      ]
     },
     {
       "id": "CUSA11827",
@@ -26712,7 +26685,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/far-cry-new-dawn/",
         "dlpsgame": "https://dlpsgame.com/far-cry-new-dawn-deluxe-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "FCND",
+        "FC"
+      ]
     },
     {
       "id": "CUSA12828",
@@ -27817,7 +27794,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/resident-evil-directors-cut/",
         "dlpsgame": "https://dlpsgame.com/resident-evil-directors-cut-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "REDC",
+        "RE"
+      ]
     },
     {
       "id": "CUSA04583",
@@ -30343,7 +30324,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/far-cry-4/",
         "dlpsgame": "https://dlpsgame.com/far-cry-4-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "FARCRY4",
+        "FC"
+      ]
     },
     {
       "id": "CUSA36828",
@@ -33262,20 +33247,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/rki/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/rki/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA10997",
@@ -37845,20 +37822,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/resurs/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/resurs/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA17346",
@@ -41773,20 +41742,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/rock-of-ages-3-make-amp-break/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/rock-of-ages-3-make-amp-break/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA28605",
@@ -42203,7 +42164,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/madden-nfl-24/",
         "dlpsgame": "https://dlpsgame.com/madden-nfl-24-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MADDEN24"
+      ]
     },
     {
       "id": "CUSA35521",
@@ -42686,20 +42650,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/just-shapes-amp-beats/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/just-shapes-amp-beats/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA30709",
@@ -42722,20 +42678,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/puzzle-bobble-2xbust-a-move-2-arcade-edition-amp-puzzle-bobble-3bust-a-move-3-s-tribute/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/puzzle-bobble-2xbust-a-move-2-arcade-edition-amp-puzzle-bobble-3bust-a-move-3-s-tribute/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA30526",
@@ -45761,20 +45709,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/fatesamurai-remnant-digital-deluxe-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/fatesamurai-remnant-digital-deluxe-edition/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA42998",
@@ -45999,7 +45939,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/naruto-x-boruto-ultimate-ninja-storm-connections/",
         "dlpsgame": "https://dlpsgame.com/naruto-x-boruto-ultimate-ninja-storm-connections-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NSC",
+        "NINJA STORM"
+      ]
     },
     {
       "id": "CUSA40905",
@@ -46503,20 +46447,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/skylar-amp-plux-adventure-on-clover-island/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/skylar-amp-plux-adventure-on-clover-island/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA39369",
@@ -47739,7 +47675,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-modern-warfare-iii/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-modern-warfare-3-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MW3",
+        "COD"
+      ]
     },
     {
       "id": "CUSA36375",
@@ -49089,7 +49029,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k24/",
         "dlpsgame": "https://dlpsgame.com/nba-2k24-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NBA24"
+      ]
     },
     {
       "id": "CUSA33700",
@@ -49771,7 +49714,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-superstars-deluxe-edition/",
         "dlpsgame": "https://dlpsgame.com/sonic-superstars-deluxe-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SSR",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA27480",
@@ -50257,19 +50204,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/gungrave-gore/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/gungrave-gore/",
         "dlpsgame": "https://dlpsgame.com/gungrave-gore-ps4-pkg/"
       }
     },
@@ -50407,20 +50347,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/pt/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/pt/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA05202",
@@ -51207,7 +51139,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/assassins-creed-mirage/",
         "dlpsgame": "https://dlpsgame.com/assassins-creed-mirage-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "ACM",
+        "AC"
+      ]
     },
     {
       "id": "CUSA29504",
@@ -51589,7 +51525,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-fc-24/",
         "dlpsgame": "https://dlpsgame.com/ea-sports-fc-24-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "FC24"
+      ]
     },
     {
       "id": "CUSA40449",
@@ -52795,7 +52734,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/one-piece-pirate-warriors-4/",
         "dlpsgame": "https://dlpsgame.com/one-piece-pirate-warriors-4-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "OPPW4",
+        "OP"
+      ]
     },
     {
       "id": "CUSA32600",
@@ -54418,7 +54361,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/south-park-the-fractured-but-whole/",
         "dlpsgame": "https://dlpsgame.com/south-park-the-fractured-but-whole-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "SPFBW",
+        "SP"
+      ]
     },
     {
       "id": "CUSA04768",
@@ -54456,7 +54403,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/south-park-the-stick-of-truth/",
         "dlpsgame": "https://dlpsgame.com/south-park-the-stick-of-truth-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "SPSOT",
+        "SP"
+      ]
     },
     {
       "id": "CUSA13778",
@@ -54831,7 +54782,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-colors-ultimate/",
         "dlpsgame": "https://dlpsgame.com/sonic-colors-ultimate-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SCU",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA05637",
@@ -54867,7 +54822,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-forces/",
         "dlpsgame": "https://dlpsgame.com/sonic-forces-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "SF",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA07023",
@@ -54903,7 +54862,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-mania/",
         "dlpsgame": "https://dlpsgame.com/sonic-mania-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "SMANIA",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA07023",
@@ -54941,7 +54904,12 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-mania-plus/",
         "dlpsgame": "https://dlpsgame.com/sonic-mania-plus-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SMP",
+        "SMANIA",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA00874",
@@ -55433,7 +55401,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-ghosts/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-ghosts-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "CODGHOSTS",
+        "COD"
+      ]
     },
     {
       "id": "CUSA03522",
@@ -55469,7 +55441,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-modern-warfare-remastered/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-modern-warfare-remastered-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "MWR",
+        "COD"
+      ]
     },
     {
       "id": "CUSA05969",
@@ -55505,7 +55481,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-wwii-digital-deluxe/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-ww2-digital-deluxe-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "CODWWII",
+        "COD"
+      ]
     },
     {
       "id": "CUSA28866",
@@ -55728,7 +55708,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-advanced-warfare-atlas-limited-edition/"
-      }
+      },
+      "aliases": [
+        "AW",
+        "COD"
+      ]
     },
     {
       "id": "CUSA02290",
@@ -55764,7 +55748,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-black-ops-iii/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-black-ops-3-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "BO3",
+        "COD"
+      ]
     },
     {
       "id": "CUSA20653",
@@ -57273,7 +57261,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/bloodborne-complete-edition/",
         "dlpsgame": "https://dlpsgame.com/bloodborne-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "BB"
+      ]
     },
     {
       "id": "CUSA26608",
@@ -57644,20 +57635,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/bittrip-presents-runner2-future-legend-of-rhythm-alien/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/bittrip-presents-runner2-future-legend-of-rhythm-alien/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA28262",
@@ -58700,20 +58683,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/bibi-amp-tina-at-the-horse-farm/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/bibi-amp-tina-at-the-horse-farm/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA29948",
@@ -59043,20 +59018,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/battle-garegga-rev2016/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/battle-garegga-rev2016/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA13712",
@@ -60448,7 +60415,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-origins-plus/",
         "dlpsgame": "https://dlpsgame.com/sonic-origins-plus-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SOP",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA17861",
@@ -60712,7 +60683,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/assassins-creed-chronicles-trilogy-pack/"
-      }
+      },
+      "aliases": [
+        "ACC",
+        "AC"
+      ]
     },
     {
       "id": "CUSA05855",
@@ -60749,7 +60724,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/assassins-creed-origins/",
         "dlpsgame": "https://dlpsgame.com/assassins-creed-origins-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "ACO",
+        "AC"
+      ]
     },
     {
       "id": "CUSA10158",
@@ -60785,7 +60764,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/assassins-creed-rogue-remastered/",
         "dlpsgame": "https://dlpsgame.com/assassins-creed-rogue-remastered-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "ACRG",
+        "AC"
+      ]
     },
     {
       "id": "CUSA02389",
@@ -60820,7 +60803,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/assassins-creed-syndicate/"
-      }
+      },
+      "aliases": [
+        "ACS",
+        "AC"
+      ]
     },
     {
       "id": "CUSA10860",
@@ -61673,20 +61660,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/angry-video-game-nerd-i-amp-ii-deluxe/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/angry-video-game-nerd-i-amp-ii-deluxe/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA29677",
@@ -64826,20 +64805,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/slice-dice-amp-rice/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/slice-dice-amp-rice/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA18065",
@@ -67824,20 +67795,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/ghost-10/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/ghost-10/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA08416",
@@ -68663,7 +68626,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-ufc/",
         "dlpsgame": "https://dlpsgame.com/ea-sports-ufc-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "UFC1"
+      ]
     },
     {
       "id": "CUSA01968",
@@ -68700,7 +68666,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-ufc-2/",
         "dlpsgame": "https://dlpsgame.com/ea-sports-ufc-2-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "UFC2"
+      ]
     },
     {
       "id": "CUSA06536",
@@ -68737,7 +68706,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-ufc-3/",
         "dlpsgame": "https://dlpsgame.com/ea-sports-ufc-3-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "UFC3"
+      ]
     },
     {
       "id": "CUSA35720",
@@ -68850,7 +68822,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ea-sports-ufc-4/",
         "dlpsgame": "https://dlpsgame.com/ea-sports-ufc-4-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "UFC4"
+      ]
     },
     {
       "id": "CUSA16400",
@@ -69230,7 +69205,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k17/",
         "dlpsgame": "https://dlpsgame.com/nba-2k17-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "NBA17"
+      ]
     },
     {
       "id": "CUSA29578",
@@ -69342,7 +69320,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k19/",
         "dlpsgame": "https://dlpsgame.com/nba-2k19-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NBA19"
+      ]
     },
     {
       "id": "CUSA16310",
@@ -69379,7 +69360,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k20/",
         "dlpsgame": "https://dlpsgame.com/nba-2k20-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NBA20"
+      ]
     },
     {
       "id": "CUSA28234",
@@ -69416,7 +69400,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k22/",
         "dlpsgame": "https://dlpsgame.com/nba-2k22-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NBA22"
+      ]
     },
     {
       "id": "CUSA33074",
@@ -69453,7 +69440,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k23/",
         "dlpsgame": "https://dlpsgame.com/nba-2k23-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NBA23"
+      ]
     },
     {
       "id": "CUSA19595",
@@ -70006,19 +69996,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/guilty-gear-strive-/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/guilty-gear-strive-/",
         "dlpsgame": "https://dlpsgame.com/guilty-gear-strive-ps4-pkg/"
       }
     },
@@ -70247,7 +70230,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/resident-evil-2-deluxe-edition/",
         "dlpsgame": "https://dlpsgame.com/resident-evil-2-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "RE2",
+        "RE"
+      ]
     },
     {
       "id": "CUSA03627",
@@ -70467,7 +70454,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-black-ops-4/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-black-ops-4-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "BO4",
+        "COD"
+      ]
     },
     {
       "id": "CUSA00035",
@@ -71127,20 +71118,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/hana-type-b/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/hana-type-b/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA34008",
@@ -71310,20 +71293,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/pocky-amp-rocky-reshrined/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/pocky-amp-rocky-reshrined/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA13660",
@@ -72156,7 +72131,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/one-piece-odyssey/",
         "dlpsgame": "https://dlpsgame.com/one-piece-odyssey-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "OPOD",
+        "OP"
+      ]
     },
     {
       "id": "CUSA20309",
@@ -72454,7 +72433,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/sonic-frontiers/",
         "dlpsgame": "https://dlpsgame.com/sonic-frontiers-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "SFR",
+        "SONIC"
+      ]
     },
     {
       "id": "CUSA20595",
@@ -73362,7 +73345,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-modern-warfare-ii/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-modern-warfare-2-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MW2",
+        "COD"
+      ]
     },
     {
       "id": "CUSA25269",
@@ -73951,20 +73938,16 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/god-of-war-ragnark/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/god-of-war-ragnark/"
-      }
+      "links": {},
+      "aliases": [
+        "GOWR",
+        "GOW"
+      ]
     },
     {
       "id": "CUSA29369",
@@ -74757,7 +74740,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-modern-warfare/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-modern-warfare-remastered-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "MW",
+        "COD"
+      ]
     },
     {
       "id": "CUSA35013",
@@ -76967,7 +76954,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-vanguard/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-vanguard-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "CODV",
+        "COD"
+      ]
     },
     {
       "id": "CUSA25259",
@@ -77152,7 +77143,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-black-ops-cold-war/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-black-ops-cold-war-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "BOCW",
+        "COD"
+      ]
     },
     {
       "id": "CUSA24853",
@@ -77265,7 +77260,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/far-cry-6/"
-      }
+      },
+      "aliases": [
+        "FARCRY6",
+        "FC"
+      ]
     },
     {
       "id": "CUSA18017",
@@ -77288,21 +77287,18 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/resident-evil-village-gold-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/resident-evil-village-gold-edition/",
         "dlpsgame": "https://dlpsgame.com/resident-evil-village-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "RE8",
+        "RE"
+      ]
     },
     {
       "id": "CUSA08300",
@@ -77528,7 +77524,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-modern-warfare-2-campaign-remastered/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-modern-warfare-2-campaign-remastered-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "MW2CR",
+        "COD"
+      ]
     },
     {
       "id": "CUSA02718",
@@ -77676,7 +77676,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/grand-theft-auto-vice-city/",
         "dlpsgame": "https://dlpsgame.com/grand-theft-auto-vice-city-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "GTA VC",
+        "GTA"
+      ]
     },
     {
       "id": "CUSA01845",
@@ -77791,7 +77795,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k21/",
         "dlpsgame": "https://dlpsgame.com/nba-2k21-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "NBA21"
+      ]
     },
     {
       "id": "CUSA28185",
@@ -80010,7 +80017,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/assassins-creed-odyssey-ultimate-edition/",
         "dlpsgame": "https://dlpsgame.com/assassins-creed-odyssey-ultimate-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "ACOD",
+        "AC"
+      ]
     },
     {
       "id": "CUSA17453",
@@ -80865,7 +80876,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/grand-theft-auto-v/",
         "dlpsgame": "https://dlpsgame.com/grand-theft-auto-v-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "GTA 5",
+        "GTA"
+      ]
     },
     {
       "id": "PPSA02919",
@@ -81144,21 +81159,18 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/assassins-creed-valhalla-ultimate-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/assassins-creed-valhalla-ultimate-edition/",
         "dlpsgame": "https://dlpsgame.com/assassins-creed-valhalla-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "ACV",
+        "AC"
+      ]
     },
     {
       "id": "CUSA14898",
@@ -81451,7 +81463,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/fifa-21/",
         "dlpsgame": "https://dlpsgame.com/fifa-21-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "FIFA21"
+      ]
     },
     {
       "id": "CUSA16832",
@@ -81564,7 +81579,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/watch-dogs-legion/",
         "dlpsgame": "https://dlpsgame.com/watch-dogs-legion-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "WDL",
+        "WD"
+      ]
     },
     {
       "id": "CUSA12563",
@@ -81898,20 +81917,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/mega-man-zerozx-legacy-collection/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/mega-man-zerozx-legacy-collection/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA14048",
@@ -81973,19 +81984,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/deemo-reborn-/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/deemo-reborn-/",
         "dlpsgame": "https://dlpsgame.com/deemo-reborn-ps4-pkg/"
       }
     },
@@ -82419,20 +82423,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/yo-kai-watch-4/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/yo-kai-watch-4/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA12916",
@@ -82810,7 +82806,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/dragon-ball-z-kakarot/",
         "dlpsgame": "https://dlpsgame.com/dragon-ball-z-kakarot-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DBK",
+        "DB"
+      ]
     },
     {
       "id": "CUSA04513",
@@ -83103,7 +83103,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/resident-evil-3/",
         "dlpsgame": "https://dlpsgame.com/resident-evil-3-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "RE3",
+        "RE"
+      ]
     },
     {
       "id": "CUSA03291",
@@ -84849,19 +84853,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/devil-may-cry-5-deluxe-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/devil-may-cry-5-deluxe-edition/",
         "dlpsgame": "https://dlpsgame.com/devil-may-cry-5-ps4-pkg/"
       }
     },
@@ -85152,20 +85149,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/borderlands-3-ultimate-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/borderlands-3-ultimate-edition/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA14219",
@@ -85833,7 +85822,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-advanced-warfare/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-advanced-warfare-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "AW",
+        "COD"
+      ]
     },
     {
       "id": "CUSA12027",
@@ -87151,20 +87144,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/blood-bowl-2-legendary-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/blood-bowl-2-legendary-edition/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA01437",
@@ -87718,7 +87703,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/naruto-shippuden-ultimate-ninja-storm-trilogy/",
         "dlpsgame": "https://dlpsgame.com/naruto-shippuden-ultimate-ninja-storm-trilogy-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "NST",
+        "NINJA STORM"
+      ]
     },
     {
       "id": "CUSA05174",
@@ -88931,20 +88920,16 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/assassins-creed-iv-black-flag-gold-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/assassins-creed-iv-black-flag-gold-edition/"
-      }
+      "links": {},
+      "aliases": [
+        "AC4",
+        "AC"
+      ]
     },
     {
       "id": "CUSA03161",
@@ -90722,20 +90707,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/abz/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/abz/"
-      }
+      "links": {}
     },
     {
       "id": "PPSA03216",
@@ -92243,7 +92220,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/god-of-war/",
         "dlpsgame": "https://dlpsgame.com/god-of-war-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "GOW"
+      ]
     },
     {
       "id": "CUSA02429",
@@ -92315,7 +92295,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/call-of-duty-wwii/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-wwii-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "CODWWII",
+        "COD"
+      ]
     },
     {
       "id": "CUSA00900",
@@ -92337,21 +92321,17 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/bloodborne-game-of-the-year-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/bloodborne-game-of-the-year-edition/",
         "dlpsgame": "https://dlpsgame.com/bloodborne-game-of-the-year-edition-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "BB"
+      ]
     },
     {
       "id": "CUSA00190",
@@ -92423,7 +92403,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/fifa-18/",
         "dlpsgame": "https://dlpsgame.com/fifa-18-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "FIFA18"
+      ]
     },
     {
       "id": "CUSA08014",
@@ -92798,7 +92781,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/nba-2k18/",
         "dlpsgame": "https://dlpsgame.com/nba-2k18-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "NBA18"
+      ]
     },
     {
       "id": "CUSA01111",
@@ -93007,21 +92993,18 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/call-of-duty-infinite-warfare/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/call-of-duty-infinite-warfare/",
         "dlpsgame": "https://dlpsgame.com/call-of-duty-infinite-warfare-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "IW",
+        "COD"
+      ]
     },
     {
       "id": "CUSA02516",
@@ -93081,20 +93064,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/fateextella-the-umbral-star/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/fateextella-the-umbral-star/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA00640",
@@ -93239,7 +93214,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/assassins-creed-freedom-cry/"
-      }
+      },
+      "aliases": [
+        "ACFC",
+        "AC"
+      ]
     },
     {
       "id": "CUSA04193",
@@ -93560,21 +93539,18 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/far-cry-5-gold-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/far-cry-5-gold-edition/",
         "dlpsgame": "https://dlpsgame.com/far-cry-5-gold-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "FARCRY5",
+        "FC"
+      ]
     },
     {
       "id": "CUSA05486",
@@ -93759,7 +93735,10 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/one-piece-unlimited-world-red-deluxe-edition/",
         "dlpsgame": "https://dlpsgame.com/one-piece-unlimited-world-red-deluxe-edition-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "OP"
+      ]
     },
     {
       "id": "CUSA03506",
@@ -93797,7 +93776,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/grand-theft-auto-san-andreas/",
         "dlpsgame": "https://dlpsgame.com/grand-theft-auto-san-andreas-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "GTASA",
+        "GTA"
+      ]
     },
     {
       "id": "CUSA09625",
@@ -93894,21 +93877,18 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/watch-dogs-2/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/watch-dogs-2/",
         "dlpsgame": "https://dlpsgame.com/watch-dogs-2-gold-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "WD2",
+        "WD"
+      ]
     },
     {
       "id": "CUSA00304",
@@ -94863,20 +94843,12 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/journey-collector-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/journey-collector-edition/"
-      }
+      "links": {}
     },
     {
       "id": "CUSA09450",
@@ -94933,21 +94905,18 @@
         "update": "0 MB",
         "dlc": "0 MB"
       },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/dragon-ball-xenoverse-2-deluxe-edition/"
-        }
-      ],
+      "downloads": [],
       "password": "PKGPS4.COM",
       "languages": [
         "English"
       ],
       "links": {
-        "pkgps4": "https://www.pkgps4.click/dragon-ball-xenoverse-2-deluxe-edition/",
         "dlpsgame": "https://dlpsgame.com/dragon-ball-xenoverse-2-deluxe-edition-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "DBX2",
+        "DB"
+      ]
     },
     {
       "id": "CUSA05289",
@@ -95095,7 +95064,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/assassins-creed-unity/"
-      }
+      },
+      "aliases": [
+        "ACU",
+        "AC"
+      ]
     },
     {
       "id": "CUSA02509",
@@ -95278,7 +95251,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/one-piece-burning-blood/",
         "dlpsgame": "https://dlpsgame.com/one-piece-burning-blood-gold-edition-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "OPBB",
+        "OP"
+      ]
     },
     {
       "id": "CUSA23501",
@@ -95317,7 +95294,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/grand-theft-auto-iii/",
         "dlpsgame": "https://dlpsgame.com/grand-theft-auto-3-ps4-pkg/"
-      }
+      },
+      "aliases": [
+        "GTA 3",
+        "GTA"
+      ]
     },
     {
       "id": "CUSA08268",
@@ -95576,7 +95557,11 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/dragon-ball-fighterz/"
-      }
+      },
+      "aliases": [
+        "DBFZ",
+        "DB"
+      ]
     },
     {
       "id": "CUSA04794",
@@ -95650,7 +95635,11 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/naruto-shippuden-ultimate-ninja-storm-4-road-to-boruto/",
         "dlpsgame": "https://dlpsgame.com/naruto-shippuden-ultimate-ninja-storm-4-road-to-boruto-ps4-download-free/"
-      }
+      },
+      "aliases": [
+        "NS4",
+        "NINJA STORM"
+      ]
     }
   ]
 }

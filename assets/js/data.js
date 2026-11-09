@@ -103,18 +103,20 @@ class GameDatabase {
       // Hide placeholder sizes (15 GB)
       if (hidePlaceholderSizes && sizeStr === '15 GB') return false;
       
-      // Search query — safely checks title, id, developer, and slug
+      // Search query — safely checks title, id, developer, slug, and aliases
       if (query) {
         const title = (game.title || '').toLowerCase();
         const id = (game.id || '').toLowerCase();
         const developer = (game.developer || '').toLowerCase();
         const slug = (game.slug || '').toLowerCase();
+        const aliases = (game.aliases || []).map(a => String(a).toLowerCase());
 
         const fw = (game.firmware || '').toLowerCase();
         return title.includes(query) ||
                id.includes(query) ||
                developer.includes(query) ||
                slug.includes(query) ||
+               aliases.some(alias => alias.includes(query)) ||
                fw.includes(query);
       }
       
