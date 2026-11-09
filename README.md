@@ -2,7 +2,7 @@
 
 Browse PS4 PKG packages: 2,539 entries with cover art, developer, release date, firmware note, download size, and a link to the source page that publishes the file.
 
-[Open the live site](https://dimzeofficial.github.io/PS4-Content/)
+[Open the live site](https://dimzeofficial.github.io/PKG-Atlas/)
 
 ## Finding a game
 
