@@ -1,4 +1,7 @@
 import { readFileSync } from 'node:fs';
+import security from '../assets/js/security.js';
+
+const { CatalogURLs } = security;
 
 const { games } = JSON.parse(readFileSync('data/games.json', 'utf8'));
 const gameKeys = new Set();
@@ -22,9 +25,11 @@ gameKeys.add(gameKey);
       errors.push(`${where}: invalid alias`);
   }
 
-  for (const url of Object.values(game.links ?? {})) {
-    try { new URL(url); }
-    catch { errors.push(`${where}: invalid source URL ${url}`); }
+  if (!CatalogURLs.valid(game.coverImage, 'coverImage'))
+    errors.push(`${where}: invalid cover URL`);
+  for (const [field, url] of Object.entries(game.links ?? {})) {
+    if (!CatalogURLs.valid(url, field))
+      errors.push(`${where}: invalid ${field} source URL`);
   }
 }
 

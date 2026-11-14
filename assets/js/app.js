@@ -64,11 +64,7 @@ const LS = {
     let initialQuery = '';
     if (window.location.hash) {
       const hash = window.location.hash.slice(1);
-      if (hash.startsWith('/search/')) {
-        initialQuery = decodeURIComponent(hash.slice(8).replace(/\/$/, ''));
-      } else if (hash.startsWith('q=')) {
-        initialQuery = decodeURIComponent(hash.slice(2));
-      }
+      initialQuery = safeSearchHash(hash);
     } else {
       const urlParams = new URLSearchParams(window.location.search);
       initialQuery = urlParams.get('q') || '';
@@ -89,11 +85,7 @@ const LS = {
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.slice(1);
       let query = '';
-      if (hash.startsWith('/search/')) {
-        query = decodeURIComponent(hash.slice(8).replace(/\/$/, ''));
-      } else if (hash.startsWith('q=')) {
-        query = decodeURIComponent(hash.slice(2));
-      }
+      query = safeSearchHash(hash);
       if (query && query !== (db.filters.searchQuery || '')) {
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
@@ -255,8 +247,8 @@ const LS = {
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:4px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to Store
           </a>
         </div>
-        ${UI.buildDetailHTML(game)}
       `;
+      gameDetailContainer.appendChild(UI.buildDetailElement(game));
 
       // Wishlist toggle listener on dedicated page
       const wishlistBtn = gameDetailContainer.querySelector('.modal-wishlist-toggle');
@@ -662,12 +654,7 @@ const LS = {
     window.addEventListener('hashchange', () => {
       if (searchInput && pageName === 'search') {
         const hash = window.location.hash.slice(1);
-        let query = '';
-        if (hash.startsWith('/search/')) {
-          query = decodeURIComponent(hash.slice(8).replace(/\/$/, ''));
-        } else if (hash.startsWith('q=')) {
-          query = decodeURIComponent(hash.slice(2));
-        }
+        const query = safeSearchHash(hash);
         if (query !== (db.filters.searchQuery || '')) {
           searchInput.value = query;
           db.updateFilter('searchQuery', query);
@@ -771,11 +758,13 @@ const LS = {
       sortedGenres.forEach(genre => {
         const label = document.createElement('label');
         label.className = 'filter-option';
-        label.innerHTML = `
-          <input type="checkbox" name="genreFilter" value="${genre}">
-          <span>${genre}</span>
-        `;
-        const cb = label.querySelector('input');
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.name = 'genreFilter';
+        cb.value = genre;
+        const name = document.createElement('span');
+        name.textContent = genre;
+        label.append(cb, name);
         cb.addEventListener('change', () => {
           const selected = Array.from(document.querySelectorAll('input[name="genreFilter"]:checked')).map(el => el.value);
           db.updateFilter('genre', selected);
@@ -840,12 +829,20 @@ const LS = {
         .filter(Boolean)
         .slice(0, 8);
       if (recents.length > 0) {
-        recentRow.innerHTML = recents.map(g => `
-          <a class="recent-strip__item" href="game-detail.html?id=${encodeURIComponent(g.id)}">
-            <img src="${g.coverImage || ''}" alt="" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=300&amp;height=400&amp;text=PS4+PKG&amp;bgColor=%231a2332&amp;textColor=%2394a3b8">
-            <span>${g.title}</span>
-          </a>
-        `).join('');
+        recentRow.replaceChildren(...recents.map(g => {
+          const link = document.createElement('a');
+          link.className = 'recent-strip__item';
+          link.href = `game-detail.html?id=${encodeURIComponent(g.id)}`;
+          const img = document.createElement('img');
+          img.src = UI.cover(g.coverImage);
+          img.alt = '';
+          img.loading = 'lazy';
+          img.dataset.fallbackSrc = 'https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%231a2332&textColor=%2394a3b8';
+          const label = document.createElement('span');
+          label.textContent = g.title;
+          link.append(img, label);
+          return link;
+        }));
         recentStrip.hidden = false;
       }
     }

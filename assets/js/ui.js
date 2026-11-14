@@ -45,6 +45,23 @@ document.addEventListener('error', (e) => {
 const UI = {
   avatarsData: null,
   selectedAvatar: null,
+  text(value) {
+    const node = document.createElement('span');
+    node.textContent = String(value);
+    return node.innerHTML;
+  },
+  attribute(value) {
+    const node = document.createElement('span');
+    node.setAttribute('data-value', String(value));
+    return node.outerHTML.match(/data-value="([^"]*)"/)[1];
+  },
+  cover(value) {
+    return CatalogURLs.valid(value, 'coverImage') ? value :
+      'https://images.placeholders.dev/?width=300&height=400&text=PS4+PKG&bgColor=%231a2332&textColor=%2394a3b8';
+  },
+  source(value, field) {
+    return CatalogURLs.valid(value, field) ? value : '';
+  },
 
   /**
    * Apply saved global settings (Low-res mode, Page size)
@@ -110,19 +127,19 @@ const UI = {
 
     article.innerHTML = `
       <div class="game-card__cover">
-        <img src="${game.coverImage || ''}" alt="" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=300&amp;height=400&amp;text=PS4+PKG&amp;bgColor=%2318181b&amp;textColor=%23a1a1aa">
-        <button class="game-card__collection" data-game-id="${game.id}" data-status="${collectionStatus}" title="${collectionLabel}" aria-label="Collection status: ${collectionLabel}">
+        <img src="${this.attribute(this.cover(game.coverImage))}" alt="" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=300&amp;height=400&amp;text=PS4+PKG&amp;bgColor=%2318181b&amp;textColor=%23a1a1aa">
+        <button class="game-card__collection" data-game-id="${this.attribute(game.id)}" data-status="${collectionStatus}" title="${collectionLabel}" aria-label="Collection status: ${collectionLabel}">
           ${collectionIcon}
         </button>
         <div class="game-card__quick">
-          <button class="btn btn--primary btn--download" data-game-id="${game.id}">
+          <button class="btn btn--primary btn--download" data-game-id="${this.attribute(game.id)}">
             <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
             </svg>
             Details
           </button>
-          <button class="btn btn--icon btn--wishlist ${isWishlisted ? 'btn--wishlist--active' : ''}" data-game-id="${game.id}" title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}" aria-label="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+          <button class="btn btn--icon btn--wishlist ${isWishlisted ? 'btn--wishlist--active' : ''}" data-game-id="${this.attribute(game.id)}" title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}" aria-label="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
             <svg width="17" height="17" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
             </svg>
@@ -131,12 +148,12 @@ const UI = {
       </div>
       <div class="game-card__info">
         <div class="game-card__titlerow">
-          <h3 class="game-card__title" title="${game.title}">${game.title}</h3>
-          ${size ? `<span class="game-card__size">${size}</span>` : ''}
+          <h3 class="game-card__title" title="${this.attribute(game.title)}">${this.text(game.title)}</h3>
+          ${size ? `<span class="game-card__size">${this.text(size)}</span>` : ''}
         </div>
-        ${(game.aliases || []).length ? `<p class="game-card__aliases">${game.aliases.map(a => `<span class="alias-chip">${a}</span>`).join('')}</p>` : ''}
-        <p class="game-card__meta">${meta}</p>
-        ${genres.length ? `<p class="game-card__genres">${genres.join(' \u2022 ')}</p>` : ''}
+        ${(game.aliases || []).length ? `<p class="game-card__aliases">${game.aliases.map(a => `<span class="alias-chip">${this.text(a)}</span>`).join('')}</p>` : ''}
+        <p class="game-card__meta">${this.text(meta)}</p>
+        ${genres.length ? `<p class="game-card__genres">${this.text(genres.join(' \u2022 '))}</p>` : ''}
       </div>
     `;
 
@@ -181,7 +198,7 @@ const UI = {
 
     modal.querySelector('.modal__title').textContent = game.title;
     const bodyEl = modal.querySelector('.modal__body');
-    bodyEl.innerHTML = this.buildDetailHTML(game);
+    bodyEl.replaceChildren(this.buildDetailElement(game));
     modal.classList.add('modal--active');
 
     // Attach wishlist button listener inside modal
@@ -214,7 +231,8 @@ const UI = {
         UI.syncWishlistBadges();
 
         // Sync cards on page
-        document.querySelectorAll(`.btn--wishlist[data-game-id="${gameId}"]`).forEach(btn => {
+        document.querySelectorAll('.btn--wishlist[data-game-id]').forEach(btn => {
+          if (btn.dataset.gameId !== gameId) return;
           if (wishlist.includes(gameId)) btn.classList.add('btn--wishlist--active');
           else btn.classList.remove('btn--wishlist--active');
         });
@@ -229,7 +247,8 @@ const UI = {
         const newStatus = e.target.value;
         UI.setCollectionStatus(game.id, newStatus);
         // Update game card badge
-        document.querySelectorAll(`.game-card__collection[data-game-id="${game.id}"]`).forEach(el => {
+        document.querySelectorAll('.game-card__collection[data-game-id]').forEach(el => {
+          if (el.dataset.gameId !== game.id) return;
           el.dataset.status = newStatus;
           el.innerHTML = UI.getCollectionIcon(newStatus);
           el.title = UI.getCollectionLabel(newStatus);
@@ -248,24 +267,30 @@ const UI = {
    * (Removed .reveal classes so contents are immediately visible)
    * (Removed firmware references per user request)
    */
-  buildDetailHTML(game) {
-    if (!game) return '<div class="empty-state"><h3>Game details not available.</h3></div>';
+  buildDetailElement(game) {
+    if (!game) {
+      const empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.textContent = 'Game details not available.';
+      return empty;
+    }
 
     const wishlist = LS.parse('ps4_wishlist', []);
     const isWishlisted = wishlist.includes(game.id);
 
-    return `
+    const detail = document.createElement('template');
+    detail.innerHTML = `
       <div class="detail__header" style="opacity:1 !important; transform:none !important;">
-        <img src="${game.coverImage || ''}" alt="${game.title}" class="detail__cover" data-fallback-src="https://images.placeholders.dev/?width=300&amp;height=400&amp;text=PS4+PKG&amp;bgColor=%231a2332&amp;textColor=%2394a3b8">
+        <img src="${this.attribute(this.cover(game.coverImage))}" alt="${this.attribute(game.title)}" class="detail__cover" data-fallback-src="https://images.placeholders.dev/?width=300&amp;height=400&amp;text=PS4+PKG&amp;bgColor=%231a2332&amp;textColor=%2394a3b8">
         <div class="detail__meta">
-          <h2>${game.title}</h2>
-          <p class="detail__id">${game.id}</p>
+          <h2>${this.text(game.title)}</h2>
+          <p class="detail__id">${this.text(game.id)}</p>
           <div class="detail__badges">
-            ${game.region ? `<span class="badge">${game.region}</span>` : ''}
-            ${(game.aliases || []).map(a => `<span class="badge badge--alias" title="Short name — usable in search">${a}</span>`).join('')}
-            ${Array.isArray(game.genre) ? game.genre.map(g => `<span class="badge">${g}</span>`).join('') : ''}
+            ${game.region ? `<span class="badge">${this.text(game.region)}</span>` : ''}
+            ${(game.aliases || []).map(a => `<span class="badge badge--alias" title="Short name — usable in search">${this.text(a)}</span>`).join('')}
+            ${Array.isArray(game.genre) ? game.genre.map(g => `<span class="badge">${this.text(g)}</span>`).join('') : ''}
           </div>
-          ${game.description ? `<p class="detail__description">${game.description}</p>` : ''}
+          ${game.description ? `<p class="detail__description">${this.text(game.description)}</p>` : ''}
           <div class="detail__actions-row">
             <div class="detail__collection-selector">
               <label for="detailCollectionSelect">Status:</label>
@@ -282,10 +307,10 @@ const UI = {
               </svg>
               ${isWishlisted ? 'In Wishlist' : 'Add to Wishlist'}
             </button>
-            <a href="game-detail.html?id=${game.id}" class="btn btn--primary" data-nav="smooth">
+            <a href="game-detail.html?id=${encodeURIComponent(game.id)}" class="btn btn--primary" data-nav="smooth">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> Open Game Page
             </a>
-            <button class="btn btn--ghost" data-share-id="${game.id}">
+            <button class="btn btn--ghost" data-share-id="${this.attribute(game.id)}">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M9 9h10v10H9zM5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy Link
             </button>
           </div>
@@ -294,36 +319,36 @@ const UI = {
 
       <div class="detail__downloads" style="opacity:1 !important; transform:none !important;">
         <h3>Downloads & Packages</h3>
-        ${game.links?.pkgps4 ? `
+        ${this.source(game.links?.pkgps4, 'pkgps4') ? `
           <div class="download-item" style="border-left: 3px solid var(--color-accent-primary);">
             <div class="download-item__info">
               <span class="download-item__type">PKGPS4 Database</span>
-              ${game.firmware ? `<span class="download-item__notes" style="color: var(--color-accent-text); font-weight: 600;">Firmware requirements: ${game.firmware}</span>` : ''}
+              ${game.firmware ? `<span class="download-item__notes" style="color: var(--color-accent-text); font-weight: 600;">Firmware requirements: ${this.text(game.firmware)}</span>` : ''}
             </div>
             <div class="download-item__actions">
-              <a href="${game.links.pkgps4}" class="btn btn--primary" target="_blank" rel="noopener">Open PKGPS4 Link ↗</a>
+              <a href="${this.source(game.links?.pkgps4, 'pkgps4')}" class="btn btn--primary" target="_blank" rel="noopener">Open PKGPS4 Link ↗</a>
             </div>
           </div>
         ` : ''}
         <div class="download-item">
           <div class="download-item__info">
             <span class="download-item__type">DLPSGAME Host</span>
-            ${game.links?.dlpsgame ? '' : '<span class="download-item__notes">No matching page found</span>'}
+            ${this.source(game.links?.dlpsgame, 'dlpsgame') ? '' : '<span class="download-item__notes">No matching page found</span>'}
           </div>
           <div class="download-item__actions">
-            ${game.links?.dlpsgame
-              ? `<a href="${game.links.dlpsgame}" class="btn btn--secondary" target="_blank" rel="noopener">Open DLPSGAME Link ↗</a>`
+            ${this.source(game.links?.dlpsgame, 'dlpsgame')
+              ? `<a href="${this.source(game.links?.dlpsgame, 'dlpsgame')}" class="btn btn--secondary" target="_blank" rel="noopener">Open DLPSGAME Link ↗</a>`
               : `<span class="download-item__unavailable">Unavailable</span>`}
           </div>
         </div>
-        ${game.links?.superpsx ? `
+        ${this.source(game.links?.superpsx, 'superpsx') ? `
           <div class="download-item">
             <div class="download-item__info">
               <span class="download-item__type">SuperPSX Host</span>
               <span class="download-item__notes">Alternative Direct Package</span>
             </div>
             <div class="download-item__actions">
-              <a href="${game.links.superpsx}" class="btn btn--secondary" target="_blank" rel="noopener">Open SuperPSX Link ↗</a>
+              <a href="${this.source(game.links?.superpsx, 'superpsx')}" class="btn btn--secondary" target="_blank" rel="noopener">Open SuperPSX Link ↗</a>
             </div>
           </div>
         ` : ''}
@@ -332,17 +357,18 @@ const UI = {
       <div class="detail__info" style="opacity:1 !important; transform:none !important;">
         <h3>Game Information</h3>
         <dl class="info-grid">
-          ${game.developer ? `<dt>Developer</dt><dd>${game.developer}</dd>` : ''}
-          ${game.releaseDate ? `<dt>Release Date</dt><dd>${game.releaseDate}</dd>` : ''}
-          ${game.firmware ? `<dt>Firmware</dt><dd><span class="badge">${game.firmware}</span></dd>` : ''}
-          <dt>Password</dt><dd><code>${game.password || 'N/A'}</code></dd>
-          ${Array.isArray(game.languages) && game.languages.length ? `<dt>Languages</dt><dd>${game.languages.join(', ')}</dd>` : ''}
-          ${game.size?.game ? `<dt>Game Size</dt><dd>${game.size.game}</dd>` : ''}
-          ${game.size?.update ? `<dt>Update Size</dt><dd>${game.size.update}</dd>` : ''}
-          ${game.size?.dlc ? `<dt>DLC Size</dt><dd>${game.size.dlc}</dd>` : ''}
+          ${game.developer ? `<dt>Developer</dt><dd>${this.text(game.developer)}</dd>` : ''}
+          ${game.releaseDate ? `<dt>Release Date</dt><dd>${this.text(game.releaseDate)}</dd>` : ''}
+          ${game.firmware ? `<dt>Firmware</dt><dd><span class="badge">${this.text(game.firmware)}</span></dd>` : ''}
+          <dt>Password</dt><dd><code>${this.text(game.password || 'N/A')}</code></dd>
+          ${Array.isArray(game.languages) && game.languages.length ? `<dt>Languages</dt><dd>${this.text(game.languages.join(', '))}</dd>` : ''}
+          ${game.size?.game ? `<dt>Game Size</dt><dd>${this.text(game.size.game)}</dd>` : ''}
+          ${game.size?.update ? `<dt>Update Size</dt><dd>${this.text(game.size.update)}</dd>` : ''}
+          ${game.size?.dlc ? `<dt>DLC Size</dt><dd>${this.text(game.size.dlc)}</dd>` : ''}
         </dl>
       </div>
     `;
+    return detail.content;
   },
 
   /**
@@ -429,7 +455,8 @@ const UI = {
 
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01M17.5 6H6.5A4.5 4.5 0 002 10.5v3A4.5 4.5 0 006.5 18h11a4.5 4.5 0 004.5-4.5v-3A4.5 4.5 0 0017.5 6z"/></svg><span>${message}</span>`;
+    toast.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01M17.5 6H6.5A4.5 4.5 0 002 10.5v3A4.5 4.5 0 006.5 18h11a4.5 4.5 0 004.5-4.5v-3A4.5 4.5 0 0017.5 6z"/></svg><span></span>';
+    toast.querySelector('span').textContent = message;
     container.appendChild(toast);
 
     setTimeout(() => {
@@ -458,7 +485,7 @@ const UI = {
     const sidebarAvatarInitial = document.getElementById('userAvatarInitial');
 
     if (sidebarAvatarImg && sidebarAvatarInitial) {
-      if (avatar) {
+      if (safeAvatarPath(avatar)) {
         sidebarAvatarImg.src = avatar;
         sidebarAvatarImg.style.display = 'block';
         sidebarAvatarInitial.style.display = 'none';
@@ -472,8 +499,12 @@ const UI = {
     // Header avatar preview
     const headerAvatarPreview = document.getElementById('headerAvatarPreview');
     if (headerAvatarPreview) {
-      if (avatar) {
-        headerAvatarPreview.innerHTML = `<img src="${avatar}" alt="${username}" data-fallback-initial>`;
+      if (safeAvatarPath(avatar)) {
+        const img = document.createElement('img');
+        img.src = avatar;
+        img.alt = username;
+        img.setAttribute('data-fallback-initial', '');
+        headerAvatarPreview.replaceChildren(img);
       } else {
         headerAvatarPreview.textContent = username.charAt(0).toUpperCase();
       }
@@ -680,17 +711,22 @@ const UI = {
         const file = e.target.files?.[0];
         if (!file) return;
         const reader = new FileReader();
+        if (!validBackupFileSize(file.size)) {
+          UI.showToast('Failed to import: Backup exceeds 1 MB.');
+          return;
+        }
         reader.onload = (evt) => {
           try {
             const data = JSON.parse(evt.target.result);
-            if (data.collection) LS.set('ps4_collection', JSON.stringify(data.collection));
-            if (data.wishlist) LS.set('ps4_wishlist', JSON.stringify(data.wishlist));
-            if (data.username) LS.set('ps4_username', data.username);
-            if (data.avatar !== undefined) LS.set('ps4_avatar', data.avatar);
-            if (data.avatar_name !== undefined) LS.set('ps4_avatar_name', data.avatar_name);
-            if (data.theme) LS.set('ps4_theme', data.theme);
-            if (data.pageSize) LS.set('ps4_pageSize', data.pageSize);
-            if (data.lowRes !== undefined) LS.set('ps4_lowRes', data.lowRes);
+            if (!validateBackup(data)) throw new Error('Invalid backup');
+            LS.set('ps4_collection', JSON.stringify(data.collection));
+            LS.set('ps4_wishlist', JSON.stringify(data.wishlist));
+            LS.set('ps4_username', data.username);
+            LS.set('ps4_avatar', data.avatar);
+            LS.set('ps4_avatar_name', data.avatar_name);
+            LS.set('ps4_theme', data.theme);
+            LS.set('ps4_pageSize', data.pageSize);
+            LS.set('ps4_lowRes', data.lowRes);
 
             UI.applySettings();
             UI.syncProfileUI();
@@ -698,9 +734,10 @@ const UI = {
             UI.showToast('Data imported successfully! Reloading...');
             setTimeout(() => window.location.reload(), 800);
           } catch (err) {
-            UI.showToast('Failed to import: Invalid JSON file.');
+            UI.showToast('Failed to import: Invalid backup file.');
           }
         };
+        reader.onerror = () => UI.showToast('Failed to import: Could not read backup.');
         reader.readAsText(file);
       };
     }
@@ -867,8 +904,12 @@ const UI = {
    */
   updateBigAvatarPreview(container, avatarUrl, username) {
     if (!container) return;
-    if (avatarUrl) {
-      container.innerHTML = `<img src="${avatarUrl}" alt="${username || ''}" data-fallback-initial>`;
+    if (safeAvatarPath(avatarUrl)) {
+      const img = document.createElement('img');
+      img.src = avatarUrl;
+      img.alt = username || '';
+      img.setAttribute('data-fallback-initial', '');
+      container.replaceChildren(img);
     } else {
       const initial = (username || '').charAt(0).toUpperCase();
       container.textContent = initial;
@@ -931,7 +972,7 @@ const UI = {
       if (visibleGames.length === 0) {
         container.innerHTML = `
           <div class="empty-state">
-            <h3>No avatars match "${filterQuery}"</h3>
+            <h3>No avatars match "${this.text(filterQuery)}"</h3>
             <p>Try searching for a different game title or character.</p>
           </div>
         `;
@@ -955,7 +996,7 @@ const UI = {
 
         section.innerHTML = `
           <div class="avatar-game-header">
-            <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01M17.5 6H6.5A4.5 4.5 0 002 10.5v3A4.5 4.5 0 006.5 18h11a4.5 4.5 0 004.5-4.5v-3A4.5 4.5 0 0017.5 6z"/></svg> ${game}</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01M17.5 6H6.5A4.5 4.5 0 002 10.5v3A4.5 4.5 0 006.5 18h11a4.5 4.5 0 004.5-4.5v-3A4.5 4.5 0 0017.5 6z"/></svg> ${this.text(game)}</span>
             <span class="avatar-game-badge">${avatars.length} avatar${avatars.length !== 1 ? 's' : ''}</span>
           </div>
           <div class="avatar-grid"></div>
@@ -964,7 +1005,9 @@ const UI = {
         const grid = section.querySelector('.avatar-grid');
 
         avatars.forEach(item => {
+          if (typeof item.name !== 'string' || typeof item.file !== 'string') return;
           const avatarUrl = `assets/avatars/${encodeURIComponent(game)}/${encodeURIComponent(item.file)}`;
+          if (!safeAvatarPath(avatarUrl)) return;
           const isSelected = currentSavedAvatar === avatarUrl || this.selectedAvatar?.url === avatarUrl;
 
           const card = document.createElement('div');
@@ -973,9 +1016,9 @@ const UI = {
 
           card.innerHTML = `
             <div class="avatar-card__img-wrap">
-              <img src="${avatarUrl}" alt="${item.name}" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=60&amp;height=60&amp;text=PSN&amp;bgColor=%230a0e17&amp;textColor=%230070f3">
+              <img src="${this.attribute(avatarUrl)}" alt="${this.attribute(item.name)}" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=60&amp;height=60&amp;text=PSN&amp;bgColor=%230a0e17&amp;textColor=%230070f3">
             </div>
-            <span class="avatar-card__name">${item.name}</span>
+            <span class="avatar-card__name">${this.text(item.name)}</span>
           `;
 
           card.onclick = () => {
@@ -1009,23 +1052,25 @@ const UI = {
             section.dataset.game = game;
             section.innerHTML = `
               <div class="avatar-game-header">
-                <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01M17.5 6H6.5A4.5 4.5 0 002 10.5v3A4.5 4.5 0 006.5 18h11a4.5 4.5 0 004.5-4.5v-3A4.5 4.5 0 0017.5 6z"/></svg> ${game}</span>
+                <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;"><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01M17.5 6H6.5A4.5 4.5 0 002 10.5v3A4.5 4.5 0 006.5 18h11a4.5 4.5 0 004.5-4.5v-3A4.5 4.5 0 0017.5 6z"/></svg> ${this.text(game)}</span>
                 <span class="avatar-game-badge">${data[game].length} avatars</span>
               </div>
               <div class="avatar-grid"></div>
             `;
             const grid = section.querySelector('.avatar-grid');
             data[game].forEach(item => {
+              if (typeof item.name !== 'string' || typeof item.file !== 'string') return;
               const avatarUrl = `assets/avatars/${encodeURIComponent(game)}/${encodeURIComponent(item.file)}`;
+              if (!safeAvatarPath(avatarUrl)) return;
               const isSelected = currentSavedAvatar === avatarUrl || this.selectedAvatar?.url === avatarUrl;
               const card = document.createElement('div');
               card.className = `avatar-card ${isSelected ? 'avatar-card--selected' : ''}`;
               card.title = `${item.name} (${game})`;
               card.innerHTML = `
                 <div class="avatar-card__img-wrap">
-                  <img src="${avatarUrl}" alt="${item.name}" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=60&amp;height=60&amp;text=PSN&amp;bgColor=%230a0e17&amp;textColor=%230070f3">
+                  <img src="${this.attribute(avatarUrl)}" alt="${this.attribute(item.name)}" loading="lazy" data-fallback-src="https://images.placeholders.dev/?width=60&amp;height=60&amp;text=PSN&amp;bgColor=%230a0e17&amp;textColor=%230070f3">
                 </div>
-                <span class="avatar-card__name">${item.name}</span>
+                <span class="avatar-card__name">${this.text(item.name)}</span>
               `;
               card.onclick = () => {
                 modal.querySelectorAll('.avatar-card--selected').forEach(c => c.classList.remove('avatar-card--selected'));
