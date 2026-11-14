@@ -2932,46 +2932,6 @@
       }
     },
     {
-      "id": "CUSA51869",
-      "legacyId": "PPSA00452",
-      "title": "METAL SUITS Counter-attack",
-      "slug": "metal-suits-counter-attack",
-      "description": "They should never have ticked him off. Begin a hot-blooded revenge as the protagonist Kevin, who has lost everything and was reborn as a cyborg!",
-      "developer": "Eggtart",
-      "publisher": "Unknown",
-      "releaseDate": "2025-02-13",
-      "genre": [
-        "Shooter",
-        "Platform",
-        "Hack and slash/Beat 'em up",
-        "Indie",
-        "Arcade"
-      ],
-      "region": "USA",
-      "firmware": "??? or 5.05 higher",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co92k1.jpg",
-      "size": {
-        "game": "559.87 MB",
-        "update": "503.19 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/metal-suits-counter-attack/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/metal-suits-counter-attack/",
-        "dlpsgame": "https://dlpsgame.com/metal-suits-counter-attack-ps4/"
-      }
-    },
-    {
       "id": "CUSA47434",
       "legacyId": "PPSA00453",
       "title": "Miraculous Paris Under Siege",
@@ -12823,43 +12783,6 @@
       }
     },
     {
-      "id": "CUSA42359",
-      "legacyId": "PPSA00782",
-      "title": "Raidou Remastered The Mystery of The Soulless Army",
-      "slug": "raidou-remastered-the-mystery-of-the-soulless-army",
-      "description": "The story of apprentice detective and Devil Summoner extraordinaire Raidou Kuzunoha XIV returns in this remastered classic! Call upon your demons to solve supernatural mysteries and dispose of enemies.",
-      "developer": "Sega",
-      "publisher": "Unknown",
-      "releaseDate": "2025-06-19",
-      "genre": [
-        "Role-playing (RPG)",
-        "Adventure"
-      ],
-      "region": "JPN",
-      "firmware": "5.05, 11",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co9l0l.jpg",
-      "size": {
-        "game": "16.86 GB",
-        "update": "645.53 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/raidou-remastered-the-mystery-of-the-soulless-army/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/raidou-remastered-the-mystery-of-the-soulless-army/",
-        "dlpsgame": "https://dlpsgame.com/raidou-remastered-the-mystery-of-the-soulless-army-ps4-pkg/"
-      }
-    },
-    {
       "id": "CUSA15054",
       "legacyId": "PPSA00783",
       "title": "Submersed",
@@ -22587,44 +22510,6 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/spy-chameleon/",
         "dlpsgame": "https://dlpsgame.com/spy-chameleon-ps4-download-free/"
-      }
-    },
-    {
-      "id": "CUSA00789",
-      "legacyId": "PPSA01176",
-      "title": "Switch Galaxy Ultra",
-      "slug": "switch-galaxy-ultra",
-      "description": "Switch Galaxy Ultra is an insanely addictive, fast-paced arcade challenge. Weave your way past obstacles and enemies as you travel across the galaxy collecting Tantalum for Dakur Technology. It’s loaded with content and features that will have you blazing across the galaxy at breakneck speeds.",
-      "developer": "Atomicom",
-      "publisher": "Unknown",
-      "releaseDate": "2014-12-17",
-      "genre": [
-        "Racing",
-        "Simulator",
-        "Indie"
-      ],
-      "region": "USA",
-      "firmware": "5.05, 9",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1spe.jpg",
-      "size": {
-        "game": "726.86 MB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/switch-galaxy-ultra/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/switch-galaxy-ultra/",
-        "dlpsgame": "https://dlpsgame.com/switch-galaxy-ultra-ps4-download-free/"
       }
     },
     {
@@ -49427,43 +49312,6 @@
       }
     },
     {
-      "id": "CUSA26377",
-      "legacyId": "PPSA02020",
-      "title": "NEO The World Ends with You",
-      "slug": "neo-the-world-ends-with-you",
-      "description": "Explore a stylized recreation of Shibuya, as you take on the role of Rindo to battle for survival and unravel the mysteries of the deadly “Reaper’s Game” in this new Action RPG and follow-up to the classic RPG hit \"The World Ends with You.\"",
-      "developer": "h.a.n.d. Inc.",
-      "publisher": "Unknown",
-      "releaseDate": "2021-07-26",
-      "genre": [
-        "Role-playing (RPG)",
-        "Hack and slash/Beat 'em up"
-      ],
-      "region": "EUR",
-      "firmware": "5.05",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co8kzv.jpg",
-      "size": {
-        "game": "6.68 GB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/neo-the-world-ends-with-you/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/neo-the-world-ends-with-you/",
-        "dlpsgame": "https://dlpsgame.com/neo-the-world-ends-with-you-ps4-pkg/"
-      }
-    },
-    {
       "id": "CUSA08127",
       "legacyId": "PPSA02021",
       "title": "Real Farm Gold Edition",
@@ -61481,46 +61329,6 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/ary-and-the-secret-of-seasons/",
         "dlpsgame": "https://dlpsgame.com/ary-and-the-secret-of-seasons-ps4-pkg/"
-      }
-    },
-    {
-      "id": "CUSA15171",
-      "legacyId": "PPSA02354",
-      "title": "Asdivine Dios",
-      "slug": "asdivine-dios",
-      "description": "Welcome to the new Asdivine and get ready as a tale about divine encounters with mankind and mankind's encounters with the divine is about to unfold...\n\nAn Adventure of Divine Proportions!\nAmong the many worlds the deities have created, there is one world that abounds with life known as Asdivine. But when a spate of disturbances erupts across the globe and an ever spreading murk threatens to destroy it, Izayoi, the deity of Asdivine himself, takes up his cause to save the world he created with his own hands. Unfortunately, suffering from a loss of his own divine powers, is there any hope he can he succeed? Find out as the curtain raises on this adventure of divine proportions!",
-      "developer": "Kemco",
-      "publisher": "Unknown",
-      "releaseDate": "2015-09-02",
-      "genre": [
-        "Role-playing (RPG)",
-        "Simulator",
-        "Strategy",
-        "Turn-based strategy (TBS)",
-        "Adventure"
-      ],
-      "region": "USA",
-      "firmware": "5.05",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1mjg.jpg",
-      "size": {
-        "game": "15 GB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/asdivine-dios/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/asdivine-dios/",
-        "dlpsgame": "https://dlpsgame.com/asdivine-dios-ps4-pkg/"
       }
     },
     {
@@ -86984,42 +86792,6 @@
       }
     },
     {
-      "id": "CUSA03742",
-      "legacyId": "PPSA03096",
-      "title": "Breach & Clear: Deadline",
-      "slug": "breach-clear-deadline",
-      "description": "A deadly new breed of human monster is on the rise, and it’s up to you to stop the infestation before it spreads. Breach & Clear: DEADline is the all-new follow up to Breach & Clear, the critically acclaimed and commercially successful hybrid tactical strategy game. The game gives you real-time control over a squad of four elite Special Forces tasked with tracking down information on the source of the infestation.",
-      "developer": "Mighty Rabbit Studios",
-      "publisher": "Unknown",
-      "releaseDate": "2015-07-20",
-      "genre": [
-        "Role-playing (RPG)",
-        "Strategy"
-      ],
-      "region": "USA",
-      "firmware": "5.05 or higher",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/m7hmnkm28lspx8vhr5w4.jpg",
-      "size": {
-        "game": "1.11 GB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/breach-clear-deadline/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/breach-clear-deadline/"
-      }
-    },
-    {
       "id": "CUSA11260",
       "legacyId": "PPSA03097",
       "title": "Death Stranding",
@@ -87362,45 +87134,6 @@
       ],
       "links": {
         "pkgps4": "https://www.pkgps4.click/blue-estate-the-game/"
-      }
-    },
-    {
-      "id": "CUSA04498",
-      "legacyId": "PPSA03107",
-      "title": "Blue-Collar Astronaut",
-      "slug": "blue-collar-astronaut",
-      "description": "Arcade space-physics meets your student loans. Blue-Collar Astronaut literally and figuratively explores upwards mobility on your way to the All-American Space-Dream.",
-      "developer": "Mutated Software",
-      "publisher": "Unknown",
-      "releaseDate": "2017-03-14",
-      "genre": [
-        "Racing",
-        "Simulator",
-        "Strategy",
-        "Indie",
-        "Arcade"
-      ],
-      "region": "USA",
-      "firmware": "??? or 5.05 higher",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co232w.jpg",
-      "size": {
-        "game": "282.4 MB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/blue-collar-astronaut/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/blue-collar-astronaut/"
       }
     },
     {
@@ -87846,78 +87579,6 @@
       }
     },
     {
-      "id": "CUSA07478",
-      "legacyId": "PPSA03122",
-      "title": "Berserk and the Band of the Hawk",
-      "slug": "berserk-and-the-band-of-the-hawk",
-      "description": "Behold the fierce blend of \"Warriors\" and \"Berserk\"!\n\nThe action of cutting through hundreds of enemies, fundamental to the Warriors series, is fused together with the dark and gruesome atmosphere of the world of \"Berserk\", making various heretofore unseen acts possible, such as using a giant man-sized sword to cut enemies in half, as well as smash or send them flying with the \"Slash\" and \"Smash\" actions.",
-      "developer": "Omega Force",
-      "publisher": "Unknown",
-      "releaseDate": "2016-10-27",
-      "genre": [
-        "Hack and slash/Beat 'em up"
-      ],
-      "region": "USA",
-      "firmware": "??? or 5.05 higher",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2h99.jpg",
-      "size": {
-        "game": "5 GB",
-        "update": "0 MB",
-        "dlc": "5 GB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/berserk-and-the-band-of-the-hawk/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/berserk-and-the-band-of-the-hawk/",
-        "dlpsgame": "https://dlpsgame.com/berserk-and-the-band-of-the-hawk-ps4-download-free/"
-      }
-    },
-    {
-      "id": "CUSA09044",
-      "legacyId": "PPSA03123",
-      "title": "Beast Quest",
-      "slug": "beast-quest",
-      "description": "Embark on an epic action-adventure to save the Kingdom of Avantia from ruin. Overcome the dark magic that has corrupted the noble Beasts of the realm. Battle in the mythical world, tackling challenges through stunning landscapes and a plethora of side missions and objectives. Unlock new abilities and upgrades to successfully combat varied opponents. Based on the best-selling fantasy novels, Beast Quest comes to console for the first time ever, with a rich, progressive storyline, vibrant settings, and an excess of compelling challenges.",
-      "developer": "Torus Games",
-      "publisher": "Unknown",
-      "releaseDate": "2018-03-13",
-      "genre": [
-        "Role-playing (RPG)",
-        "Adventure"
-      ],
-      "region": "USA",
-      "firmware": "??? or 5.05 higher",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co28vc.jpg",
-      "size": {
-        "game": "2.99 GB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/beast-quest/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/beast-quest/"
-      }
-    },
-    {
       "id": "CUSA02291",
       "legacyId": "PPSA03124",
       "title": "Beach Buggy Racing",
@@ -88222,43 +87883,6 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/batman-return-to-arkham/",
         "dlpsgame": "https://dlpsgame.com/batman-return-to-arkham-ps4-download-free/"
-      }
-    },
-    {
-      "id": "CUSA05335",
-      "legacyId": "PPSA03134",
-      "title": "Batman: Arkham VR",
-      "slug": "batman-arkham-vr",
-      "description": "Your quest to clean up Gotham has only just begun – and now it’s even more terrifying than it’s ever been. Exclusive to PlayStation VR, Batman: Arkham VR lets you become the Dark Knight in a virtual reality recreation of the DC’s hero’s more iconic locations.\n\nBecome the world’s greatest detective and explore places such as Wayne Manor and the Batcave as you battle in a brand new and personal story set in Rocksteady’s classic Arkham universe.",
-      "developer": "Rocksteady Studios",
-      "publisher": "Unknown",
-      "releaseDate": "2016-10-13",
-      "genre": [
-        "Puzzle",
-        "Adventure"
-      ],
-      "region": "USA",
-      "firmware": "??? or 5.05 higher",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co22zo.jpg",
-      "size": {
-        "game": "5 GB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/batman-arkham-vr/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/batman-arkham-vr/",
-        "dlpsgame": "https://dlpsgame.com/batman-arkham-vr-ps4-download-free/"
       }
     },
     {
@@ -91118,43 +90742,6 @@
       }
     },
     {
-      "id": "CUSA01162",
-      "legacyId": "PPSA03219",
-      "title": "Aaru's Awakening",
-      "slug": "aarus-awakening",
-      "description": "You are the champion of Dawn, Aaru. Complete missions and explore the world of Lumenox using Aaru's highly mobile skills, teleportation and charging.\n\nThe balance between Dawn, Day, Dusk and Night is being destroyed by Night. As a last hope Dawn sends out his champion, Aaru, to travel all the way to Night’s domain and restore balance. Can you save the world of Lumenox?",
-      "developer": "Lumenox",
-      "publisher": "Unknown",
-      "releaseDate": "2015-02-23",
-      "genre": [
-        "Platform",
-        "Adventure",
-        "Indie"
-      ],
-      "region": "USA",
-      "firmware": "??? or 5.05 higher",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1woi.jpg",
-      "size": {
-        "game": "933.37 MB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/aarus-awakening/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/aarus-awakening/"
-      }
-    },
-    {
       "id": "CUSA07995",
       "legacyId": "PPSA03220",
       "title": "A Way Out",
@@ -91455,44 +91042,6 @@
       "links": {
         "pkgps4": "https://www.pkgps4.click/2dark/",
         "dlpsgame": "https://dlpsgame.com/2dark-ps4-pkg/"
-      }
-    },
-    {
-      "id": "CUSA06169",
-      "legacyId": "PPSA03229",
-      "title": "2064: Read Only Memories",
-      "slug": "2064-read-only-memories",
-      "description": "2064: Read Only Memories is a new cyberpunk adventure that will take you on a journey of puzzle-solving and exploring as you investigate the mysterious world and characters of Neo-San Francisco.",
-      "developer": "MidBoss",
-      "publisher": "Unknown",
-      "releaseDate": "2018-08-14",
-      "genre": [
-        "Point-and-click",
-        "Adventure",
-        "Visual Novel"
-      ],
-      "region": "USA",
-      "firmware": "??? or 5.05 higher",
-      "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1odw.jpg",
-      "size": {
-        "game": "547.43 MB",
-        "update": "0 MB",
-        "dlc": "0 MB"
-      },
-      "downloads": [
-        {
-          "type": "Game",
-          "source": "PKGPS4",
-          "url": "https://www.pkgps4.click/2064-read-only-memories/"
-        }
-      ],
-      "password": "PKGPS4.COM",
-      "languages": [
-        "English"
-      ],
-      "links": {
-        "pkgps4": "https://www.pkgps4.click/2064-read-only-memories/",
-        "dlpsgame": "https://dlpsgame.com/2064-read-only-memories-ps4-pkg/"
       }
     },
     {

@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 
 const { games } = JSON.parse(readFileSync('data/games.json', 'utf8'));
-const ids = new Set();
+const gameKeys = new Set();
 const errors = [];
 
 for (const [i, game] of games.entries()) {
@@ -10,8 +10,10 @@ for (const [i, game] of games.entries()) {
   if (!/^(?:CUSA|PPSA)\d{5}$/.test(game.id ?? ''))
     errors.push(`${where}: invalid id ${game.id}`);
 
-  if (ids.has(game.id)) errors.push(`${where}: duplicate id ${game.id}`);
-  ids.add(game.id);
+const titleKey = (game.title ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const gameKey = `${game.id}:${titleKey}`;
+if (gameKeys.has(gameKey)) errors.push(`${where}: duplicate package and title ${game.id}`);
+gameKeys.add(gameKey);
 
   if (!game.title?.trim()) errors.push(`${where}: missing title`);
 
@@ -30,4 +32,4 @@ if (errors.length) {
   console.error(errors.join('\n'));
   process.exit(1);
 }
-console.log(`✓ ${games.length} entries validated`);\
+console.log(`✓ ${games.length} entries validated`);
